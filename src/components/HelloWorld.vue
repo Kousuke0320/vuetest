@@ -1,102 +1,106 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+<div id="hello">
+  <div id="userPrf">
+    <div id="userPic">
+      <img src="" id="prfPic">
+    </div>
+    <div id="userCom">
+      <div id="name"></div>
+      <div id="userComment">No coment</div>
+    </div>
+  </div>
+  <div id="chart">
+    <div id="rader">
+      <commit-chart :height="300"></commit-chart>
+    </div>
+    <div id="line">
+      <line-chart :height="100"></line-chart>
+      <line-chart :height="100"></line-chart>
+      <line-chart :height="100"></line-chart>
+      <line-chart :height="100"></line-chart>
+      <line-chart :height="100"></line-chart>
+    </div>
+  </div>
   </div>
 </template>
-
 <script>
+import CommitChart from './CommitChart.vue'
+import LineChart from './LineChart.vue'
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+      userName: ''
+     }
+    },
+  mounted: function() {
+    this.userName = JSON.parse(localStorage.getItem('userName')) || []
+    
+    var starCountRef = firebase.database().ref('/users/userPrf/' + this.userName);
+      starCountRef.on('value', function(snapshot) {
+      //this.photoURL = snapshot.val().photo
+      //console.log(this.photoURL)
+      document.getElementById('prfPic').src = snapshot.val().photo
+      document.getElementById("userComment").innerText = snapshot.val().coment
+      //updateStarCount(postElement, snapshot.val());
+      
+      })
+      document.getElementById("name").innerText = JSON.parse(localStorage.getItem('userName')) || []
+  },
+  components: {
+    CommitChart,
+    LineChart
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
+<style>
+#userPrf {
+  display: flex;
+  margin-top: 50px;
+}
+
+#userPic {
+  flex: 1;
+}
+
+#userPic img {
+  width:200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+#name {
+  font-size: 30px;
+  
+}
+#userComment {
+  margin-top: 50px;
+}
+
+#userCom {
+  flex: 1;
+}
+
+#chart {
+  display: flex;
+  margin-top: 50px;
+}
+
+#rader {
+  flex: 1;
+}
+
+#line {
+  flex: 1;
+}
+
+
+h1,
+h2 {
+  margin-top: 20px;
   font-weight: normal;
 }
 ul {
