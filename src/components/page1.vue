@@ -8,6 +8,8 @@
 
 <script>
 
+
+
 export default {
   name: 'page1',
   data () {
@@ -23,12 +25,13 @@ export default {
     },
   methods: {
     addData: function() {
-      firebase.database().ref("/my/chat/all").set({title:"example", text:this.my_text})
+      firebase.database().ref("/my/chat/all").push({title:"example", text:this.my_text})
         /*var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
           starCountRef.on('value', function(snapshot) {
           updateStarCount(postElement, snapshot.val());
       });*/
-      firebase.database().ref("/my/chat/all").on("value", function(snapshot) { 
+      var postId = firebase.database().ref("/my/chat/all").push().key;
+      firebase.database().ref("/my/chat/all").on("value", function(snapshot ,postId) { 
       this.rev = snapshot.val().text
       })
     }
