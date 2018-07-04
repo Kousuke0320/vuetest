@@ -1,4 +1,59 @@
 <script>
+import {Radar} from 'vue-chartjs'
+
+var motivation
+var management
+var design
+var communication
+var system
+var userName
+
+export default {
+  extends: Radar,
+  data () {
+    return {
+      datacollection: {
+        labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
+        datasets: [
+          {
+            label: "レーダーチャート",
+                fillColor: "#FBB03B",
+                strokeColor: "#FBB03B",
+                pointColor: "#FBB03B",
+                pointStrokeColor: "#FBB03B",
+                pointHighlightFill: "#FBB03B",
+                pointHighlightStroke: "#FBB03B",
+                data: [motivation, design, management, communication, system]
+          }
+        ]
+      }
+    }
+  },
+  mounted () {
+    userName = JSON.parse(localStorage.getItem('userName')) || []
+    var skillGet = firebase.database().ref('/users/userData/' + userName)
+      skillGet.on('value', function(snapshot) {
+        motivation = snapshot.val().motivation
+        management = snapshot.val().management
+        design = snapshot.val().design
+        communication = snapshot.val().communication
+        system = snapshot.val().system
+      })
+    this.renderChart(this.datacollection, {
+        pointLabelFontSize : 12,
+        scaleOverride : true,
+        scaleSteps : 8,
+        scaleStepWidth : 2,
+        scaleStartValue : 0,
+        responsive: true,
+        maintainAspectRatio: false})
+  }
+}
+
+
+
+
+
 /*
 import {Bar} from 'vue-chartjs'
 
@@ -46,46 +101,6 @@ export default {
   }
 }
 */
-import {Radar} from 'vue-chartjs'
-
-var motivation = JSON.parse(localStorage.getItem('motivation')) || []
-var management = JSON.parse(localStorage.getItem('management')) || []
-var design = JSON.parse(localStorage.getItem('design')) || []
-var communication = JSON.parse(localStorage.getItem('communication')) || []
-var system = JSON.parse(localStorage.getItem('system')) || []
-
-export default {
-  extends: Radar,
-  data () {
-    return {
-      datacollection: {
-        labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
-        datasets: [
-          {
-            label: "レーダーチャート",
-                fillColor: "#FBB03B",
-                strokeColor: "#FBB03B",
-                pointColor: "#FBB03B",
-                pointStrokeColor: "#FBB03B",
-                pointHighlightFill: "#FBB03B",
-                pointHighlightStroke: "#FBB03B",
-                data: [motivation, design, management, communication, system]
-          }
-        ]
-      }
-    }
-  },
-  mounted () {
-    this.renderChart(this.datacollection, {
-        pointLabelFontSize : 12,
-        scaleOverride : true,
-        scaleSteps : 8,
-        scaleStepWidth : 2,
-        scaleStartValue : 0,
-        responsive: true,
-        maintainAspectRatio: false})
-  }
-}
 
 /*
 abels: [“ラベル1", “ラベル2", “ラベル3", “ラベル4", “ラベル5"],

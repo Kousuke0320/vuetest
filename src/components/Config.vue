@@ -5,7 +5,7 @@
           </div>
       <div id="setting">
       <div id="form">
-          <div id="pic"><img src="user.photoURL" id="pic2"></div>
+          <div id="picA"><img src="user.photoURL" id="pic2"></div>
           <div id="prf">{{ userName }}</div>
           <textarea v-model="prfCom"></textarea>
           <button @click="addData"></button>
@@ -27,6 +27,7 @@
               {{ system }}<br>
               <input type="submit" value="changeData" @click="saveData" />
           </form>
+          <div @click="logout">logout</div>
       </div>
       <div id="chart">
           <commit-chart :height="300" ></commit-chart>
@@ -37,12 +38,14 @@
 
 <script>
 import CommitChart from './CommitChart.vue'
+import router from '../router'
 /*
 var dataBase = firebase.database()
 var acsData = dataBase.ref('/users/userData/' + this.userName)
           */  
             
 var manman
+var mot
 export default {
   name: 'Config',
   data () {
@@ -50,7 +53,7 @@ export default {
       userName: '',
       photoURL: '',
       tintin: [],
-      prfCom: '',
+      prfCom: 'comment',
       motivation: 0,
       design: 0,
       management: 0,
@@ -92,21 +95,22 @@ export default {
     },*/
     mounted: function() {
       this.userName = JSON.parse(localStorage.getItem('userName')) || []
+      var skillGet = firebase.database().ref('/users/userData/' + this.userName)
       var starCountRef = firebase.database().ref('/users/userPrf/' + this.userName)
+      //プロフィール画像をセットする
       starCountRef.on('value', function(snapshot) {
-      //console.log(this.photoURL)
-      //this.photoURL = snapshot.val().photo
-      //this.photoURL.$set(snapshot.val().photo)
       document.getElementById('pic2').src = snapshot.val().photo
       manman = snapshot.val().photo
-      
-      //updateStarCount(postElement, snapshot.val());
       })
-      this.motivation = JSON.parse(localStorage.getItem('motivation')) || []
-      this.management = JSON.parse(localStorage.getItem('management')) || []
-      this.design = JSON.parse(localStorage.getItem('design')) || []
-      this.communication = JSON.parse(localStorage.getItem('communication')) || []
-      this.system = JSON.parse(localStorage.getItem('system')) || []
+      //スキルデータをゲットする
+      skillGet.on('value', function(snapshot) {
+        this.motivation = snapshot.val().motivation
+        this.management = snapshot.val().management
+        this.design = snapshot.val().design
+        this.communication = snapshot.val().communication
+        this.system = snapshot.val().system
+      })
+      
     },
     methods: {
         saveData: function() {
@@ -117,18 +121,17 @@ export default {
                 communication:this.communication,
                 system: this.system
                 })
-                localStorage.setItem('motivation',JSON.stringify(this.motivation))
-                localStorage.setItem('design',JSON.stringify(this.design))
-                localStorage.setItem('management',JSON.stringify(this.management))
-                localStorage.setItem('communication',JSON.stringify(this.communication))
-                localStorage.setItem('system',JSON.stringify(this.system))
+                //router.push({ path: '/helloworld' })
         },
         addData: function() {
           firebase.database().ref('/users/userPrf/' + this.userName).set({
             photo:manman,
             coment:this.prfCom
           })
-          localStorage.setItem('coment',JSON.stringify(this.prfCom))
+          //localStorage.setItem('coment',JSON.stringify(this.prfCom))
+        },
+        logout: function() {
+
         }
     },
   components: {
@@ -151,7 +154,7 @@ display: flex;
 flex: 1;
 }
 
-#pic img {
+#picA img {
     height: 200px;
     width: 200px;
     border-radius: 50%;

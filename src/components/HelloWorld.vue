@@ -14,11 +14,13 @@
       <commit-chart :height="300"></commit-chart>
     </div>
     <div id="line">
+      <!--
       <line-chart :height="100"></line-chart>
       <line-chart :height="100"></line-chart>
       <line-chart :height="100"></line-chart>
       <line-chart :height="100"></line-chart>
       <line-chart :height="100"></line-chart>
+      -->
     </div>
   </div>
   </div>
@@ -34,6 +36,10 @@ export default {
       userName: ''
      }
     },
+    components: {
+    CommitChart,
+    LineChart
+  },
   mounted: function() {
     this.userName = JSON.parse(localStorage.getItem('userName')) || []
     
@@ -44,13 +50,8 @@ export default {
       document.getElementById('prfPic').src = snapshot.val().photo
       document.getElementById("userComment").innerText = snapshot.val().coment
       //updateStarCount(postElement, snapshot.val());
-      
       })
       document.getElementById("name").innerText = JSON.parse(localStorage.getItem('userName')) || []
-  },
-  components: {
-    CommitChart,
-    LineChart
   }
 }
 </script>

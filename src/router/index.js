@@ -4,7 +4,9 @@ import LoginVew from '@/components/LoginVew'
 import HelloWorld from '@/components/HelloWorld'
 import page1 from '@/components/page1'
 import page2 from '@/components/page2'
+import TestComp from '@/components/TestComp'
 import Config from '@/components/Config'
+
 
 Vue.use(Router)
 
@@ -29,6 +31,11 @@ export default new Router({
       path: '/page2',
       name: 'page2',
       component: page2
+    },
+    {
+      path: '/testComp',
+      name: 'testComp',
+      component: TestComp
     },
     {
       path: '/config',

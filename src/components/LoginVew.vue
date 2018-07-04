@@ -27,7 +27,7 @@ export default {
       },
       photoURL: {
         handler2: function() {
-          localStorage.setItem('photoURL',JSON.stringify(this.photoURL));
+          //localStorage.setItem('photoURL',JSON.stringify(this.photoURL));
         }
       },
       deep: true 
@@ -51,10 +51,23 @@ export default {
           userComent = snapshot.val().coment
           })*/
           //localStorage.setItem('userName',JSON.stringify(this.userName));
+          var starCountRef = firebase.database().ref('/users/userPrf/' + this.userName);
+          starCountRef.on('value', function(snapshot) {
+          userComent = snapshot.val().coment
+            })
           firebase.database().ref('/users/userPrf/' + this.userName).set({
             photo:this.photoURL,
             coment:''
           })
+          var starCountRef = firebase.database().ref('/users/userPrf/' + this.userName);
+          starCountRef.on('value', function(snapshot) {
+          userComent = snapshot.val().coment
+            })
+            firebase.database().ref('/users/userPrf/' + this.userName).set({
+            photo:this.photoURL,
+            coment:userComent
+          })
+          
           //router.push({ path: '/helloworld' })
           },
         error  => {alert("ログインに失敗しました")})
