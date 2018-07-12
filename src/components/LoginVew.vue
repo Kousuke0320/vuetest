@@ -1,6 +1,8 @@
 <template>
-  <div>
+  <div id="">
+    <div id="loginPic">
     <img src="../assets/pentagon_icon.png">
+    </div>
     <section @click="login">
       <p>Login</p>
     </section>
@@ -51,18 +53,15 @@ export default {
           userComent = snapshot.val().coment
           })*/
           //localStorage.setItem('userName',JSON.stringify(this.userName));
-          var starCountRef = firebase.database().ref('/users/userPrf/' + this.userName);
-          starCountRef.on('value', function(snapshot) {
-          userComent = snapshot.val().coment
-            })
-          firebase.database().ref('/users/userPrf/' + this.userName).set({
-            photo:this.photoURL,
-            coment:''
+          firebase.database().ref('/users/userPrf/' + this.userName).update({
+            photo:this.photoURL
           })
+
           var starCountRef = firebase.database().ref('/users/userPrf/' + this.userName);
           starCountRef.on('value', function(snapshot) {
           userComent = snapshot.val().coment
             })
+            
             firebase.database().ref('/users/userPrf/' + this.userName).set({
             photo:this.photoURL,
             coment:userComent
@@ -83,12 +82,9 @@ div {
   align-items: center;
   flex-direction: column;
 }
-
 img {
   width: 700px;
 }
-
-
 section {
   margin:20px auto;
   width: 300px;
@@ -96,11 +92,9 @@ section {
   color: aliceblue;
   border-radius: 20px;
 }
-
 section:hover {
   opacity: 0.5;
 }
-
 p {
   margin: 0 auto;
   font-size: 20px;

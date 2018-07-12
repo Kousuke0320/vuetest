@@ -1,5 +1,4 @@
 <script>
-import {Radar} from 'vue-chartjs'
 
 var motivation
 var management
@@ -8,6 +7,7 @@ var communication
 var system
 var userName
 
+/*
 export default {
   extends: Radar,
   data () {
@@ -16,7 +16,7 @@ export default {
         labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
         datasets: [
           {
-            label: "レーダーチャート",
+            label: userName,
                 fillColor: "#FBB03B",
                 strokeColor: "#FBB03B",
                 pointColor: "#FBB03B",
@@ -30,8 +30,8 @@ export default {
     }
   },
   created () {
-    userName = JSON.parse(localStorage.getItem('userName')) || []
-    var skillGet = firebase.database().ref('/users/userData/' + userName)
+      userName = JSON.parse(localStorage.getItem('memberName')) || []
+      var skillGet = firebase.database().ref('/users/userData/' + userName)
       skillGet.on('value', function(snapshot) {
         motivation = snapshot.val().motivation
         management = snapshot.val().management
@@ -39,9 +39,20 @@ export default {
         communication = snapshot.val().communication
         system = snapshot.val().system
       })
-  },
+      
+      },
   mounted () {
-    this.renderChart(this.datacollection, {
+      this.renderChart(this.datacollection, {
+        pointLabelFontSize : 12,
+        scaleOverride : true,
+        scaleSteps : 8,
+        scaleStepWidth : 2,
+        scaleStartValue : 0,
+        responsive: true,
+        maintainAspectRatio: false})  
+ },
+ updated () {
+   this.renderChart(this.datacollection, {
         pointLabelFontSize : 12,
         scaleOverride : true,
         scaleSteps : 8,
@@ -49,9 +60,31 @@ export default {
         scaleStartValue : 0,
         responsive: true,
         maintainAspectRatio: false})
+ },
+ methods: {
   }
 }
+*/
 
+import {Radar , mixins} from 'vue-chartjs'
+export default {
+  extends: Radar,
+  mixins: [mixins.reactiveProp], // reactivePropを使用
+  props: {
+    chartData: Object // 親コンポーネントからchartDataを受け取る
+  },
+  mounted () {
+      this.renderChart(this.chartData, {
+        pointLabelFontSize : 12,
+        scaleOverride : true,
+        scaleSteps : 8,
+        scaleStepWidth : 2,
+        scaleStartValue : 0,
+        responsive: true,
+        maintainAspectRatio: false})
+
+　 }
+　}
 
 
 

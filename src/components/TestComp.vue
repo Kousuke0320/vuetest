@@ -4,7 +4,7 @@
     <!-- リスト -->
     <div id="resultMessage">
       <ul>
-        <li v-for="item in list">{{item.name}} / {{item.message}}</li>
+        <li v-for="item in list">{{item.name}} / {{item.message}}</li><br>
       </ul>
     </div>
     <div id="box">

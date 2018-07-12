@@ -98,7 +98,6 @@ export default {
   flex: 1;
 }
 
-
 h1,
 h2 {
   margin-top: 20px;

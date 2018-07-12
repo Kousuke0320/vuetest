@@ -61,6 +61,9 @@ export default {
       system: 0
      }
     },
+    components: {
+    CommitChart
+  },
     /*watch: {
       motivation: {
         change1: function() {
@@ -134,9 +137,6 @@ export default {
 
         }
     },
-  components: {
-    CommitChart
-  }
 }
 </script>
 
