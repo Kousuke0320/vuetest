@@ -61,6 +61,7 @@ export default {
   },
   created () {
    this.fillData()
+   var dataJunbi = firebase.database().ref('/users/userPrf/' + this.user)
   },
   mounted: function() {
     //localStorage.setItem('memberName',JSON.stringify(this.user))
@@ -104,6 +105,7 @@ export default {
       this.des[this.count] = design
       this.com[this.count] = communication
       this.sys[this.count] = system
+
       this.fillData()
       },
     fillData() {
@@ -111,24 +113,94 @@ export default {
       labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
             datasets: [
             {
-              label: this.userNum[0] || '',
-                  fillColor: "#FBB03B",
-                  strokeColor: "#FBB03B",
-                  pointColor: "#FBB03B",
-                  pointStrokeColor: "#FBB03B",
-                  pointHighlightFill: "#FBB03B",
-                  pointHighlightStroke: "#FBB03B",
+                  //label: false,
+                  backgroundColor: "rgba(179,181,198,0.2)",
+                    borderColor: "rgba(179,181,198,0.8)",
+                    pointBackgroundColor: "rgba(179,181,198,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(179,181,198,0.8)",
                     data: [this.mot[0] || 0, this.des[0] || 0, this.man[0] || 0, this.com[0] || 0, this.sys[0] || 0]
             },
             {
-              label: this.userNum[1] || '',
-                  fillColor: "#FBB03B",
-                  strokeColor: "#FBB03B",
-                  pointColor: "#FBB03B",
-                  pointStrokeColor: "#FBB03B",
-                  pointHighlightFill: "#FBB03B",
-                  pointHighlightStroke: "#FBB03B",
-                  data: [this.mot[1] || 0, this.des[1] || 0, this.man[1] || 0, this.com[1] || 0, this.sys[1] || 0]
+              //label: false,
+                  backgroundColor: "rgba(255,99,132,0.2)",
+                    borderColor: "rgba(255,99,132,0.8)",
+                    pointBackgroundColor: "rgba(255,99,132,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(255,99,132,0.8)",
+                    data: [this.mot[1] || 0, this.des[1] || 0, this.man[1] || 0, this.com[1] || 0, this.sys[1] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(255,255,0,0.2)",
+                    borderColor: "rgba(255,255,0,0.8)",
+                    pointBackgroundColor: "rgba(255,255,0,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(255,255,0,0.8)",
+                    data: [this.mot[2] || 0, this.des[2] || 0, this.man[2] || 0, this.com[2] || 0, this.sys[2] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(0,255,0,0.2)",
+                    borderColor: "rgba(0,255,0,0.8)",
+                    pointBackgroundColor: "rgba(0,255,0,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(0,255,0,0.8)",
+                    data: [this.mot[3] || 0, this.des[3] || 0, this.man[3] || 0, this.com[3] || 0, this.sys[3] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(0,0,255,0.2)",
+                    borderColor: "rgba(0,0,255,0.8)",
+                    pointBackgroundColor: "rgba(0,0,255,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(0,0,255,0.8)",
+                    data: [this.mot[4] || 0, this.des[4] || 0, this.man[4] || 0, this.com[4] || 0, this.sys[4] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(255,99,132,0.2)",
+                    borderColor: "rgba(255,99,132,1)",
+                    pointBackgroundColor: "rgba(255,99,132,1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(255,99,132,1)",
+                    data: [this.mot[5] || 0, this.des[5] || 0, this.man[5] || 0, this.com[5] || 0, this.sys[5] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(255,99,132,0.2)",
+                    borderColor: "rgba(255,99,132,1)",
+                    pointBackgroundColor: "rgba(255,99,132,1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(255,99,132,1)",
+                    data: [this.mot[5] || 0, this.des[5] || 0, this.man[5] || 0, this.com[5] || 0, this.sys[5] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(255,99,132,0.2)",
+                    borderColor: "rgba(255,99,132,1)",
+                    pointBackgroundColor: "rgba(255,99,132,1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(255,99,132,1)",
+                    data: [this.mot[6] || 0, this.des[6] || 0, this.man[6] || 0, this.com[6] || 0, this.sys[6] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(255,99,132,0.2)",
+                    borderColor: "rgba(255,99,132,1)",
+                    pointBackgroundColor: "rgba(255,99,132,1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(255,99,132,1)",
+                    data: [this.mot[7] || 0, this.des[7] || 0, this.man[7] || 0, this.com[7] || 0, this.sys[7] || 0]
             }
           ]
         }
@@ -137,6 +209,9 @@ export default {
     var useuse = JSON.parse(localStorage.getItem('memberName'))
     this.userNum[this.count] = useuse
     this.count = this.count + 1
+    firebase.database().ref('/users/userGroup/' + useuse).push({
+      Group:this.groupName
+    })
   }
   }
 }

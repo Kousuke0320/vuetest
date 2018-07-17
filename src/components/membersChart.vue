@@ -75,8 +75,11 @@ export default {
   },
   mounted () {
       this.renderChart(this.chartData, {
+        legend: {
+          display:false
+        },
         pointLabelFontSize : 12,
-        scaleOverride : true,
+        scaleOverride : false,
         scaleSteps : 8,
         scaleStepWidth : 2,
         scaleStartValue : 0,

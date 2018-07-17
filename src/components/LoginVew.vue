@@ -53,18 +53,17 @@ export default {
           userComent = snapshot.val().coment
           })*/
           //localStorage.setItem('userName',JSON.stringify(this.userName));
-          firebase.database().ref('/users/userPrf/' + this.userName).update({
+          /*firebase.database().ref('/users/userPrf/' + this.userName).update({
             photo:this.photoURL
           })
 
           var starCountRef = firebase.database().ref('/users/userPrf/' + this.userName);
           starCountRef.on('value', function(snapshot) {
           userComent = snapshot.val().coment
-            })
+            })*/
             
-            firebase.database().ref('/users/userPrf/' + this.userName).set({
+            firebase.database().ref('/users/userPrf/' + this.userName).update({
             photo:this.photoURL,
-            coment:userComent
           })
           
           //router.push({ path: '/helloworld' })
