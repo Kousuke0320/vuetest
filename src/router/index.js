@@ -6,6 +6,9 @@ import page1 from '@/components/page1'
 import page2 from '@/components/page2'
 import TestComp from '@/components/TestComp'
 import Config from '@/components/Config'
+import Group from '@/components/Group'
+import margin from '@/components/margin'
+import GroupMember from '@/components/GroupMember'
 
 
 Vue.use(Router)
@@ -41,6 +44,21 @@ export default new Router({
       path: '/config',
       name: 'Config',
       component: Config
+    },
+    {
+      path: '/group',
+      name: 'Group',
+      component: Group
+    },
+    {
+      path: '/margin',
+      name: 'margin',
+      component: margin
+    },
+    {
+      path: '/groupmember',
+      name: 'GroupMember',
+      component: GroupMember
     }
   ]
 })

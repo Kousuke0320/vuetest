@@ -65,8 +65,9 @@ export default {
             firebase.database().ref('/users/userPrf/' + this.userName).update({
             photo:this.photoURL,
           })
-          
-          //router.push({ path: '/helloworld' })
+          localStorage.setItem('userName',JSON.stringify(this.userName))
+          location.reload()
+          router.push({ path: '/helloworld' })
           },
         error  => {alert("ログインに失敗しました")})
       }
