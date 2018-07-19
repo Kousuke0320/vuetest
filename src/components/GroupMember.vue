@@ -11,6 +11,25 @@
     </div>
       
     <div id="userCom3">
+      <div class="userinformation1">
+        <div class="userinformation2">
+      <div class="userinformation21">
+        Gender<br>
+      </div>
+      <div class="userinformation22">
+        Country<br>
+      </div>
+      <div class="userinformation23">
+        Language<br>
+      </div>
+      </div>
+      <div class="userinformation3">
+        Occupation<br>
+      </div>
+      <div class="userinformation4">
+        Major<br>
+      </div>
+      </div>
       <div id="rader3">
       <members-chart :chartData="chartData" :height="300"></members-chart>
     </div>
@@ -72,12 +91,13 @@ export default {
             datasets: [
             {
                   //label: false,
-                  backgroundColor: "rgba(179,181,198,0.2)",
-                    borderColor: "rgba(179,181,198,0.8)",
-                    pointBackgroundColor: "rgba(179,181,198,0.8)",
+                  backgroundColor: "rgba(0, 162, 154,0.4)",
+                    borderColor: "rgba(0, 162, 154,0.8)",
+                    pointBackgroundColor: "rgba(0, 162, 154,0.8)",
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(179,181,198,0.8)",
+                    pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
+                    
                     data: [motivation, design, management, communication, system]
             }
         ]
@@ -123,7 +143,10 @@ template {
 }
 
 #name3 {
+  width: 60%;
   margin-top: 50px;
+  margin-left: 10%;
+  margin-right: 30%;
   text-align: justify;
   display: inline-block;  
   font-size: 40px;
@@ -133,7 +156,7 @@ template {
 #userComment3 {
   width: 60%;
   text-align: justify;
-  margin: 30vh 20%;
+  margin: 30vh 10%;
 }
 
 #userCom3 {

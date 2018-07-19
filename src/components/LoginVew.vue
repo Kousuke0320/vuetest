@@ -66,7 +66,7 @@ export default {
             photo:this.photoURL,
           })
           localStorage.setItem('userName',JSON.stringify(this.userName))
-          location.reload()
+          //location.reload()
           router.push({ path: '/helloworld' })
           },
         error  => {alert("ログインに失敗しました")})

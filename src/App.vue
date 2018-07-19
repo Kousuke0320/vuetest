@@ -120,6 +120,7 @@ export default {
     -webkit-transform: translateX(-300px);
     -ms-transform: translateX(-300px);
     transform: translateX(-300px);
+    opacity: 0.1;
 }
 
 /* ドロワー */

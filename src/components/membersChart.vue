@@ -74,9 +74,20 @@ export default {
     chartData: Object // 親コンポーネントからchartDataを受け取る
   },
   mounted () {
+    Chart.defaults.global.defaultFontColor = '#00A29A';
       this.renderChart(this.chartData, {
         legend: {
+          display:false,
+        },
+        scale: {
+          ticks: {
+          min:0,
+          max:10,
           display:false
+          },
+          gridLines:{
+          //color: '#00A29A'
+          }
         },
         pointLabelFontSize : 12,
         scaleOverride : false,

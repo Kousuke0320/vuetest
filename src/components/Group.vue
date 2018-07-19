@@ -237,8 +237,14 @@ display: flex;
 }
 
 #name2 {
+  width: 60%;
   margin-top: 50px;
-  font-size: 30px;
+  margin-left: 10%;
+  margin-right: 30%;
+  text-align: justify;
+  display: inline-block;  
+  font-size: 40px;
+  border-bottom: solid 2px;
   
 }
 #userComment2 {
@@ -248,7 +254,7 @@ display: flex;
 #userCom2 {
   width: 60%;
   text-align: justify;
-  margin: 30vh 20%;
+  margin: 30vh 10%;
 }
 
 #chart2 {

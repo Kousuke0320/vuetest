@@ -9,32 +9,72 @@
       <div id="userComment">No coment</div>
     </div>
     <div id="userCom">
-      
+      <div class="userinformation1">
+        <div class="userinformation2">
+      <div class="userinformation21">
+        Gender<br>
+        <div id="genderInf">Man</div>
+      </div>
+      <div class="userinformation22">
+        Country<br>
+        <div id="countryInf">Japan</div>
+      </div>
+      <div class="userinformation23">
+        Language<br>
+        <div id="languageInf">English</div>
+      </div>
+      </div>
+      <div class="userinformation3">
+        Occupation<br>
+        <div id="occupationInf">FUN</div>
+      </div>
+      <div class="userinformation4">
+        Major<br>
+        <div id="majorInf">Information sysytem</div>
+      </div>
+      </div>
       <div id="rader">
-      <commit-chart :height="300"></commit-chart>
+      <members-chart :chartData="chartData" :height="300"></members-chart>
     </div>
     </div>
   </div>
   </div>
 </template>
 <script>
-import CommitChart from './CommitChart.vue'
-import LineChart from './LineChart.vue'
+import membersChart from './membersChart.vue'
+
+var motivation;
+var management;
+var design;
+var communication;
+var system;
+
+
 
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      userName: ''
+      userName: '',
+      chartData: {}
      }
     },
     components: {
-    CommitChart,
-    LineChart
-  },
+      membersChart
+      },
+      created: function() {
+        this.fillData()
+        this.userName = JSON.parse(localStorage.getItem('userName')) || []
+        firebase.database().ref('/users/userData/' + this.userName).on('value', function(snapshot) {
+        motivation = snapshot.val().motivation
+        management= snapshot.val().management
+        design = snapshot.val().design
+        communication = snapshot.val().communication
+        system = snapshot.val().system
+        })
+      },
   mounted: function() {
-    this.userName = JSON.parse(localStorage.getItem('userName')) || []
-    
+    this.fillData()
     var starCountRef = firebase.database().ref('/users/userPrf/' + this.userName);
       starCountRef.on('value', function(snapshot) {
       //this.photoURL = snapshot.val().photo
@@ -44,7 +84,27 @@ export default {
       //updateStarCount(postElement, snapshot.val());
       })
       document.getElementById("name").innerText = JSON.parse(localStorage.getItem('userName')) || []
+  },
+  methods:{
+   fillData() {
+    this.chartData = {
+      labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
+            datasets: [
+            {
+                  //label: false,
+                  backgroundColor: "rgba(0, 162, 154,0.4)",
+                    borderColor: "rgba(0, 162, 154,0.8)",
+                    pointBackgroundColor: "rgba(0, 162, 154,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
+                    
+                    data: [motivation, design, management, communication, system]
+            }
+        ]
+    }
   }
+}
 }
 </script>
 
@@ -73,6 +133,12 @@ template {
   position: relative;
 }
 
+#name {
+  margin-top: 50px;
+  margin-left: 10%;
+  text-align: left;
+}
+
 #userpicpic {
   position: absolute;
   right:-100px;
@@ -93,9 +159,11 @@ template {
 }
 
 #name {
+  width: 60%;
   margin-top: 50px;
-  margin-left:10px;
-  text-align: left;
+  margin-left: 10%;
+  margin-right: 30%;
+  text-align: justify;
   display: inline-block;  
   font-size: 40px;
   border-bottom: solid 2px;
@@ -103,7 +171,8 @@ template {
 #userComment {
   width: 60%;
   text-align: left;
-  margin: 30vh 20%;
+  margin-top: 30vh;
+  margin-left: 10%;
 }
 
 #userCom {
@@ -117,6 +186,57 @@ template {
 
 #rader {
   
+}
+
+.userinformation1{
+  width:60%;
+  height:40%;
+  margin:50px auto;
+  text-align: left;
+  color: #00A29A;
+}
+.userinformation2{
+  display: flex;
+  height:33%;
+}
+
+.userinformation21 {
+  flex:1;
+}
+.userinformation22 {
+  flex:1;
+}
+.userinformation23 {
+  flex:1;
+}
+
+.userinformation3{
+  height:33%;
+}
+
+.userinformation4{
+  
+  height:33%;
+}
+#genderInf{
+color:#696969;
+font-size: 25px;
+}
+#countryInf{
+color:#696969;
+font-size: 25px;
+}
+#languageInf{
+color:#696969;
+font-size: 25px;
+}
+#occupationInf{
+color:#696969;
+font-size: 25px;
+}
+#majorInf{
+color:#696969;
+font-size: 25px;
 }
 
 h1,
@@ -135,4 +255,7 @@ li {
 a {
   color: #42b983;
 }
+
+
+
 </style>
