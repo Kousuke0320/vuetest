@@ -3,20 +3,20 @@
 <div id="GroupMember">
   <div id="userPrf3">
     <div id="userPic3">
+    <div id="name3">{{ this.userName }}</div>
+    <div id="userpicpic3">
       <img src="" id="prfPic3">
-    </div>
-    <div id="userCom3">
-      <div id="name3">{{ this.userName }}</div>
+      </div>
       <div id="userComment3">No coment</div>
     </div>
-  </div>
-  <div id="chart3">
-    <div id="rader3">
+      
+    <div id="userCom3">
+      <div id="rader3">
       <members-chart :chartData="chartData" :height="300"></members-chart>
     </div>
-    <div id="line3">
     </div>
   </div>
+    
   </div>
 </template>
 <script>
@@ -90,44 +90,64 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+template {
+  width: 100%;
+  height:100vh;
+}
+
 #userPrf3 {
   display: flex;
-  margin-top: 50px;
 }
 
 #userPic3 {
-  flex: 1;
+  flex: 4;
+  background: #00A29A;
+  height:100vh;
+  color: #ffffff;
+  position: relative;
+}
+
+#userpicpic3 {
+  position: absolute;
+  right:-100px;
+  
 }
 
 #userPic3 img {
+  margin:auto;
   width:200px;
   height: 200px;
   border-radius: 50%;
+  border: solid 5px;
+  color:#ffffff;
 }
 
 #name3 {
-  font-size: 30px;
+  margin-top: 50px;
+  text-align: justify;
+  display: inline-block;  
+  font-size: 40px;
+  border-bottom: solid 2px;
   
 }
 #userComment3 {
-  margin-top: 50px;
+  width: 60%;
+  text-align: justify;
+  margin: 30vh 20%;
 }
 
 #userCom3 {
-  flex: 1;
+  flex: 10;
 }
 
-#chart3 {
-  display: flex;
-  margin-top: 50px;
-}
+
 
 #rader3 {
-  flex: 1;
+  
 }
 
 #line3 {
-  flex: 1;
+  
 }
 
 h1,

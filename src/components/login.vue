@@ -1,5 +1,18 @@
 <template>
   <div id="login">
+      <router-link to="/helloworld">
+      <div id="homebutton">
+      <img src="../assets/home.png">
+      </div>
+      </router-link>
+      
+    
+      <router-link to="/config">
+      <div id="confbutton">
+      <img src="../assets/config.png">
+      </div>
+      </router-link>
+      
     <router-link to="/page2" class="link">
     <div id="plus">
     <img src="./assets/plus.png">
@@ -13,12 +26,12 @@
 </template>
 
 <script>
-import router from './router'
+import router from '../router'
 
-var userName;
+//var userName;
 
 export default {
-  name: 'Login',
+  name: 'login',
   data () {
     return {
       userName: '',
@@ -72,9 +85,38 @@ export default {
   color:aliceblue;
 }
 
+#homebutton {
+  width: 50%;
+  margin:10px auto;
+  margin-top:100px;
+  
+}
+
+#homebutton img {
+  max-width: 70%;
+}
+
+#homebutton img:hover{
+  opacity: 0.5;
+}
+
+#confbutton {
+  width: 50%;
+  margin:10px auto;
+  
+}
+
+#confbutton img {
+  max-width: 70%;
+}
+
+#confbutton img:hover{
+  opacity: 0.5;
+}
+
 #plus {
   width: 50%;
-  margin:20px auto;
+  margin:10px auto;
   
 }
 
@@ -87,7 +129,7 @@ export default {
 }
 
 #groupNameHyouzi {
-  margin:80px auto;
+  margin:15px auto;
 }
 
 #GroupTantai {

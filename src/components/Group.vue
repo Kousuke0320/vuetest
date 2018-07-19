@@ -1,24 +1,28 @@
 <template>
 <div id="group">
+  <div id="groupingroup">
   <div id="userPrf2">
     <div id="userPic2">
-      <img src="../assets/pentakun.png" id="prfPic2">
-    </div>
-    <div id="userCom2">
       <div id="name2">Group {{ groupName }}</div>
+      <div id="userpicpic2">
+      <img src="../assets/pentakun.png" id="prfPic2">
+      </div>
+      <div id="userCom2">
       <div id="userComment2">No coment</div>
+    </div>
     </div>
   </div>
   <div id="chart2">
     <div id="rader2">
       <members-chart :chartData="chartData" :height="300"></members-chart>
     </div>
-    <div id="line">
-        <div v-for="(item,index) in userName" @click="memberProfile(index)">
+    <div id="line2">
+        <div id="memberHyouzin" v-for="(item,index) in userName" @click="memberProfile(index)">
           {{item}}</div><br>
     </div>
   </div>
   </div>
+</div>
 </template>
 <script>
 import membersChart from './membersChart.vue'
@@ -193,22 +197,47 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+template {
+  width: 100%;
+  height:100vh;
+  margin:0;
+}
+
+#group {
+  margin: 0;
+  width: 100%;
+  height:100vh;
+  
+}
+
+#groupingroup {
+display: flex;
+}
+
 #userPrf2 {
-  display: flex;
-  margin-top: 50px;
+  flex: 4;
+  background: #00A29A;
+  height:100vh;
+  color: #ffffff;
+  position: relative;
 }
 
 #userPic2 {
-  flex: 1;
+  
 }
 
 #userPic2 img {
+  position: absolute;
+  right:-100px;
   width:200px;
   height: 200px;
   border-radius: 50%;
+  border: solid 5px;
+  color:#ffffff;
 }
 
 #name2 {
+  margin-top: 50px;
   font-size: 30px;
   
 }
@@ -217,12 +246,15 @@ export default {
 }
 
 #userCom2 {
-  flex: 1;
+  width: 60%;
+  text-align: justify;
+  margin: 30vh 20%;
 }
 
 #chart2 {
+  flex:10;
   display: flex;
-  margin-top: 50px;
+  margin-top: 40vh;
 }
 
 #rader2 {
@@ -231,6 +263,17 @@ export default {
 
 #line2 {
   flex: 1;
+}
+
+#memberHyouzin{
+    width:50%;
+    height:auto;
+    margin:5px auto;
+    background: #f2f2f2
+}
+
+#memberHyouzin:hover{
+    opacity: 0.5;
 }
 
 h1,
