@@ -90,7 +90,7 @@ export default {
           }
         },
         pointLabelFontSize : 12,
-        scaleOverride : false,
+        scaleOverride : true,
         scaleSteps : 8,
         scaleStepWidth : 2,
         scaleStartValue : 0,

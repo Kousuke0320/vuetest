@@ -8,6 +8,9 @@ import TestComp from '@/components/TestComp'
 import Config from '@/components/Config'
 import Group from '@/components/Group'
 import margin from '@/components/margin'
+import margin2 from '@/components/margin2'
+import margin3 from '@/components/margin3'
+import margin4 from '@/components/margin4'
 import GroupMember from '@/components/GroupMember'
 
 
@@ -54,6 +57,21 @@ export default new Router({
       path: '/margin',
       name: 'margin',
       component: margin
+    },
+    {
+      path: '/margin2',
+      name: 'margin2',
+      component: margin2
+    },
+    {
+      path: '/margin3',
+      name: 'margin3',
+      component: margin3
+    },
+    {
+      path: '/margin4',
+      name: 'margin4',
+      component: margin4
     },
     {
       path: '/groupmember',

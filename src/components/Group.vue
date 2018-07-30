@@ -229,6 +229,7 @@ display: flex;
 #userPic2 img {
   position: absolute;
   right:-100px;
+  top:50px;
   width:200px;
   height: 200px;
   border-radius: 50%;

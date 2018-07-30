@@ -42,12 +42,17 @@
 </template>
 <script>
 import membersChart from './membersChart.vue'
-
+import router from '../router'
 var motivation;
 var management;
 var design;
 var communication;
 var system;
+var gender
+var country
+var language
+var occupation
+var major
 
 
 
@@ -56,25 +61,27 @@ export default {
   data () {
     return {
       userName: '',
-      chartData: {}
+      chartData: {},
+      motivation: '',
+      management:  '',
+      design:'',
+      communication:'',
+      system:''
      }
     },
     components: {
       membersChart
       },
       created: function() {
-        this.fillData()
         this.userName = JSON.parse(localStorage.getItem('userName')) || []
-        firebase.database().ref('/users/userData/' + this.userName).on('value', function(snapshot) {
-        motivation = snapshot.val().motivation
-        management= snapshot.val().management
-        design = snapshot.val().design
-        communication = snapshot.val().communication
-        system = snapshot.val().system
-        })
+        this.dataSet()
+        this.fillData()
+        this.fillData()
+        //router.push({ path: '/margin2' })
       },
   mounted: function() {
-    this.fillData()
+    //this.dataSet()
+    //this.fillData()
     var starCountRef = firebase.database().ref('/users/userPrf/' + this.userName);
       starCountRef.on('value', function(snapshot) {
       //this.photoURL = snapshot.val().photo
@@ -82,10 +89,33 @@ export default {
       document.getElementById('prfPic').src = snapshot.val().photo
       document.getElementById("userComment").innerText = snapshot.val().coment
       //updateStarCount(postElement, snapshot.val());
+      document.getElementById("genderInf").innerText= snapshot.val().gender
+      document.getElementById("countryInf").innerText = snapshot.val().country
+      document.getElementById("languageInf").innerText = snapshot.val().language
+      document.getElementById("occupationInf").innerText = snapshot.val().occupation
+      document.getElementById("majorInf").innerText = snapshot.val().major
+
       })
       document.getElementById("name").innerText = JSON.parse(localStorage.getItem('userName')) || []
+    
+    this.fillData()
   },
   methods:{
+    dataSet() {
+      firebase.database().ref('/users/userData/' + this.userName).on('value', function(snapshot) {
+        motivation = snapshot.val().motivation
+        management= snapshot.val().management
+        design = snapshot.val().design
+        communication = snapshot.val().communication
+        system = snapshot.val().system
+        })
+        this.motivation = motivation
+        this.management= management
+        this.design = design
+        this.communication = communication
+        this.system = system
+        
+    },
    fillData() {
     this.chartData = {
       labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
@@ -99,7 +129,7 @@ export default {
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
                     
-                    data: [motivation, design, management, communication, system]
+                    data: [this.motivation, this.design, this.management, this.communication, this.system]
             }
         ]
     }
@@ -142,6 +172,7 @@ template {
 #userpicpic {
   position: absolute;
   right:-100px;
+  top:50px;
   
 }
 
@@ -190,7 +221,7 @@ template {
 
 .userinformation1{
   width:60%;
-  height:40%;
+  height:35%;
   margin:50px auto;
   text-align: left;
   color: #00A29A;

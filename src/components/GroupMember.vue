@@ -15,19 +15,24 @@
         <div class="userinformation2">
       <div class="userinformation21">
         Gender<br>
+        <div id="genderInf2"></div>
       </div>
       <div class="userinformation22">
         Country<br>
+        <div id="countryInf2"></div>
       </div>
       <div class="userinformation23">
         Language<br>
+        <div id="languageInf2"></div>
       </div>
       </div>
       <div class="userinformation3">
         Occupation<br>
+        <div id="occupationInf2"></div>
       </div>
       <div class="userinformation4">
         Major<br>
+        <div id="majorInf2"></div>
       </div>
       </div>
       <div id="rader3">
@@ -81,6 +86,11 @@ export default {
       document.getElementById('prfPic3').src = snapshot.val().photo
       document.getElementById("userComment3").innerText = snapshot.val().coment
       //updateStarCount(postElement, snapshot.val());
+      document.getElementById("genderInf2").innerText= snapshot.val().gender
+      document.getElementById("countryInf2").innerText = snapshot.val().country
+      document.getElementById("languageInf2").innerText = snapshot.val().language
+      document.getElementById("occupationInf2").innerText = snapshot.val().occupation
+      document.getElementById("majorInf2").innerText = snapshot.val().major
       })
       //document.getElementById("name3").innerText = JSON.parse(localStorage.getItem('userName')) || []
   },
@@ -130,7 +140,7 @@ template {
 #userpicpic3 {
   position: absolute;
   right:-100px;
-  
+  top:50px;
 }
 
 #userPic3 img {
@@ -171,6 +181,27 @@ template {
 
 #line3 {
   
+}
+
+#genderInf2{
+color:#696969;
+font-size: 25px;
+}
+#countryInf2{
+color:#696969;
+font-size: 25px;
+}
+#languageInf2{
+color:#696969;
+font-size: 25px;
+}
+#occupationInf2{
+color:#696969;
+font-size: 25px;
+}
+#majorInf2{
+color:#696969;
+font-size: 25px;
 }
 
 h1,
