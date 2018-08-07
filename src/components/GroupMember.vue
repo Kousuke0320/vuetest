@@ -120,9 +120,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-template {
+@media (min-width: 700px){
+  template {
   width: 100%;
-  height:100vh;
 }
 
 #userPrf3 {
@@ -219,5 +219,104 @@ li {
 }
 a {
   color: #42b983;
+}
+
+}
+
+@media (max-width: 699px){
+  template {
+  width: 100%;
+}
+
+#userPrf3 {
+}
+
+#userPic3 {
+  background: #00A29A;
+  color: #ffffff;
+}
+
+#userpicpic3 {
+  margin:20px auto;
+  }
+
+#userPic3 img {
+  width:200px;
+  height: 200px;
+  border-radius: 50%;
+  border: solid 5px;
+  color:#ffffff;
+}
+
+#name3 {
+  width: 60%;
+  margin-top: 50px;
+  margin-left: 10%;
+  margin-right: 30%;
+  text-align: justify;
+  display: inline-block;  
+  font-size: 40px;
+  border-bottom: solid 2px;
+  
+}
+#userComment3 {
+  width: 60%;
+  text-align: justify;
+  margin: 20px 10%;
+  padding-bottom: 20px;
+}
+
+#userCom3 {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#rader3 {
+  margin-top:20px;
+  max-width:100vw;
+}
+
+#line3 {
+  
+}
+
+#genderInf2{
+color:#696969;
+font-size: 25px;
+}
+#countryInf2{
+color:#696969;
+font-size: 25px;
+}
+#languageInf2{
+color:#696969;
+font-size: 25px;
+}
+#occupationInf2{
+color:#696969;
+font-size: 25px;
+}
+#majorInf2{
+color:#696969;
+font-size: 25px;
+}
+
+h1,
+h2 {
+  margin-top: 20px;
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+
 }
 </style>

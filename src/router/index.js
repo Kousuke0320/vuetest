@@ -12,6 +12,7 @@ import margin2 from '@/components/margin2'
 import margin3 from '@/components/margin3'
 import margin4 from '@/components/margin4'
 import GroupMember from '@/components/GroupMember'
+import hello from '@/components/hello'
 
 
 Vue.use(Router)
@@ -72,6 +73,11 @@ export default new Router({
       path: '/margin4',
       name: 'margin4',
       component: margin4
+    },
+    {
+      path: '/hello',
+      name: 'hello',
+      component: hello
     },
     {
       path: '/groupmember',

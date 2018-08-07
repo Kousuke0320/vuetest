@@ -66,18 +66,20 @@ export default {
             photo:this.photoURL,
           })
           localStorage.setItem('userName',JSON.stringify(this.userName))
+          localStorage.setItem('count',1);
           location.reload()
-
-          router.push({ path: '/margin2'})
-          
+          //setTimeout(router.push({ path: '/helloworld' }), 10000)
+          router.push({ path: '/helloworld' })
           },
         error  => {alert("ログインに失敗しました")})
-      }
+      },
     }
+    
 }
 </script>
 
 <style scoped>
+@media (min-width: 700px){
 div {
   display: flex;
   justify-content: center;
@@ -102,6 +104,37 @@ p {
   font-size: 20px;
   padding: 10px auto;
 }
+}
+
+@media (max-width: 699px){
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+img {
+  width: 450px;
+}
+section {
+  margin:20px auto;
+  width: 200px;
+  background:#00A29A;
+  color: aliceblue;
+  border-radius: 20px;
+}
+section:hover {
+  opacity: 0.5;
+}
+p {
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 10px auto;
+}
+}
+
+
+
 </style>
 
 

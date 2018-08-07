@@ -17,6 +17,7 @@
       <members-chart :chartData="chartData" :height="300"></members-chart>
     </div>
     <div id="line2">
+      <h2>Member</h2>
         <div id="memberHyouzin" v-for="(item,index) in userName" @click="memberProfile(index)">
           {{item}}</div><br>
     </div>
@@ -197,6 +198,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+@media (min-width: 700px){
 template {
   width: 100%;
   height:100vh;
@@ -298,5 +300,104 @@ li {
 }
 a {
   color: #42b983;
+}
+
+}
+
+@media (max-width: 699px){
+  template {
+  width: 100%;
+  margin:0;
+}
+
+#group {
+  margin: 0;
+  width: 100%;
+  height:100vh;
+  
+}
+
+#groupingroup {
+}
+
+#userPrf2 {
+  background: #00A29A;
+  color: #ffffff;
+  position: relative;
+}
+
+#userPic2 {
+  
+}
+
+#userPic2 img {
+  margin: 20px auto;
+  width:200px;
+  height: 200px;
+  border-radius: 50%;
+  border: solid 5px;
+  color:#ffffff;
+}
+
+#name2 {
+  width: 60%;
+  margin-top: 50px;
+  margin-left: 10%;
+  margin-right: 30%;
+  text-align: justify;
+  display: inline-block;  
+  font-size: 40px;
+  border-bottom: solid 2px;
+  
+}
+#userComment2 {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+#userCom2 {
+  width: 60%;
+  text-align: justify;
+  margin: 20px 10%;
+}
+
+#chart2 {
+  margin-top: 20px;
+}
+
+#rader2 {
+}
+
+#line2 {
+}
+
+#memberHyouzin{
+    width:50%;
+    height:auto;
+    margin:5px auto;
+    background: #f2f2f2
+}
+
+#memberHyouzin:hover{
+    opacity: 0.5;
+}
+
+h1,
+h2 {
+  margin-top: 20px;
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+
 }
 </style>

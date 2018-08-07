@@ -8,7 +8,8 @@ import router from '../router'
 export default {
   name: 'margin2',
   created: function() {
-      router.push({ path: '/helloworld' })
+    localStorage.setItem('count',2);
+    router.push({ path: '/helloworld' })
   }
 }
 
