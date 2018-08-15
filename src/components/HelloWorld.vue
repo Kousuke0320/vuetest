@@ -2,9 +2,11 @@
 <div id="hello">
   <div id="userPrf">
     <div id="userPic">
+      <div class="userPicSub">
       <div id="name"></div>
       <div id="userpicpic">
       <img src="" id="prfPic">
+      </div>
       </div>
       <div id="userComment">No coment</div>
     </div>
@@ -326,17 +328,10 @@ a {
 
 }
 
-#name {
-  margin-top: 50px;
-  margin-left: 10%;
-  text-align: left;
-}
 
 #userpicpic {
-  margin: 20px auto;
-  
+  margin: 50px auto auto auto;
 }
-
 #userPic img {
   width:200px;
   height: 200px;
@@ -351,20 +346,16 @@ a {
 
 #name {
   width: 60%;
-  margin-top: 50px;
-  margin-left: 10%;
-  margin-right: 30%;
-  text-align: justify;
+  margin:10px auto;
+  text-align: center;
   display: inline-block;  
-  font-size: 40px;
-  border-bottom: solid 2px;
+  font-size: 30px;
 }
 #userComment {
   width: 60%;
-  text-align: left;
-  margin-top: 20px;
+  text-align: center;
   padding-bottom: 30px;
-  margin-left: 10%;
+  margin:20px auto;
 }
 
 #userCom {
@@ -392,6 +383,8 @@ a {
 }
 .userinformation2{
 
+display: flex;
+flex-direction: column;
 }
 
 .userinformation21 {
@@ -430,6 +423,11 @@ font-size: 25px;
 #majorInf{
 color:#696969;
 font-size: 25px;
+}
+
+.userPicSub {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 h1,

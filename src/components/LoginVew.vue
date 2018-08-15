@@ -67,6 +67,7 @@ export default {
           })
           localStorage.setItem('userName',JSON.stringify(this.userName))
           localStorage.setItem('count',1);
+          localStorage.setItem('count2',1);
           location.reload()
           //setTimeout(router.push({ path: '/helloworld' }), 10000)
           router.push({ path: '/helloworld' })

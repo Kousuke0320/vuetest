@@ -3,9 +3,11 @@
   <div id="groupingroup">
   <div id="userPrf2">
     <div id="userPic2">
+      <div class="userPicSub">
       <div id="name2">Group {{ groupName }}</div>
       <div id="userpicpic2">
       <img src="../assets/pentakun.png" id="prfPic2">
+      </div>
       </div>
       <div id="userCom2">
       <div id="userComment2">No coment</div>
@@ -40,6 +42,7 @@ export default {
   name: 'Group',
   data () {
     return {
+
       groupName: '',
       userName:[],
       chartData: {},
@@ -47,7 +50,8 @@ export default {
         man:[],
         des:[],
         com:[],
-        sys:[]
+        sys:[],
+        hantei:0
      }
     },
     components: {
@@ -85,12 +89,23 @@ export default {
         this.com[i] = communication
         this.sys[i] = system 
       }
-
+      
+      
   },
   mounted: function() {
     this.fillData()
+    setTimeout(this.countHantei2, 1000);
   },
   methods: {
+    countHantei2() {
+      this.hantei = localStorage.getItem('count2')
+      if(this.hantei == 1){
+      router.push({ path: '/margin3' })
+      //alert(this.hantei)
+    }else if(this.hantei == 2){
+      router.push({ path: '/margin4' })
+    }
+    },
       memberProfile(index) {
           localStorage.setItem('groupMemberName',JSON.stringify(this.userName[index]))
           router.push({ path: '/groupmember' })
@@ -331,7 +346,7 @@ a {
 }
 
 #userPic2 img {
-  margin: 20px auto;
+  margin: 50px auto auto auto;
   width:200px;
   height: 200px;
   border-radius: 50%;
@@ -341,14 +356,10 @@ a {
 
 #name2 {
   width: 60%;
-  margin-top: 50px;
-  margin-left: 10%;
-  margin-right: 30%;
-  text-align: justify;
+  margin:10px auto;
+  text-align: center;
   display: inline-block;  
-  font-size: 40px;
-  border-bottom: solid 2px;
-  
+  font-size: 30px;
 }
 #userComment2 {
   margin-top: 20px;
@@ -357,8 +368,8 @@ a {
 
 #userCom2 {
   width: 60%;
-  text-align: justify;
-  margin: 20px 10%;
+  text-align: center;
+  margin: 20px auto;
 }
 
 #chart2 {
@@ -366,6 +377,8 @@ a {
 }
 
 #rader2 {
+  margin:20px auto;
+  width:80vw;
 }
 
 #line2 {
@@ -381,6 +394,7 @@ a {
 #memberHyouzin:hover{
     opacity: 0.5;
 }
+
 
 h1,
 h2 {

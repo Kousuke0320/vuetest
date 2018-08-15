@@ -1,11 +1,15 @@
 <template>
   <div id="group">
     <div id="groupName">
-      <input type="text" v-model="groupName"/><br>
-      <input type="submit" value="Make Group" @click="addData"/><br>
-      <input type="search" v-model="user"/><br>
+      <div class="makegroupbox">
+      <p class="page2P">Group Name</p>
+      <input type="text" v-model="groupName"/>
+      </div>
+      <div class="makegroupbox">
+      <p class="page2P">Member</p>
+      <input type="search" v-model="user"/>
       <input type="submit" value="research" @click="research"/><br>
-      
+      </div>
       <p>Member {{ count }}{{ userNum }}</p>
       <div id="member">
         <div id="memPrf">
@@ -21,9 +25,9 @@
         <div id="addMember"><button @click="add">This member Add</button></div>
         </div>
         <div id="rederChart">
-          <members-chart :chartData="chartData"></members-chart>
+          <!--<members-chart :chartData="chartData"></members-chart>-->
         </div>
-        
+        <input  id="pagesubmit" type="submit" value="Make Group" @click="addData"/><br>
       </div>
     </div>
   </div>
@@ -68,7 +72,10 @@ export default {
     },
   methods: {
     addData: function() {
-        firebase.database().ref("/users/group/" + this.groupName).set({
+      if(this.groupName === ''){
+        alert("Nothing Group Name!!")
+      }else {
+        firebase.database().ref("/users/group/" + this.groupName).update({
                   user1: this.userNum[0] || '',
                   user2: this.userNum[1] || '',
                   user3: this.userNum[2] || '',
@@ -80,6 +87,7 @@ export default {
                   user9: this.userNum[8] || ''
       })
       alert('Make Group')  
+      }   
     },
     research: function() {
       var getUsersPrf = firebase.database().ref('/users/userPrf/' + this.user)
@@ -106,9 +114,9 @@ export default {
       this.com[this.count] = communication
       this.sys[this.count] = system
 
-      this.fillData()
+      //this.fillData()
       },
-    fillData() {
+    /*fillData() {
     this.chartData = {
       labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
             datasets: [
@@ -204,7 +212,7 @@ export default {
             }
           ]
         }
-      },
+      },*/
     add: function () {
     var useuse = JSON.parse(localStorage.getItem('memberName'))
     this.userNum[this.count] = useuse
@@ -236,19 +244,29 @@ export default {
 
 #member {
   margin-top: 10%;
-  display: flex;
 }
 
-#memPrf {
-flex: 1;
-}
-#rederChart {
-flex: 1;
-}
+
 
 #addMember {
   margin-top: 50px;
 }
 
+.makegroupbox{
+  margin:30px auto;
+}
+
+.page2P {
+  font-size: 20px;
+  margin: 10px auto;
+}
+
+#pagesubmit {
+  margin:20px;
+  background-color: #00A29A;
+  color: aliceblue;
+  border-radius: 5px;
+  font-size: 15px;
+}
 
 </style>

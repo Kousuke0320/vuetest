@@ -3,9 +3,11 @@
 <div id="GroupMember">
   <div id="userPrf3">
     <div id="userPic3">
+      <div class="userPicSub">
     <div id="name3">{{ this.userName }}</div>
     <div id="userpicpic3">
       <img src="" id="prfPic3">
+      </div>
       </div>
       <div id="userComment3">No coment</div>
     </div>
@@ -237,7 +239,7 @@ a {
 }
 
 #userpicpic3 {
-  margin:20px auto;
+  margin:50px auto auto auto;
   }
 
 #userPic3 img {
@@ -250,20 +252,16 @@ a {
 
 #name3 {
   width: 60%;
-  margin-top: 50px;
-  margin-left: 10%;
-  margin-right: 30%;
-  text-align: justify;
+  margin:10px auto;
+  text-align: center;
   display: inline-block;  
-  font-size: 40px;
-  border-bottom: solid 2px;
-  
+  font-size: 30px;
 }
 #userComment3 {
-  width: 60%;
-  text-align: justify;
-  margin: 20px 10%;
   padding-bottom: 20px;
+  width: 60%;
+  text-align: center;
+  margin: 20px auto;
 }
 
 #userCom3 {
@@ -272,8 +270,8 @@ a {
 }
 
 #rader3 {
-  margin-top:20px;
-  max-width:100vw;
+  margin:20px auto;
+  width:80vw;
 }
 
 #line3 {
