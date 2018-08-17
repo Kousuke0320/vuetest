@@ -17,7 +17,9 @@
       <img src="./assets/home.png">
       </div>
       <div id="homebutton2">
+        <div id="homebutton3">
         Home
+        </div>
       </div>
       <!--</router-link>-->
           </div>
@@ -27,7 +29,9 @@
       <img src="./assets/config.png">
       </div>
       <div id="configbutton2">
+        <div id="configbutton3">
         Setting
+        </div>
       <!--</router-link>-->
       </div>
           </div>
@@ -37,15 +41,24 @@
     <img src="./assets/plus.png">
     </div>
     <div id="plus2">
+      <div id="plus3">
       Make Group
+      </div>
     </div>
     <!--</router-link>--><br>
     </div>
     </div>
-    <div id="groupNameHyouzi" @click="check()"> 
+    <div id="groupNameHyouzi">
+      <div id="grouptitle">
+        Group
+        </div> 
         <div id="GroupTantai" v-for="(item, index) in list" @click="memberKakunin(index)">
           {{item.Group}}</div><br>
         </div>
+        <div id="logOut" @click="logout()">
+          Logout
+        </div>
+        
   </div>
       </nav>
     <!-- メインコンテンツ -->
@@ -98,24 +111,39 @@ export default {
         var GroupName = this.list[index].Group
         localStorage.setItem('groupName',JSON.stringify(GroupName))
       router.push({ path: '/margin' })
-      document.getElementById("checked").checked = false;
+      setTimeout(this.check, 250)
       },
       check () {
         document.getElementById("checked").checked = false;
       },
       check1 () {
         router.push({ path: '/helloworld' })
-        setTimeout(this.check, 500)
+        this.check();
+        setTimeout(this.check, 250)
         //document.getElementById("checked").checked = false; 
       },
       check2 () {
         router.push({ path: '/config' })
-        setTimeout(this.check, 500)
+      setTimeout(this.check, 250)
+      //this.check();
       },
       check3 () {
         router.push({ path: '/page2' })
-        setTimeout(this.check, 500) 
-      },      
+        setTimeout(this.check, 250) 
+        
+      },
+      logout() {
+        firebase.auth().signOut().then(function() {
+          localStorage.setItem('userName'," ")
+          location.reload()
+          router.push({ path: '/' })
+          setTimeout(this.check, 250)
+          
+  // Sign-out successful.
+        }).catch(function(error) {
+    // An error happened.
+});
+      }      
   }
 }
 </script>
@@ -214,68 +242,152 @@ export default {
     z-index: 3;
 }
 
+.check:checked ~ .menu-btn{
+  display:none;
+}
+
+#loginSub {
+margin-top:80px;
+
+}
+
+#gotohello {
+  width:60%;
+  margin: 10px auto;
+  display: flex;
+}
+
 #homebutton {
-  width: 50%;
-  margin:10px auto;
-  margin-top:100px;
-  
+  flex: 1;
 }
 
 #homebutton img {
-  max-width: 70%;
+  max-width:80%;
 }
 
 #homebutton img:hover{
   opacity: 0.5;
 }
 
-#confbutton {
-  width: 50%;
-  margin:10px auto;
+#homebutton2 {
+  flex: 3;
+  font-size: 15px;
+   display: -webkit-flex;
+ display: flex;
+ -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+ align-items: center; /* 縦方向中央揃え */
+ -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
+ justify-content: left; /* 横方向中央揃え */
   
 }
 
+#homebutton3 {
+font-size: 18px;
+  color:rgb(75,75,75);
+  margin-left:10px;
+}
+
+#gotoConfig {
+  width:60%;
+  margin: 10px auto;
+  display: flex;
+}
+
+#confbutton {
+  flex: 1;
+}
+
 #confbutton img {
-  max-width: 70%;
+  max-width:80%;
 }
 
 #confbutton img:hover{
   opacity: 0.5;
 }
 
-#plus {
-  width: 50%;
-  margin:10px auto;
+#configbutton2 {
+  flex: 3;
+  
+ display: -webkit-flex;
+ display: flex;
+ -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+ align-items: center; /* 縦方向中央揃え */
+ -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
+ justify-content: left; /* 横方向中央揃え */
+ 
+}
+
+#configbutton3 {
+  font-size: 18px;
+  color:rgb(75,75,75);
+  text-align: left;
+  margin-left: 10px;
+}
+
+#gotoPage2 {
+  width:60%;
+  margin: 10px auto;
+  display: flex;
   
 }
 
+#plus {
+  flex: 1;
+}
+
 #plus img {
-  max-width: 70%;
+  max-width:80%;
 }
 
 #plus img:hover{
   opacity: 0.5;
 }
 
+#plus2 {
+  flex: 3;
+  display: -webkit-flex;
+ display: flex;
+ -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+ align-items: center; /* 縦方向中央揃え */
+ -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
+ justify-content: left; /* 横方向中央揃え */
+ 
+  }
+
+#plus3 {
+  font-size: 18px;
+  color:rgb(75,75,75);
+  margin-left: 10px;
+  text-align: left;
+
+}
+
 #groupNameHyouzi {
-  margin:15px auto;
+  margin:30px auto;
 }
 
 #GroupTantai {
   width: 60%;
   height: auto;
-  background: #696969;
+  background: rgb(75,75,75);
   color:#fff;
   margin:5px auto;
+  opacity:0.9;
 }
 
 #GroupTantai:hover {
   opacity: 0.9;
 }
+
+#grouptitle{
+  text-align: center;
+  font-size: 18px;
+  color:rgb(75,75,75);
+}
   
 }
 
-@media (max-width: 600px){
+@media (max-width: 699px){
   #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -366,15 +478,16 @@ margin-top:60px;
 
 
 #groupNameHyouzi {
-  margin:15px auto;
+  margin:30px auto;
 }
 
 #GroupTantai {
   width: 60%;
   height: auto;
-  background: #696969;
+  background: rgb(75,75,75);
   color:#fff;
   margin:5px auto;
+  opacity:0.9;
 }
 
 #GroupTantai:hover {
@@ -402,8 +515,19 @@ margin-top:60px;
 #homebutton2 {
   flex: 3;
   font-size: 15px;
-  text-align: left;
-  margin-left: 10px;
+   display: -webkit-flex;
+ display: flex;
+ -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+ align-items: center; /* 縦方向中央揃え */
+ -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
+ justify-content: left; /* 横方向中央揃え */
+  
+}
+
+#homebutton3 {
+font-size: 18px;
+  color:rgb(75,75,75);
+  margin-left:10px;
 }
 
 #gotoConfig {
@@ -426,7 +550,18 @@ margin-top:60px;
 
 #configbutton2 {
   flex: 3;
-  font-size: 15px;
+ display: -webkit-flex;
+ display: flex;
+ -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+ align-items: center; /* 縦方向中央揃え */
+ -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
+ justify-content: left; /* 横方向中央揃え */
+ 
+}
+
+#configbutton3 {
+  font-size: 18px;
+  color:rgb(75,75,75);
   text-align: left;
   margin-left: 10px;
 }
@@ -435,6 +570,7 @@ margin-top:60px;
   width:60%;
   margin: 10px auto;
   display: flex;
+  
 }
 
 #plus {
@@ -451,10 +587,36 @@ margin-top:60px;
 
 #plus2 {
   flex: 3;
-  font-size: 15px;
-  text-align: left;
+  display: -webkit-flex;
+ display: flex;
+ -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+ align-items: center; /* 縦方向中央揃え */
+ -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
+ justify-content: left; /* 横方向中央揃え */
+ 
+  }
+
+#plus3 {
+  font-size: 18px;
+  color:rgb(75,75,75);
   margin-left: 10px;
+  text-align: left;
+
 }
+#grouptitle{
+  text-align: center;
+  color:rgb(75,75,75);
+  font-size: 18px;
+}
+
+#logOut {
+  margin-top: 80px;
+}
+
+.check:checked ~ .menu-btn{
+  display:none;
+}
+
 
 }
 

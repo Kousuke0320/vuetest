@@ -10,7 +10,13 @@
       </div>
       </div>
       <div id="userCom2">
-      <div id="userComment2">No coment</div>
+      <div id="userComment2">
+        Since {{ time }} by {{ reader }}
+        <div id="userComment22">
+        {{ coment }}
+        </div>
+        </div>
+      
     </div>
     </div>
   </div>
@@ -37,6 +43,8 @@ var management;
 var design;
 var communication;
 var system;
+var coment;
+var time;
 
 export default {
   name: 'Group',
@@ -51,7 +59,10 @@ export default {
         des:[],
         com:[],
         sys:[],
-        hantei:0
+        hantei:0,
+        reader:'',
+        time: '',
+        coment: ''
      }
     },
     components: {
@@ -71,8 +82,12 @@ export default {
         username[6] = snapshot.val().user7
         username[7] = snapshot.val().user8
         username[8] = snapshot.val().user9
+        coment = snapshot.val().coment
+        time = snapshot.val().time
       })
-
+      this.coment = coment
+      this.time = time
+      this.reader = username[0]
       var i;
       for(i = 0; i < 10; i++){
           this.userName[i] = username[i]
@@ -271,8 +286,12 @@ display: flex;
 
 #userCom2 {
   width: 60%;
-  text-align: justify;
+  text-align: left;
   margin: 30vh 10%;
+}
+
+#userComment22 {
+  margin-top: 10px;
 }
 
 #chart2 {
@@ -365,6 +384,11 @@ a {
   margin-top: 20px;
   padding-bottom: 20px;
 }
+
+#userComment22 {
+  margin-top: 10px;
+}
+
 
 #userCom2 {
   width: 60%;

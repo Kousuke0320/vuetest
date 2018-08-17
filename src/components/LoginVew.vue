@@ -3,9 +3,12 @@
     <div id="loginPic">
     <img src="../assets/pentagon_icon.png">
     </div>
-    <section @click="login">
+    <section @click="logingoogle">
       <p>Login</p>
     </section>
+    <!--<section @click="loginfacebook">
+      <p>Login</p>
+    </section>-->
   </div>
 </template>
 
@@ -40,43 +43,55 @@ export default {
       this.photoURL = JSON.parse(localStorage.getItem('photoURL')) || [];
     },
     methods: {
-      login: function(){
+      logingoogle: function(){
       //userComent = JSON.parse(localStorage.getItem('coment')) || []  
       var provider = new firebase.auth.GoogleAuthProvider();
+      
       firebase.auth().signInWithPopup(provider).then(
         result => {
+          
           user = result.user;
           this.userName = user.displayName;
           this.photoURL = user.photoURL;
-          /*var accse = firebase.database().ref('/users/userPrf/' + this.userName)
-          accse.on('value', function(snapshot) {
-          userComent = snapshot.val().coment
-          })*/
-          //localStorage.setItem('userName',JSON.stringify(this.userName));
-          /*firebase.database().ref('/users/userPrf/' + this.userName).update({
-            photo:this.photoURL
-          })
-
-          var starCountRef = firebase.database().ref('/users/userPrf/' + this.userName);
-          starCountRef.on('value', function(snapshot) {
-          userComent = snapshot.val().coment
-            })*/
             
             firebase.database().ref('/users/userPrf/' + this.userName).update({
             photo:this.photoURL,
           })
-          localStorage.setItem('userName',JSON.stringify(this.userName))
+          localStorage.setItem('userName',JSON.stringify(this.userName));
           localStorage.setItem('count',1);
           localStorage.setItem('count2',1);
-          location.reload()
+          
           //setTimeout(router.push({ path: '/helloworld' }), 10000)
-          router.push({ path: '/helloworld' })
+          location.reload();
+          router.push({ path: '/helloworld' });
+          
           },
         error  => {alert("ログインに失敗しました")})
+        
       },
-    }
-    
+      loginfacebook () {
+        var provider = new firebase.auth.FacebookAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user;
+  // ...
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  alert("error")
+  // ...
+});
+      }
+    }    
 }
+
 </script>
 
 <style scoped>
@@ -115,7 +130,8 @@ div {
   flex-direction: column;
 }
 img {
-  width: 450px;
+  margin-top:65px;
+  width: 100%;
 }
 section {
   margin:20px auto;
@@ -132,6 +148,7 @@ p {
   font-size: 20px;
   padding: 10px auto;
 }
+
 }
 
 

@@ -21,7 +21,7 @@
         </div>
         
         <div class="InfBox">
-          <p>Occupationr</p>
+          <p>Occupation</p>
           <input type="text" class="inputText" v-model="occupation"/><br>
         </div>
         
@@ -171,6 +171,7 @@ export default {
                 system: this.system
                 })
           //localStorage.setItem('coment',JSON.stringify(this.prfCom))
+          alert("Update Data")
         },
         logout: function() {
 
@@ -180,6 +181,8 @@ export default {
 </script>
 
 <style scoped="scoped">
+@media (min-width:700px) {
+
 #config {
   margin:0;
   
@@ -295,6 +298,128 @@ select {
 h1{
   color:#00A29A;
   padding-top:30px;
+}
+
+}
+
+@media (max-width: 699px){
+  #config {
+  margin:0;
+  font-size: 15px;
+}
+
+#term {
+    margin-top: 0px;
+}
+
+#setting {
+margin-top: 40px; 
+   
+/*display: flex;*/
+}
+
+#inf1 {
+/*flex: 1;*/
+width: 80%;
+margin: 0 auto;
+background: #f5f5f5;
+}
+
+#picA img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+#inf2 {
+/*flex: 1;*/
+width: 80%;
+margin: 20px auto;
+background: #f5f5f5;
+}
+#comconf {
+  margin:0 auto;
+  margin-bottom: 30px;
+  width:80%;
+  height: 10vh;
+  border:none;
+　background:none;
+  background-color: #ffffff;
+  color:#696969;
+  font-size:15px;
+}
+
+p {
+  margin:5px;
+  font-size:20px;
+}
+
+.InfBox {
+  margin-top:30px;
+  width:80%;
+  margin-left: 20%;
+  text-align: left;
+  font-size:15px;
+}
+
+input {
+  height: 30px;
+  width:80%;
+  font-size:15px;
+}
+
+button {
+  position: relative;
+  background-color: #00A29A;
+  top:20px;
+  bottom: 10px;
+  left:0;
+  width: 50vw;
+  height: 40px;
+  color: aliceblue;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.inputText {
+  border:none;
+　background:none;
+  background-color: #ffffff;
+  color:#696969;
+}
+
+select {
+  height: 30px;
+  width:80%;
+  border:none;
+  background-color: #ffffff;
+  color:#696969;
+  font-size:15px;
+}
+
+.infRange {
+  width:70%;
+  border:none;
+　background:none;
+  background-color: #ffffff;
+  color:#696969;
+}
+
+.infRangefin {
+  width:70%;
+  margin-bottom: 30px;
+  border:none;
+　background:none;
+  background-color: #ffffff;
+  color:#313131;
+}
+
+
+h1{
+  color:#00A29A;
+  padding-top:30px;
+}
+
 }
 
 </style>

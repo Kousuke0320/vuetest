@@ -16,24 +16,24 @@
         <div class="userinformation2">
       <div class="userinformation21">
         Gender<br>
-        <div id="genderInf">Man</div>
+        <div id="genderInf"></div>
       </div>
       <div class="userinformation22">
         Country<br>
-        <div id="countryInf">Japan</div>
+        <div id="countryInf"></div>
       </div>
       <div class="userinformation23">
         Language<br>
-        <div id="languageInf">English</div>
+        <div id="languageInf"></div>
       </div>
       </div>
       <div class="userinformation3">
         Occupation<br>
-        <div id="occupationInf">FUN</div>
+        <div id="occupationInf"></div>
       </div>
       <div class="userinformation4">
         Major<br>
-        <div id="majorInf">Information sysytem</div>
+        <div id="majorInf"></div>
       </div>
       </div>
       <div id="rader">

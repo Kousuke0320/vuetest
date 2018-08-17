@@ -3,32 +3,35 @@
     <div id="groupName">
       <div class="makegroupbox">
       <p class="page2P">Group Name</p>
-      <input type="text" v-model="groupName"/>
+      <input id="textinput1" type="text" v-model="groupName"/>
       </div>
       <div class="makegroupbox">
       <p class="page2P">Member</p>
-      <input type="search" v-model="user"/>
-      <input type="submit" value="research" @click="research"/><br>
-      </div>
-      <p>Member {{ count }}{{ userNum }}</p>
+      <input id="textinput2" type="search" v-model="user"/>
+      <input id="textinput3" type="submit" value="research" @click="research"/><br>
+      <p>{{ userNum }}</p>
       <div id="member">
         <div id="memPrf">
         <div id="aaaa">
           <img src="" id="pic"/>
         </div>
         <div id="resultName">
-
         </div>
         <div id="memberCom">
-
         </div>
-        <div id="addMember"><button @click="add">This member Add</button></div>
+        <div id="addMember"><button id="textinput4" @click="add">This member Add</button></div>
         </div>
+        </div>
+      </div>
         <div id="rederChart">
           <!--<members-chart :chartData="chartData"></members-chart>-->
         </div>
+        <div class="makegroupbox">
+          <p class="page2P">Group Coment</p>
+        <textarea id="comconf2"  v-model="coment"></textarea><br>
+        </div>
         <input  id="pagesubmit" type="submit" value="Make Group" @click="addData"/><br>
-      </div>
+      
     </div>
   </div>
 </template>
@@ -48,33 +51,56 @@ export default {
   name: 'page2',
   data () {
     return {
+      userName: '',
         groupName: '',
         user:'',
         userNum: [],
-        count:0,
+        count:1,
         chartData: {},
         mot:[],
         man:[],
         des:[],
         com:[],
-        sys:[]
+        sys:[],
+        coment:'',
+        time: ''
     }
   },
   components: {
     membersChart
   },
   created () {
-   this.fillData()
+    this.userName = JSON.parse(localStorage.getItem('userName')) || []
+    this.userNum[0] = this.userName
+   //this.fillData()
    var dataJunbi = firebase.database().ref('/users/userPrf/' + this.user)
+   
   },
   mounted: function() {
     //localStorage.setItem('memberName',JSON.stringify(this.user))
+    document.getElementById("member").style.display ="none";
     },
   methods: {
     addData: function() {
       if(this.groupName === ''){
         alert("Nothing Group Name!!")
       }else {
+
+        var hiduke=new Date(); 
+　      var year = hiduke.getFullYear();
+　      var month = hiduke.getMonth()+1;
+　      var day = hiduke.getDate();
+　      this.time = year + "/" + month + "/" + day;
+  
+        var x;
+        for(x = 0; x < this.userNum.length; x++){
+          firebase.database().ref('/users/userGroup/' + this.userNum[x]).push({
+      Group:this.groupName
+    })
+    }
+
+        
+
         firebase.database().ref("/users/group/" + this.groupName).update({
                   user1: this.userNum[0] || '',
                   user2: this.userNum[1] || '',
@@ -84,7 +110,9 @@ export default {
                   user6: this.userNum[5] || '',
                   user7: this.userNum[6] || '',
                   user8: this.userNum[7] || '',
-                  user9: this.userNum[8] || ''
+                  user9: this.userNum[8] || '',
+                  coment: this.coment,
+                  time: this.time
       })
       alert('Make Group')  
       }   
@@ -97,6 +125,11 @@ export default {
       document.getElementById('pic').src = snapshot.val().photo 
       document.getElementById("memberCom").innerText = snapshot.val().coment
       })
+
+      var y1 = document.getElementById("member");
+
+      y1.style.display ="block";
+
       //document.getElementById("rederChart").innerHTML = 'aaa'
       var skillGet = firebase.database().ref('/users/userData/' + this.user)
       
@@ -214,21 +247,58 @@ export default {
         }
       },*/
     add: function () {
+
     var useuse = JSON.parse(localStorage.getItem('memberName'))
     this.userNum[this.count] = useuse
     this.count = this.count + 1
-    firebase.database().ref('/users/userGroup/' + useuse).push({
-      Group:this.groupName
-    })
-  }
+    document.getElementById("member").style.display ="none";
+    this.user = ""
+    }
   }
 }
 
 </script>
 
 <style>
+
+@media (min-width: 700px){
+
 #group {
   font-size: 15px;
+}
+
+#comconf2 {
+  margin:30px auto;
+  width:50%;
+  height:10vh;
+  background-color: #ffffff;
+  color:#696969;
+  font-size:15px;
+  border:none;
+}
+
+#textinput1 {
+  border:none;
+　background:none;
+  background-color: #ffffff;
+  color:#696969;
+}
+
+#textinput2 {
+  border:none;
+　background:none;
+  background-color: #ffffff;
+  color:#696969;
+}
+
+#textinput3 {
+background-color: #ffffff;
+color:#696969;
+}
+
+#textinput4 {
+background-color: #00A29A;
+color:#ffffff;
 }
 
 #groupName {
@@ -243,17 +313,109 @@ export default {
 }
 
 #member {
-  margin-top: 10%;
+  margin-top: 20px;
 }
 
-
-
 #addMember {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .makegroupbox{
-  margin:30px auto;
+  margin:20px auto;
+  width: 80%;
+  background: #f5f5f5;
+  padding-top:5px;
+  padding-bottom: 20px;
+}
+
+.page2P {
+  font-size: 25px;
+  margin: 10px auto;
+}
+
+#pagesubmit {
+    margin:20px;
+    background-color: #00A29A;
+    color: aliceblue;
+    border-radius: 5px;
+    font-size: 15px;
+    width:20%;
+}
+
+#memPrf {
+background-color: #ffffff;
+width: 30%;
+margin: 0 auto;
+padding-top: 20px;
+padding-bottom: 20px;
+}
+
+}
+
+@media (max-width: 699px){
+#group {
+  font-size: 15px;
+}
+
+#comconf2 {
+  margin:20px auto;
+  width:80%;
+  height:10vh;
+  background-color: #ffffff;
+  color:#696969;
+  font-size:15px;
+  border:none;
+}
+
+#textinput1 {
+  border:none;
+　background:none;
+  background-color: #ffffff;
+  color:#696969;
+}
+
+#textinput2 {
+  border:none;
+　background:none;
+  background-color: #ffffff;
+  color:#696969;
+}
+
+#textinput3 {
+background-color: #ffffff;
+color:#696969;
+}
+
+#textinput4 {
+background-color: #00A29A;
+color:#ffffff;
+}
+
+#groupName {
+  
+  margin: 50px auto;
+}
+
+#pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+#member {
+  margin-top: 20px;
+}
+
+#addMember {
+  margin-top: 20px;
+}
+
+.makegroupbox{
+  margin:10px auto;
+  width: 80%;
+  background: #f5f5f5;
+  padding-top:5px;
+  padding-bottom: 20px;
 }
 
 .page2P {
@@ -262,11 +424,23 @@ export default {
 }
 
 #pagesubmit {
-  margin:20px;
-  background-color: #00A29A;
-  color: aliceblue;
-  border-radius: 5px;
-  font-size: 15px;
+    margin:20px;
+    background-color: #00A29A;
+    color: aliceblue;
+    border-radius: 5px;
+    font-size: 15px;
+    width:60%;
 }
+
+#memPrf {
+background-color: #ffffff;
+width: 80%;
+margin: 0 auto;
+padding-top: 20px;
+padding-bottom: 20px;
+}
+
+}
+
 
 </style>
