@@ -8,7 +8,7 @@
       <div class="makegroupbox">
       <p class="page2P">Member</p>
       <input id="textinput2" type="search" v-model="user"/>
-      <input id="textinput3" type="submit" value="research" @click="research"/><br>
+      <input id="textinput3" type="submit" value="reserach"  @click="research"/><br>
       <p>{{ userNum }}</p>
       <div id="member">
         <div id="memPrf">
@@ -19,7 +19,7 @@
         </div>
         <div id="memberCom">
         </div>
-        <div id="addMember"><button id="textinput4" @click="add">This member Add</button></div>
+        <div id="addMember"><button id="textinput4" @click="add">Add member</button></div>
         </div>
         </div>
       </div>
@@ -30,8 +30,7 @@
           <p class="page2P">Group Coment</p>
         <textarea id="comconf2"  v-model="coment"></textarea><br>
         </div>
-        <input  id="pagesubmit" type="submit" value="Make Group" @click="addData"/><br>
-      
+        <button id="pagesubmit" @click="addData">Make Group</button><br>
     </div>
   </div>
 </template>
@@ -299,6 +298,11 @@ color:#696969;
 #textinput4 {
 background-color: #00A29A;
 color:#ffffff;
+font-size: 15px;
+width: 70%;
+height: 30px;
+border-radius: 5px;
+
 }
 
 #groupName {
@@ -334,12 +338,13 @@ color:#ffffff;
 }
 
 #pagesubmit {
-    margin:20px;
+    margin:20px auto;
     background-color: #00A29A;
     color: aliceblue;
     border-radius: 5px;
     font-size: 15px;
-    width:20%;
+    width: 20vw;
+  height: 40px;
 }
 
 #memPrf {
@@ -389,10 +394,13 @@ color:#696969;
 #textinput4 {
 background-color: #00A29A;
 color:#ffffff;
+font-size: 15px;
+width: 70%;
+height: 30px;
+border-radius: 5px;
 }
 
 #groupName {
-  
   margin: 50px auto;
 }
 
@@ -424,12 +432,13 @@ color:#ffffff;
 }
 
 #pagesubmit {
-    margin:20px;
-    background-color: #00A29A;
-    color: aliceblue;
-    border-radius: 5px;
-    font-size: 15px;
-    width:60%;
+      margin:20px auto;
+      background-color: #00A29A;
+      color: aliceblue;
+      border-radius: 5px;
+      font-size: 15px;
+      width: 50vw;
+  height: 40px;
 }
 
 #memPrf {

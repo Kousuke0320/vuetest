@@ -39,6 +39,7 @@
       <div id="rader">
       <members-chart :chartData="chartData" :height="300"></members-chart>
     </div>
+    <button @click="changeGraph">ChangeData</button>
     </div>
   </div>
   </div>
@@ -68,7 +69,13 @@ export default {
       design:'',
       communication:'',
       system:'',
-      hantei:0
+      illustrater: 0,
+      photoshop: 0,
+      XD: 0,
+      Dtools: 0,
+      cad: 0,
+      hantei:0,
+      graphcount: 0
      }
     },
       created: function() {
@@ -117,22 +124,36 @@ export default {
       var design;
       var communication;
       var system;
+      var illustrater;
+      var photoshop;
+      var XD;
+      var Dtools;
+      var cad;
+
       firebase.database().ref('/users/userData/' + this.userName).on('value', function(snapshot) {
         motivation = snapshot.val().motivation
         management= snapshot.val().management
         design = snapshot.val().design
         communication = snapshot.val().communication
         system = snapshot.val().system
+        illustrater = snapshot.val().illustrater
+        photoshop = snapshot.val().photoshop
+        XD = snapshot.val().XD
+        Dtools = snapshot.val().Dtools
+        cad = snapshot.val().cad
         })
         this.motivation = motivation
-        this.management= management
+        this.management = management
         this.design = design
         this.communication = communication
         this.system = system
-        
+        this.illustrater = illustrater
+        this.photoshop = photoshop
+        this.XD = XD
+        this.Dtools = Dtools
+        this.cad = cad
     },
    fillData() {
-     
     this.chartData = {
       labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
             datasets: [
@@ -148,6 +169,45 @@ export default {
                     data: [this.motivation,this.management,this.design,this.communication,this.system]
             }
         ]
+    }
+  },
+  changeGraph() {
+    if (this.graphcount == 0){
+     this.graphcount = 1
+    this.chartData = {
+      labels: ['Illustrater', 'Photoshop', 'XD', '3Dtools', 'Cad'],
+            datasets: [
+            {
+                  //label: false,
+                  backgroundColor: "rgba(0, 162, 154,0.4)",
+                    borderColor: "rgba(0, 162, 154,0.8)",
+                    pointBackgroundColor: "rgba(0, 162, 154,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
+                    
+                    data: [this.illustrater,this.photoshop,this.XD,this.Dtools,this.cad]
+            }
+        ]
+    }
+    } else if(this.graphcount == 1){
+      this.graphcount = 0
+      this.chartData = {
+      labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
+            datasets: [
+            {
+                  //label: false,
+                  backgroundColor: "rgba(0, 162, 154,0.4)",
+                    borderColor: "rgba(0, 162, 154,0.8)",
+                    pointBackgroundColor: "rgba(0, 162, 154,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
+                    
+                    data: [this.motivation,this.management,this.design,this.communication,this.system]
+            }
+        ]
+    }
     }
   }
 }

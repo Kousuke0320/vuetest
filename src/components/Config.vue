@@ -64,8 +64,64 @@
               {{ system }}<br>
               </div>
       </div>
+      <div class="infff">
+        <h1>Design tools</h1>
+        <div class="InfBox">
+              <p>Illustrater</p>
+              <input type="range" class="infRange" name="mot" min="0" max="10" step="1" v-model="illustrater"/>
+              {{ illustrater }}
+              </div>
+              <div class="InfBox">
+              <p>Photoshop</p>
+              <input type="range" class="infRange" name="des" min="0" max="10" step="1" v-model="photoshop"/>
+              {{ photoshop }}
+              </div>
+              <div class="InfBox">
+              <p>XD</p>
+              <input type="range" class="infRange" name="man" min="0" max="10" step="1" v-model="XD"/>
+              {{ XD }}
+              </div>
+              <div class="InfBox">
+              <p>3Dtools</p>
+              <input type="range" class="infRange" name="com" min="0" max="10" step="1" v-model="Dtools"/>
+              {{ Dtools }}
+              </div>
+              <div class="InfBox">
+              <p>Cad</p>
+              <input type="range" class="infRangefin" name="sys" min="0" max="10" step="1" v-model="cad"/>
+              {{ cad }}<br>
+              </div>
+        </div>
+        <div class="infff">
+        <h1>User Skills</h1>
+        <div class="InfBox">
+              <p>Motivation</p>
+              <input type="range" class="infRange" name="mot" min="0" max="10" step="1" v-model="motivation"/>
+              {{ motivation }}
+              </div>
+              <div class="InfBox">
+              <p>Design</p>
+              <input type="range" class="infRange" name="des" min="0" max="10" step="1" v-model="design"/>
+              {{ design }}
+              </div>
+              <div class="InfBox">
+              <p>Management</p>
+              <input type="range" class="infRange" name="man" min="0" max="10" step="1" v-model="management"/>
+              {{ management }}
+              </div>
+              <div class="InfBox">
+              <p>Communication</p>
+              <input type="range" class="infRange" name="com" min="0" max="10" step="1" v-model="communication"/>
+              {{ communication }}
+              </div>
+              <div class="InfBox">
+              <p>System</p>
+              <input type="range" class="infRangefin" name="sys" min="0" max="10" step="1" v-model="system"/>
+              {{ system }}<br>
+              </div>
+        </div>
+      <button @click="addData">Set data</button>
       </div>
-      <button @click="addData">Change Data</button>
   </div>
 </template>
 
@@ -84,6 +140,11 @@ var management;
 var design;
 var communication;
 var system;
+var illustrater;
+var photoshop;
+var XD;
+var Dtools;
+var cad;
 var gender
 var country
 var language
@@ -103,6 +164,11 @@ export default {
       management: 0,
       communication: 0,
       system: 0,
+      illustrater: 0,
+      photoshop: 0,
+      XD: 0,
+      Dtools: 0,
+      cad: 0,
       gender:'',
       country:'',
       language:'',
@@ -135,12 +201,22 @@ export default {
         design = snapshot.val().design
         communication = snapshot.val().communication
         system = snapshot.val().system
+        illustrater = snapshot.val().illustrater
+        photoshop = snapshot.val().photoshop
+        XD = snapshot.val().XD
+        Dtools = snapshot.val().Dtools
+        cad = snapshot.val().cad
         })
         this.motivation = motivation
         this.management = management
         this.design = design
         this.communication = communication
         this.system = system
+        this.illustrater = illustrater
+        this.photoshop = photoshop
+        this.XD = XD
+        this.Dtools = Dtools
+        this.cad = cad
     },
     methods: {
         /*saveData: function() {
@@ -163,12 +239,17 @@ export default {
             major:this.major,
             coment:this.prfCom
           })
-          firebase.database().ref('/users/userData/' + this.userName).set({
+          firebase.database().ref('/users/userData/' + this.userName).update({
                 motivation: this.motivation,
                 design: this.design,
                 management: this.management,
                 communication:this.communication,
-                system: this.system
+                system: this.system,
+                illustrater: this.illustrater,
+                photoshop: this.photoshop,
+                XD: this.XD,
+                Dtools: this.Dtools,
+                cad: this.cad
                 })
           //localStorage.setItem('coment',JSON.stringify(this.prfCom))
           alert("Update Data")
@@ -217,6 +298,14 @@ width: 80%;
 margin: 20px auto;
 background: #f5f5f5;
 }
+
+.infff {
+  width: 80%;
+margin: 20px auto;
+background: #f5f5f5;
+
+}
+
 #comconf {
   margin:0 auto;
   margin-bottom: 30px;
@@ -259,6 +348,7 @@ button {
   color: aliceblue;
   border-radius: 5px;
   font-size: 15px;
+  border-color: #00A29A;
 }
 
 .inputText {
@@ -337,6 +427,15 @@ width: 80%;
 margin: 20px auto;
 background: #f5f5f5;
 }
+
+.infff {
+  width: 80%;
+margin: 20px auto;
+background: #f5f5f5;
+
+}
+
+
 #comconf {
   margin:0 auto;
   margin-bottom: 30px;
@@ -379,6 +478,7 @@ button {
   color: aliceblue;
   border-radius: 5px;
   font-size: 15px;
+  border-color: #00A29A;
 }
 
 .inputText {

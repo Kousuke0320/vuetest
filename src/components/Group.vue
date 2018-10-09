@@ -11,7 +11,8 @@
       </div>
       <div id="userCom2">
       <div id="userComment2">
-        Since {{ time }} by {{ reader }}
+        Since {{ time }}<br>
+        by {{ reader }}
         <div id="userComment22">
         {{ coment }}
         </div>

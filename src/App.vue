@@ -55,9 +55,18 @@
         <div id="GroupTantai" v-for="(item, index) in list" @click="memberKakunin(index)">
           {{item.Group}}</div><br>
         </div>
-        <div id="logOut" @click="logout()">
-          Logout
+        <div id="gotoLogout" @click="logout()">
+      <!--<router-link to="/config">-->
+      <div id="logoutbutton">
+      <img src="./assets/logout.png">
+      </div>
+      <div id="logoutbutton2">
+        <div id="logoutbutton3">
+        Logout
         </div>
+      <!--</router-link>-->
+      </div>
+          </div>
         
   </div>
       </nav>
@@ -194,14 +203,30 @@ export default {
     -webkit-transform: perspective(500px) rotateY(-90deg);
     transform: perspective(500px) rotateY(-90deg);
     opacity: 0;
+    
 }
+
+
+
 /* チェックボックスオンの時 */
 .check:checked ~ .drawer-menu {
     -webkit-transform: none;
     -ms-transform: none;
     transform: none;
     opacity: 1;
+    animation-name: animation-haniwaman;
+  animation-duration: 0.1s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
 }
+
+@keyframes animation-haniwaman {
+  0% {width: 0px;}
+  100% {width: 300px;}
+}
+
 
 /* チェックボックスを非表示 */
 .check {
@@ -240,6 +265,17 @@ export default {
     visibility: visible;
     opacity: 1;
     z-index: 3;
+      animation-name: animation-haniwaman2;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+}
+
+@keyframes animation-haniwaman2 {
+  0% {width: 300px;}
+  100% {width: 0px;}
 }
 
 .check:checked ~ .menu-btn{
@@ -278,7 +314,7 @@ margin-top:80px;
  align-items: center; /* 縦方向中央揃え */
  -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
  justify-content: left; /* 横方向中央揃え */
-  
+  border-bottom:solid 1px rgb(100,100,100); 
 }
 
 #homebutton3 {
@@ -314,7 +350,7 @@ font-size: 18px;
  align-items: center; /* 縦方向中央揃え */
  -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
  justify-content: left; /* 横方向中央揃え */
- 
+ border-bottom:solid 1px rgb(100,100,100); 
 }
 
 #configbutton3 {
@@ -351,7 +387,7 @@ font-size: 18px;
  align-items: center; /* 縦方向中央揃え */
  -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
  justify-content: left; /* 横方向中央揃え */
- 
+ border-bottom:solid 1px rgb(100,100,100); 
   }
 
 #plus3 {
@@ -369,14 +405,14 @@ font-size: 18px;
 #GroupTantai {
   width: 60%;
   height: auto;
-  background: rgb(75,75,75);
+  background: rgb(85,85,85);
   color:#fff;
   margin:5px auto;
-  opacity:0.9;
+  
 }
 
 #GroupTantai:hover {
-  opacity: 0.9;
+  opacity: 0.5;
 }
 
 #grouptitle{
@@ -384,6 +420,58 @@ font-size: 18px;
   font-size: 18px;
   color:rgb(75,75,75);
 }
+
+#gotohello:hover{
+  opacity: 0.5;
+}
+
+#gotoConfig:hover {
+  opacity: 0.5;
+}
+
+#gotoPage2:hover {
+  opacity: 0.5;
+}
+
+#gotoLogout:hover {
+  opacity: 0.5;
+}
+
+#gotoLogout {
+width:60%;
+  margin: 10px auto;
+  display: flex;
+}
+
+
+#logoutbutton {
+flex: 1;
+}
+
+#logoutbutton img {
+max-width:80%;
+}
+
+
+#logoutbutton2 {
+ flex: 3;
+ display: -webkit-flex;
+ display: flex;
+ -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+ align-items: center; /* 縦方向中央揃え */
+ -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
+ justify-content: left; /* 横方向中央揃え */
+ border-bottom:solid 1px rgb(100,100,100); 
+}
+
+#logoutbutton3 {
+font-size: 18px;
+  color:rgb(75,75,75);
+  text-align: left;
+  margin-left: 10px;
+}
+
+
   
 }
 
@@ -429,7 +517,19 @@ font-size: 18px;
     -ms-transform: none;
     transform: none;
     opacity: 1;
+    animation-name: animation-haniwaman2;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
 }
+
+@keyframes animation-haniwaman2 {
+  0% {width: 0px;}
+  100% {width: 250px;}
+}
+
 
 /* チェックボックスを非表示 */
 .check {
@@ -484,10 +584,10 @@ margin-top:60px;
 #GroupTantai {
   width: 60%;
   height: auto;
-  background: rgb(75,75,75);
+  background: rgb(85,85,85);
   color:#fff;
   margin:5px auto;
-  opacity:0.9;
+  
 }
 
 #GroupTantai:hover {
@@ -500,6 +600,10 @@ margin-top:60px;
   display: flex;
 }
 
+#gotohello:hover{
+  opacity: 0.5;
+}
+
 #homebutton {
   flex: 1;
 }
@@ -508,9 +612,6 @@ margin-top:60px;
   max-width:80%;
 }
 
-#homebutton img:hover{
-  opacity: 0.5;
-}
 
 #homebutton2 {
   flex: 3;
@@ -521,7 +622,7 @@ margin-top:60px;
  align-items: center; /* 縦方向中央揃え */
  -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
  justify-content: left; /* 横方向中央揃え */
-  
+  border-bottom:solid 1px rgb(100,100,100); 
 }
 
 #homebutton3 {
@@ -530,11 +631,59 @@ font-size: 18px;
   margin-left:10px;
 }
 
+#gotoLogout {
+width:60%;
+  margin: 10px auto;
+  display: flex;
+}
+
+
+#logoutbutton {
+flex: 1;
+}
+
+#logoutbutton img {
+max-width:80%;
+}
+
+
+#logoutbutton2 {
+ flex: 3;
+ display: -webkit-flex;
+ display: flex;
+ -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+ align-items: center; /* 縦方向中央揃え */
+ -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
+ justify-content: left; /* 横方向中央揃え */
+ border-bottom:solid 1px rgb(100,100,100); 
+}
+
+#logoutbutton3 {
+font-size: 18px;
+  color:rgb(75,75,75);
+  text-align: left;
+  margin-left: 10px;
+}
+
 #gotoConfig {
   width:60%;
   margin: 10px auto;
   display: flex;
 }
+
+#gotoConfig:hover {
+  opacity: 0.5;
+}
+
+#gotoPage2:hover {
+  opacity: 0.5;
+}
+
+#gotoLogout:hover {
+  opacity: 0.5;
+}
+
+
 
 #confbutton {
   flex: 1;
@@ -544,9 +693,6 @@ font-size: 18px;
   max-width:80%;
 }
 
-#confbutton img:hover{
-  opacity: 0.5;
-}
 
 #configbutton2 {
   flex: 3;
@@ -556,7 +702,7 @@ font-size: 18px;
  align-items: center; /* 縦方向中央揃え */
  -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
  justify-content: left; /* 横方向中央揃え */
- 
+ border-bottom:solid 1px rgb(100,100,100); 
 }
 
 #configbutton3 {
@@ -573,6 +719,7 @@ font-size: 18px;
   
 }
 
+
 #plus {
   flex: 1;
 }
@@ -581,9 +728,6 @@ font-size: 18px;
   max-width:80%;
 }
 
-#plus img:hover{
-  opacity: 0.5;
-}
 
 #plus2 {
   flex: 3;
@@ -593,7 +737,7 @@ font-size: 18px;
  align-items: center; /* 縦方向中央揃え */
  -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
  justify-content: left; /* 横方向中央揃え */
- 
+ border-bottom:solid 1px rgb(100,100,100); 
   }
 
 #plus3 {
