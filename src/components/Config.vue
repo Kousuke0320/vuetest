@@ -93,31 +93,31 @@
               </div>
         </div>
         <div class="infff">
-        <h1>User Skills</h1>
+        <h1>System Skills</h1>
         <div class="InfBox">
-              <p>Motivation</p>
-              <input type="range" class="infRange" name="mot" min="0" max="10" step="1" v-model="motivation"/>
-              {{ motivation }}
+              <p>HTML5</p>
+              <input type="range" class="infRange" name="mot" min="0" max="10" step="1" v-model="html"/>
+              {{ html }}
               </div>
               <div class="InfBox">
-              <p>Design</p>
-              <input type="range" class="infRange" name="des" min="0" max="10" step="1" v-model="design"/>
-              {{ design }}
+              <p>CSS3</p>
+              <input type="range" class="infRange" name="des" min="0" max="10" step="1" v-model="css"/>
+              {{ css }}
               </div>
               <div class="InfBox">
-              <p>Management</p>
-              <input type="range" class="infRange" name="man" min="0" max="10" step="1" v-model="management"/>
-              {{ management }}
+              <p>JavaScript</p>
+              <input type="range" class="infRange" name="man" min="0" max="10" step="1" v-model="js"/>
+              {{ js }}
               </div>
               <div class="InfBox">
-              <p>Communication</p>
-              <input type="range" class="infRange" name="com" min="0" max="10" step="1" v-model="communication"/>
-              {{ communication }}
+              <p>iOS/Android</p>
+              <input type="range" class="infRange" name="com" min="0" max="10" step="1" v-model="sm"/>
+              {{ sm }}
               </div>
               <div class="InfBox">
-              <p>System</p>
-              <input type="range" class="infRangefin" name="sys" min="0" max="10" step="1" v-model="system"/>
-              {{ system }}<br>
+              <p>Unity</p>
+              <input type="range" class="infRangefin" name="sys" min="0" max="10" step="1" v-model="unity"/>
+              {{ unity }}<br>
               </div>
         </div>
       <button @click="addData">Set data</button>
@@ -145,6 +145,11 @@ var photoshop;
 var XD;
 var Dtools;
 var cad;
+var html
+var css
+var js
+var sm
+var unity
 var gender
 var country
 var language
@@ -169,6 +174,11 @@ export default {
       XD: 0,
       Dtools: 0,
       cad: 0,
+      html: 0,
+      css: 0,
+      js: 0,
+      sm: 0,
+      unity: 0,
       gender:'',
       country:'',
       language:'',
@@ -206,6 +216,11 @@ export default {
         XD = snapshot.val().XD
         Dtools = snapshot.val().Dtools
         cad = snapshot.val().cad
+        html = snapshot.val().html
+        css = snapshot.val().css
+        js = snapshot.val().js
+        sm = snapshot.val().sm
+        unity = snapshot.val().unity
         })
         this.motivation = motivation
         this.management = management
@@ -217,6 +232,11 @@ export default {
         this.XD = XD
         this.Dtools = Dtools
         this.cad = cad
+        this.html = html
+        this.css = css
+        this.js = js
+        this.sm = sm
+        this.unity = unity
     },
     methods: {
         /*saveData: function() {
@@ -249,7 +269,12 @@ export default {
                 photoshop: this.photoshop,
                 XD: this.XD,
                 Dtools: this.Dtools,
-                cad: this.cad
+                cad: this.cad,
+                html: this.html,
+                css: this.css,
+                js: this.js,
+                sm: this.sm,
+                unity: this.unity
                 })
           //localStorage.setItem('coment',JSON.stringify(this.prfCom))
           alert("Update Data")
@@ -321,6 +346,7 @@ background: #f5f5f5;
 p {
   margin:5px;
   font-size:25px;
+  font-weight: bold;
 }
 
 .InfBox {
@@ -388,6 +414,7 @@ select {
 h1{
   color:#00A29A;
   padding-top:30px;
+  font-weight: bold;
 }
 
 }
@@ -451,6 +478,7 @@ background: #f5f5f5;
 p {
   margin:5px;
   font-size:20px;
+  font-weight: bold;
 }
 
 .InfBox {
@@ -518,6 +546,7 @@ select {
 h1{
   color:#00A29A;
   padding-top:30px;
+  font-weight: bold;
 }
 
 }

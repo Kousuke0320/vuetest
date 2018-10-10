@@ -175,6 +175,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  font-weight: bold;
 }
 
 .contents {
@@ -482,6 +483,7 @@ font-size: 18px;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  font-weight: bold;
 }
 
 .contents {

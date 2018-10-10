@@ -3,11 +3,11 @@
     <div id="groupName">
       <div class="makegroupbox">
       <p class="page2P">Group Name</p>
-      <input id="textinput1" type="text" v-model="groupName"/>
+      <input id="textinput1" placeholder="Groupname" type="text" v-model="groupName"/>
       </div>
       <div class="makegroupbox">
       <p class="page2P">Member</p>
-      <input id="textinput2" type="search" v-model="user"/>
+      <input id="textinput2" type="search" v-model="user" placeholder="Taro Yamada"/>
       <input id="textinput3" type="submit" value="reserach"  @click="research"/><br>
       <p>{{ userNum }}</p>
       <div id="member">
@@ -25,10 +25,25 @@
       </div>
         <div id="rederChart">
           <!--<members-chart :chartData="chartData"></members-chart>-->
+        
         </div>
         <div class="makegroupbox">
+        <p class="page2P">5 Skills</p>
+        <div class="skillsParent">
+          {{ skillscount }}
+          {{ skillscount2 }}
+          <div class="skillsParent2">
+          <div class="skillsChild" @click="skillsPlusA" >aaa</div>
+          <div class="skillsChild" @click="skillsPlusB">aaa</div>
+          <div class="skillsChild" @click="skillsPlusC">aaa</div>
+          <div class="skillsChild" @click="skillsPlusD">aaa</div>
+          <div class="skillsChild" @click="skillsPlusE">aaa</div>
+          </div>
+          </div>  
+          </div>
+        <div class="makegroupbox">
           <p class="page2P">Group Coment</p>
-        <textarea id="comconf2"  v-model="coment"></textarea><br>
+        <textarea id="comconf2"  v-model="coment" placeholder="Comment here"></textarea><br>
         </div>
         <button id="pagesubmit" @click="addData">Make Group</button><br>
     </div>
@@ -62,7 +77,10 @@ export default {
         com:[],
         sys:[],
         coment:'',
-        time: ''
+        time: '',
+        skillscount: [],
+        skillscount2: 0,
+        skills1: ''
     }
   },
   components: {
@@ -97,9 +115,6 @@ export default {
       Group:this.groupName
     })
     }
-
-        
-
         firebase.database().ref("/users/group/" + this.groupName).update({
                   user1: this.userNum[0] || '',
                   user2: this.userNum[1] || '',
@@ -115,6 +130,26 @@ export default {
       })
       alert('Make Group')  
       }   
+    },
+    skillsPlusA: function() {
+      //this.skillscount[skillscount2] = "aaa"
+      this.skillscount2 ++
+    },
+    skillsPlusB: function() {
+      //this.skillscount[skillscount2] = "motivation"
+      this.skillscount2 ++
+    },
+    skillsPlusC: function() {
+      //this.skillscount[skillscount2] = "motivation"
+      this.skillscount2 ++
+    },
+    skillsPlusD: function() {
+      //this.skillscount[skillscount2] = "motivation"
+      this.skillscount2 ++
+    },
+    skillsPlusE: function() {
+      //this.skillscount[skillscount2] = "motivation"
+      this.skillscount2 ++
     },
     research: function() {
       var getUsersPrf = firebase.database().ref('/users/userPrf/' + this.user)
@@ -148,104 +183,7 @@ export default {
 
       //this.fillData()
       },
-    /*fillData() {
-    this.chartData = {
-      labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
-            datasets: [
-            {
-                  //label: false,
-                  backgroundColor: "rgba(179,181,198,0.2)",
-                    borderColor: "rgba(179,181,198,0.8)",
-                    pointBackgroundColor: "rgba(179,181,198,0.8)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(179,181,198,0.8)",
-                    data: [this.mot[0] || 0, this.des[0] || 0, this.man[0] || 0, this.com[0] || 0, this.sys[0] || 0]
-            },
-            {
-              //label: false,
-                  backgroundColor: "rgba(255,99,132,0.2)",
-                    borderColor: "rgba(255,99,132,0.8)",
-                    pointBackgroundColor: "rgba(255,99,132,0.8)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(255,99,132,0.8)",
-                    data: [this.mot[1] || 0, this.des[1] || 0, this.man[1] || 0, this.com[1] || 0, this.sys[1] || 0]
-            },
-            {
-              //label: false,
-                  backgroundColor: "rgba(255,255,0,0.2)",
-                    borderColor: "rgba(255,255,0,0.8)",
-                    pointBackgroundColor: "rgba(255,255,0,0.8)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(255,255,0,0.8)",
-                    data: [this.mot[2] || 0, this.des[2] || 0, this.man[2] || 0, this.com[2] || 0, this.sys[2] || 0]
-            },
-            {
-              //label: false,
-                  backgroundColor: "rgba(0,255,0,0.2)",
-                    borderColor: "rgba(0,255,0,0.8)",
-                    pointBackgroundColor: "rgba(0,255,0,0.8)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(0,255,0,0.8)",
-                    data: [this.mot[3] || 0, this.des[3] || 0, this.man[3] || 0, this.com[3] || 0, this.sys[3] || 0]
-            },
-            {
-              //label: false,
-                  backgroundColor: "rgba(0,0,255,0.2)",
-                    borderColor: "rgba(0,0,255,0.8)",
-                    pointBackgroundColor: "rgba(0,0,255,0.8)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(0,0,255,0.8)",
-                    data: [this.mot[4] || 0, this.des[4] || 0, this.man[4] || 0, this.com[4] || 0, this.sys[4] || 0]
-            },
-            {
-              //label: false,
-                  backgroundColor: "rgba(255,99,132,0.2)",
-                    borderColor: "rgba(255,99,132,1)",
-                    pointBackgroundColor: "rgba(255,99,132,1)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(255,99,132,1)",
-                    data: [this.mot[5] || 0, this.des[5] || 0, this.man[5] || 0, this.com[5] || 0, this.sys[5] || 0]
-            },
-            {
-              //label: false,
-                  backgroundColor: "rgba(255,99,132,0.2)",
-                    borderColor: "rgba(255,99,132,1)",
-                    pointBackgroundColor: "rgba(255,99,132,1)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(255,99,132,1)",
-                    data: [this.mot[5] || 0, this.des[5] || 0, this.man[5] || 0, this.com[5] || 0, this.sys[5] || 0]
-            },
-            {
-              //label: false,
-                  backgroundColor: "rgba(255,99,132,0.2)",
-                    borderColor: "rgba(255,99,132,1)",
-                    pointBackgroundColor: "rgba(255,99,132,1)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(255,99,132,1)",
-                    data: [this.mot[6] || 0, this.des[6] || 0, this.man[6] || 0, this.com[6] || 0, this.sys[6] || 0]
-            },
-            {
-              //label: false,
-                  backgroundColor: "rgba(255,99,132,0.2)",
-                    borderColor: "rgba(255,99,132,1)",
-                    pointBackgroundColor: "rgba(255,99,132,1)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(255,99,132,1)",
-                    data: [this.mot[7] || 0, this.des[7] || 0, this.man[7] || 0, this.com[7] || 0, this.sys[7] || 0]
-            }
-          ]
-        }
-      },*/
-    add: function () {
+        add: function () {
 
     var useuse = JSON.parse(localStorage.getItem('memberName'))
     this.userNum[this.count] = useuse
@@ -281,6 +219,9 @@ export default {
 　background:none;
   background-color: #ffffff;
   color:#696969;
+  height: 30px;
+  width:50%;
+  font-size:15px;
 }
 
 #textinput2 {
@@ -288,6 +229,9 @@ export default {
 　background:none;
   background-color: #ffffff;
   color:#696969;
+  height: 30px;
+  width:40%;
+  font-size:15px;
 }
 
 #textinput3 {
@@ -332,6 +276,7 @@ border-radius: 5px;
   padding-bottom: 20px;
 }
 
+
 .page2P {
   font-size: 25px;
   margin: 10px auto;
@@ -353,6 +298,64 @@ width: 30%;
 margin: 0 auto;
 padding-top: 20px;
 padding-bottom: 20px;
+}
+
+.skillsParent {
+
+}
+
+.skillsParent2 {
+display: flex;
+}
+
+
+.skillsChild {
+flex:1;
+height: 30px;
+background: #00A29A;
+border : solid 1px #f5f5f5;
+}
+
+#skillsChild1 {
+flex:1;
+height: 30px;
+background: #00A29A;
+border : solid 1px #f5f5f5;
+}
+
+#skillsChild2 {
+flex:1;
+height: 30px;
+background: #00A29A;
+border : solid 1px #f5f5f5;
+
+}
+#skillsChild3 {
+flex:1;
+height: 30px;
+background: #00A29A;
+border : solid 1px #f5f5f5;
+
+}
+#skillsChild4 {
+flex:1;
+height: 30px;
+background: #00A29A;
+border : solid 1px #f5f5f5;
+
+}
+
+#skillsChild5 {
+flex:1;
+height: 30px;
+background: #00A29A;
+border : solid 1px #f5f5f5;
+}
+
+
+
+.skillsChild:hover {
+  opacity: 0.8;
 }
 
 }
@@ -377,6 +380,9 @@ padding-bottom: 20px;
 　background:none;
   background-color: #ffffff;
   color:#696969;
+  height: 30px;
+  width:80%;
+  font-size:15px;
 }
 
 #textinput2 {
@@ -384,6 +390,9 @@ padding-bottom: 20px;
 　background:none;
   background-color: #ffffff;
   color:#696969;
+  height: 30px;
+  width:60%;
+  font-size:15px;
 }
 
 #textinput3 {

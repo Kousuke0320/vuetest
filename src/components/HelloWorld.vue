@@ -75,7 +75,12 @@ export default {
       Dtools: 0,
       cad: 0,
       hantei:0,
-      graphcount: 0
+      graphcount: 0,
+      html: 0,
+      css: 0,
+      js: 0,
+      sm: 0,
+      unity: 0
      }
     },
       created: function() {
@@ -129,6 +134,12 @@ export default {
       var XD;
       var Dtools;
       var cad;
+      var html
+      var css
+      var js
+      var sm
+      var unity
+
 
       firebase.database().ref('/users/userData/' + this.userName).on('value', function(snapshot) {
         motivation = snapshot.val().motivation
@@ -141,6 +152,11 @@ export default {
         XD = snapshot.val().XD
         Dtools = snapshot.val().Dtools
         cad = snapshot.val().cad
+        html = snapshot.val().html
+        css = snapshot.val().css
+        js = snapshot.val().js
+        sm = snapshot.val().sm
+        unity = snapshot.val().unity
         })
         this.motivation = motivation
         this.management = management
@@ -152,6 +168,11 @@ export default {
         this.XD = XD
         this.Dtools = Dtools
         this.cad = cad
+        this.html = html
+        this.css = css
+        this.js = js
+        this.sm = sm
+        this.unity = unity
     },
    fillData() {
     this.chartData = {
@@ -190,7 +211,7 @@ export default {
             }
         ]
     }
-    } else if(this.graphcount == 1){
+    } else if(this.graphcount == 2){
       this.graphcount = 0
       this.chartData = {
       labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
@@ -205,6 +226,24 @@ export default {
                     pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
                     
                     data: [this.motivation,this.management,this.design,this.communication,this.system]
+            }
+        ]
+    }
+    }else if(this.graphcount == 1){
+      this.graphcount = 2
+      this.chartData = {
+      labels: ['HTML', 'CSS', 'JavaScript', 'iOS/Android', 'Unity'],
+            datasets: [
+            {
+                  //label: false,
+                  backgroundColor: "rgba(0, 162, 154,0.4)",
+                    borderColor: "rgba(0, 162, 154,0.8)",
+                    pointBackgroundColor: "rgba(0, 162, 154,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
+                    
+                    data: [this.html,this.css,this.js,this.sm,this.unity]
             }
         ]
     }
@@ -239,6 +278,7 @@ template {
   height:100vh;
   color: #ffffff;
   position: relative;
+  font-weight: bold;
 }
 
 #name {
@@ -312,20 +352,25 @@ template {
 
 .userinformation21 {
   flex:1;
+  font-weight: bold;
 }
 .userinformation22 {
   flex:1;
+  font-weight: bold;
 }
 .userinformation23 {
   flex:1;
+  font-weight: bold;
 }
 
 .userinformation3{
   height:33%;
+  font-weight: bold;
 }
 
 .userinformation4{
   height:33%;
+  font-weight: bold;
 }
 #genderInf{
 color:#696969;
@@ -377,6 +422,7 @@ a {
   margin: 0;
   width: 100%;
   height:100vh;
+  font-weight: bold;
 }
 
 #userPrf {
@@ -440,9 +486,9 @@ a {
   color: #00A29A;
   display: flex;
   flex-direction: column;
+  
 }
 .userinformation2{
-
 display: flex;
 flex-direction: column;
 }
