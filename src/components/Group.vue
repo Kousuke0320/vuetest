@@ -39,40 +39,59 @@ import membersChart from './membersChart.vue'
 import router from '../router'
 var tintintin
 var username = []
+var SkillsCount = []
 var motivation;
 var management;
-var design;
-var communication;
-var system;
+      var design;
+      var communication;
+      var system;
+      var illustrater;
+      var photoshop;
+      var XD;
+      var Dtools;
+      var cad;
+      var html;
+      var css;
+      var js;
+      var sm;
+      var unity;
 var coment;
 var time;
+var AA;
+var BB;
+var CC;
+var DD;
+var EE;
 
 export default {
   name: 'Group',
   data () {
     return {
-
       groupName: '',
       userName:[],
       chartData: {},
-        mot:[],
-        man:[],
-        des:[],
-        com:[],
-        sys:[],
-        hantei:0,
-        reader:'',
-        time: '',
-        coment: ''
+      A:[],
+      hantei:0,
+      reader:'',
+      time: '',
+      coment: ''
      }
     },
     components: {
     membersChart
   },
   created: function(){
-      this.fillData()
+      //this.fillData()
       this.groupName = JSON.parse(localStorage.getItem('groupName')) || []
       //localStorage.setItem('groupName',JSON.stringify(''))
+      firebase.database().ref("/users/groupskills/" + this.groupName).on('value', function(snapshot) {
+        SkillsCount[0] = snapshot.val().skills1
+        SkillsCount[1] = snapshot.val().skills2
+        SkillsCount[2] = snapshot.val().skills3
+        SkillsCount[3] = snapshot.val().skills4
+        SkillsCount[4] = snapshot.val().skills5
+      })
+      
       firebase.database().ref('/users/group/' + this.groupName).on('value', function(snapshot) {
         username[0] = snapshot.val().user1
         username[1] = snapshot.val().user2
@@ -86,13 +105,14 @@ export default {
         coment = snapshot.val().coment
         time = snapshot.val().time
       })
+      
       this.coment = coment
       this.time = time
+
       this.reader = username[0]
-      var i;
-
-
-
+      var i = 0;
+      var j = 0;
+      
       for(i = 0; i < 10; i++){
           this.userName[i] = username[i]
         firebase.database().ref('/users/userData/' + username[i]).on('value', function(snapshot) {
@@ -101,13 +121,55 @@ export default {
         design = snapshot.val().design
         communication = snapshot.val().communication
         system = snapshot.val().system
+        illustrater = snapshot.val().illustrater
+        photoshop = snapshot.val().photoshop
+        XD = snapshot.val().XD
+        Dtools = snapshot.val().Dtools
+        cad = snapshot.val().cad
+        html = snapshot.val().html
+        css = snapshot.val().css
+        js = snapshot.val().js
+        sm = snapshot.val().sm
+        unity = snapshot.val().unity
         }) 
-        this.man[i] = management
-        this.mot[i] = motivation
-        this.des[i] = design
-        this.com[i] = communication
-        this.sys[i] = system 
+        this.A[i] = []
+        for(j = 0; j < 5; j++){
+          
+          if(SkillsCount[j] == "motivation"){
+            this.A[i][j] = motivation
+          }else if(SkillsCount[j] == "management"){
+            this.A[i][j] = management
+          }else if(SkillsCount[j] == "design"){
+            this.A[i][j] = design
+          }else if(SkillsCount[j] == "communication"){
+            this.A[i][j] = communication
+          }else if(SkillsCount[j] == "system"){
+            this.A[i][j] = system
+          }else if(SkillsCount[j] == "illustrater"){
+            this.A[i][j] = illustrater
+          }else if(SkillsCount[j] == "photoshop"){
+            this.A[i][j] = photoshop
+          }else if(SkillsCount[j] == "XD"){
+            this.A[i][j] = XD
+          }else if(SkillsCount[j] == "Dtools"){
+            this.A[i][j] = Dtools
+          }else if(SkillsCount[j] == "cad"){
+            this.A[i][j] = cad
+          }else if(SkillsCount[j] == "html"){
+            this.A[i][j] = html
+          }else if(SkillsCount[j] == "css"){
+            this.A[i][j] = css
+          }else if(SkillsCount[j] == "js"){
+            this.A[i][j] = js
+          }else if(SkillsCount[j] == "sm"){
+            this.A[i][j] = sm
+          }else if(SkillsCount[j] == "unity"){
+            this.A[i][j] = unity
+          } 
+        }
       }
+      
+              this.fillData()
   },
   mounted: function() {
     this.fillData()
@@ -129,7 +191,7 @@ export default {
       },
       fillData() {
     this.chartData = {
-      labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
+      labels: [SkillsCount[0],SkillsCount[1],SkillsCount[2],SkillsCount[3],SkillsCount[4]],
             datasets: [
             {
                   //label: false,
@@ -139,7 +201,7 @@ export default {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(179,181,198,0.8)",
-                    data: [this.mot[0] || 0, this.des[0] || 0, this.man[0] || 0, this.com[0] || 0, this.sys[0] || 0]
+                    data: [this.A[0][0] || 0, this.A[0][1] || 0, this.A[0][2] || 0, this.A[0][3] || 0, this.A[0][4] || 0]
             },
             {
               //label: false,
@@ -149,7 +211,7 @@ export default {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(255,99,132,0.8)",
-                    data: [this.mot[1] || 0, this.des[1] || 0, this.man[1] || 0, this.com[1] || 0, this.sys[1] || 0]
+                    data: [this.A[1][0] || 0, this.A[1][1] || 0, this.A[1][2] || 0, this.A[1][3] || 0, this.A[1][4] || 0]
             },
             {
               //label: false,
@@ -159,7 +221,7 @@ export default {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(255,255,0,0.8)",
-                    data: [this.mot[2] || 0, this.des[2] || 0, this.man[2] || 0, this.com[2] || 0, this.sys[2] || 0]
+                    data: [this.A[2][0] || 0, this.A[2][1] || 0, this.A[2][2] || 0, this.A[2][3] || 0, this.A[2][4] || 0]
             },
             {
               //label: false,
@@ -169,7 +231,7 @@ export default {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(0,255,0,0.8)",
-                    data: [this.mot[3] || 0, this.des[3] || 0, this.man[3] || 0, this.com[3] || 0, this.sys[3] || 0]
+                    data: [this.A[3][0] || 0, this.A[3][1] || 0, this.A[3][2] || 0, this.A[3][3] || 0, this.A[3][4] || 0]
             },
             {
               //label: false,
@@ -179,7 +241,7 @@ export default {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(0,0,255,0.8)",
-                    data: [this.mot[4] || 0, this.des[4] || 0, this.man[4] || 0, this.com[4] || 0, this.sys[4] || 0]
+                    data: [this.A[4][0] || 0, this.A[4][1] || 0, this.A[4][2] || 0, this.A[4][3] || 0, this.A[4][4] || 0]
             },
             {
               //label: false,
@@ -189,7 +251,7 @@ export default {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(255,99,132,1)",
-                    data: [this.mot[5] || 0, this.des[5] || 0, this.man[5] || 0, this.com[5] || 0, this.sys[5] || 0]
+                    data: [this.A[5][0] || 0, this.A[5][1] || 0, this.A[5][2] || 0, this.A[5][3] || 0, this.A[5][4] || 0]
             },
             {
               //label: false,
@@ -199,7 +261,7 @@ export default {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(255,99,132,1)",
-                    data: [this.mot[5] || 0, this.des[5] || 0, this.man[5] || 0, this.com[5] || 0, this.sys[5] || 0]
+                    data: [this.A[6][0] || 0, this.A[6][1] || 0, this.A[6][2] || 0, this.A[6][3] || 0, this.A[6][4] || 0]
             },
             {
               //label: false,
@@ -209,7 +271,7 @@ export default {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(255,99,132,1)",
-                    data: [this.mot[6] || 0, this.des[6] || 0, this.man[6] || 0, this.com[6] || 0, this.sys[6] || 0]
+                    data: [this.A[7][0] || 0, this.A[7][1] || 0, this.A[7][2] || 0, this.A[7][3] || 0, this.A[7][4] || 0]
             },
             {
               //label: false,
@@ -219,7 +281,7 @@ export default {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(255,99,132,1)",
-                    data: [this.mot[7] || 0, this.des[7] || 0, this.man[7] || 0, this.com[7] || 0, this.sys[7] || 0]
+                    data: [this.A[8][0] || 0, this.A[8][1] || 0, this.A[8][2] || 0, this.A[8][3] || 0, this.A[8][4] || 0]
             }
           ]
         }
