@@ -90,6 +90,9 @@ export default {
       this.time = time
       this.reader = username[0]
       var i;
+
+
+
       for(i = 0; i < 10; i++){
           this.userName[i] = username[i]
         firebase.database().ref('/users/userData/' + username[i]).on('value', function(snapshot) {
@@ -105,8 +108,6 @@ export default {
         this.com[i] = communication
         this.sys[i] = system 
       }
-      
-      
   },
   mounted: function() {
     this.fillData()

@@ -33,11 +33,25 @@
           {{ skillscount }}
           {{ skillscount2 }}
           <div class="skillsParent2">
-          <div class="skillsChild" @click="skillsPlusA" >aaa</div>
-          <div class="skillsChild" @click="skillsPlusB">aaa</div>
-          <div class="skillsChild" @click="skillsPlusC">aaa</div>
-          <div class="skillsChild" @click="skillsPlusD">aaa</div>
-          <div class="skillsChild" @click="skillsPlusE">aaa</div>
+          <div class="skillsChild" @click="skillsPlusA">#Motivatino</div>
+          <div class="skillsChild" @click="skillsPlusB">#Design</div>
+          <div class="skillsChild" @click="skillsPlusC">#Management</div>
+          <div class="skillsChild" @click="skillsPlusD">#Communication</div>
+          <div class="skillsChild" @click="skillsPlusE">#System</div>
+          </div>
+           <div class="skillsParent2">
+          <div class="skillsChild" @click="skillsPlusF">#Illustrater</div>
+          <div class="skillsChild" @click="skillsPlusG">#Photoshop</div>
+          <div class="skillsChild" @click="skillsPlusH">#XD</div>
+          <div class="skillsChild" @click="skillsPlusI">#3Dtools</div>
+          <div class="skillsChild" @click="skillsPlusJ">#Cad</div>
+          </div>
+           <div class="skillsParent2">
+          <div class="skillsChild" @click="skillsPlusK" >#HTML5</div>
+          <div class="skillsChild" @click="skillsPlusL">#CSS3</div>
+          <div class="skillsChild" @click="skillsPlusM">#JavaScript</div>
+          <div class="skillsChild" @click="skillsPlusN">#iOS/Android</div>
+          <div class="skillsChild" @click="skillsPlusO">#Unity</div>
           </div>
           </div>  
           </div>
@@ -128,27 +142,76 @@ export default {
                   coment: this.coment,
                   time: this.time
       })
+
+        firebase.database().ref("/users/groupskills/" + this.groupName).update({
+                         skills1: this.skillscount[0],
+                         skills2: this.skillscount[1],
+                         skills3: this.skillscount[2],
+                         skills4: this.skillscount[3],
+                         skills5: this.skillscount[4],
+                         })
+
       alert('Make Group')  
       }   
     },
     skillsPlusA: function() {
-      //this.skillscount[skillscount2] = "aaa"
+      this.skillscount[this.skillscount2] = "motivation"
       this.skillscount2 ++
     },
     skillsPlusB: function() {
-      //this.skillscount[skillscount2] = "motivation"
+      this.skillscount[this.skillscount2] = "design"
       this.skillscount2 ++
     },
     skillsPlusC: function() {
-      //this.skillscount[skillscount2] = "motivation"
+      this.skillscount[this.skillscount2] = "management"
       this.skillscount2 ++
     },
     skillsPlusD: function() {
-      //this.skillscount[skillscount2] = "motivation"
+      this.skillscount[this.skillscount2] = "communication"
       this.skillscount2 ++
     },
     skillsPlusE: function() {
-      //this.skillscount[skillscount2] = "motivation"
+      this.skillscount[this.skillscount2] = "system"
+      this.skillscount2 ++
+    },
+    skillsPlusF: function() {
+      this.skillscount[this.skillscount2] = "illustrater"
+      this.skillscount2 ++
+    },
+    skillsPlusG: function() {
+      this.skillscount[this.skillscount2] = "photoshop"
+      this.skillscount2 ++
+    },
+    skillsPlusH: function() {
+      this.skillscount[this.skillscount2] = "XD"
+      this.skillscount2 ++
+    },
+    skillsPlusI: function() {
+      this.skillscount[this.skillscount2] = "Dtools"
+      this.skillscount2 ++
+    },
+    skillsPlusJ: function() {
+      this.skillscount[this.skillscount2] = "cad"
+      this.skillscount2 ++
+    },
+    skillsPlusK: function() {
+      this.skillscount[this.skillscount2] = "html"
+      this.skillscount2 ++
+    },
+    skillsPlusL: function() {
+      this.skillscount[this.skillscount2] = "css"
+      this.skillscount2 ++
+    },
+    skillsPlusM: function() {
+      this.skillscount[this.skillscount2] = "js"
+      this.skillscount2 ++
+    },
+    skillsPlusN: function() {
+      this.skillscount[this.skillscount2] = "sm"
+      this.skillscount2 ++
+    },
+    skillsPlusO: function() {
+      this.skillscount[this.skillscount2] = "unity"
       this.skillscount2 ++
     },
     research: function() {
