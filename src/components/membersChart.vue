@@ -89,7 +89,7 @@ export default {
           //color: '#00A29A'
           }
         },
-        pointLabelFontSize : 14,
+        pointLabelFontSize : 18,
         scaleOverride : true,
         scaleSteps : 8,
         scaleStepWidth : 2,

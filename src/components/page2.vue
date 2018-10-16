@@ -155,64 +155,138 @@ export default {
       }   
     },
     skillsPlusA: function() {
-      this.skillscount[this.skillscount2] = "motivation"
-      this.skillscount2 ++
+      if(this.skillscount2 < 5){
+        this.skillscount[this.skillscount2] = "motivation"
+        this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusB: function() {
-      this.skillscount[this.skillscount2] = "design"
+      
+      if(this.skillscount2 < 5){
+        this.skillscount[this.skillscount2] = "design"
       this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusC: function() {
-      this.skillscount[this.skillscount2] = "management"
+      
+      if(this.skillscount2 < 5){
+        this.skillscount[this.skillscount2] = "management"
       this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusD: function() {
-      this.skillscount[this.skillscount2] = "communication"
+            if(this.skillscount2 < 5){
+        this.skillscount[this.skillscount2] = "communication"
       this.skillscount2 ++
+
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusE: function() {
-      this.skillscount[this.skillscount2] = "system"
+      
+      if(this.skillscount2 < 5){
+        this.skillscount[this.skillscount2] = "system"
       this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusF: function() {
-      this.skillscount[this.skillscount2] = "illustrater"
+      
+      if(this.skillscount2 < 5){
+        this.skillscount[this.skillscount2] = "illustrater"
       this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusG: function() {
-      this.skillscount[this.skillscount2] = "photoshop"
+      
+      if(this.skillscount2 < 5){
+        this.skillscount[this.skillscount2] = "photoshop"
       this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusH: function() {
-      this.skillscount[this.skillscount2] = "XD"
+      
+      if(this.skillscount2 < 5){
+        this.skillscount[this.skillscount2] = "XD"
       this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusI: function() {
-      this.skillscount[this.skillscount2] = "Dtools"
+      
+      if(this.skillscount2 < 5){
+        this.skillscount[this.skillscount2] = "Dtools"
       this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusJ: function() {
-      this.skillscount[this.skillscount2] = "cad"
+      
+      if(this.skillscount2 < 5){
+        this.skillscount[this.skillscount2] = "cad"
       this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusK: function() {
-      this.skillscount[this.skillscount2] = "html"
+     
+      if(this.skillscount2 < 5){
+        this.skillscount[this.skillscount2] = "html"
       this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusL: function() {
-      this.skillscount[this.skillscount2] = "css"
+      
+      if(this.skillscount2 < 5){
+       this.skillscount[this.skillscount2] = "css"
       this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusM: function() {
-      this.skillscount[this.skillscount2] = "js"
+      
+      if(this.skillscount2 < 5){
+        this.skillscount[this.skillscount2] = "js"
       this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusN: function() {
-      this.skillscount[this.skillscount2] = "sm"
+      
+      if(this.skillscount2 < 5){
+       this.skillscount[this.skillscount2] = "sm"
       this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     skillsPlusO: function() {
-      this.skillscount[this.skillscount2] = "unity"
+     
+      if(this.skillscount2 < 5){
+        this.skillscount[this.skillscount2] = "unity"
       this.skillscount2 ++
+      }else{
+        alert("Only 5 methods")
+      }
     },
     research: function() {
       var getUsersPrf = firebase.database().ref('/users/userPrf/' + this.user)
@@ -249,10 +323,16 @@ export default {
         add: function () {
 
     var useuse = JSON.parse(localStorage.getItem('memberName'))
+    if(this.count < 10){
     this.userNum[this.count] = useuse
     this.count = this.count + 1
     document.getElementById("member").style.display ="none";
     this.user = ""
+    }else {
+      alert("There are only 10 members")
+      document.getElementById("member").style.display ="none";
+    this.user = ""
+    }
     }
   }
 }
@@ -337,6 +417,7 @@ border-radius: 5px;
   background: #f5f5f5;
   padding-top:5px;
   padding-bottom: 20px;
+  box-shadow: 7px 7px #F2F2F2;
 }
 
 
@@ -496,6 +577,7 @@ border-radius: 5px;
   background: #f5f5f5;
   padding-top:5px;
   padding-bottom: 20px;
+  box-shadow: 4px 4px #F2F2F2;
 }
 
 .page2P {
@@ -520,6 +602,15 @@ margin: 0 auto;
 padding-top: 20px;
 padding-bottom: 20px;
 }
+
+.skillsChild {
+margin: 0 auto;
+height: 30px;
+width:50%;
+background: #00A29A;
+border : solid 1px #f5f5f5;
+}
+
 
 }
 

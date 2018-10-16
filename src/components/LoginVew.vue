@@ -6,6 +6,9 @@
     <section @click="logingoogle">
       <p>Login</p>
     </section>
+    <section @click="logingoogle2">
+      <p>Login2</p>
+    </section>
     <!--<section @click="loginfacebook">
       <p>Login</p>
     </section>-->
@@ -17,6 +20,9 @@ import router from '../router'
 
 var user;
 var userComent;
+var token;
+var userName;
+var photoURL;
 export default {
   name: 'LoginVew',
   data () {
@@ -43,6 +49,30 @@ export default {
       this.photoURL = JSON.parse(localStorage.getItem('photoURL')) || [];
     },
     methods: {
+      logingoogle2: function() {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithRedirect(provider);
+        firebase.auth().getRedirectResult().then(
+        result => {
+          alert("tintin1")
+        user = result.user;
+        alert("tintin2")
+        
+        firebase.database().ref('/users/userPrf/' + user.displayName).update({
+            photo:user.photoURL,
+          })
+
+          localStorage.setItem('userName',JSON.stringify(user.displayName));
+        localStorage.setItem('count',1);
+        localStorage.setItem('count2',1);
+        location.reload();
+          router.push({ path: '/helloworld' });
+          alert("tintin4")
+          //setTimeout(router.push({ path: '/helloworld' }), 10000)
+      },
+       error  => {alert("Login failure")}
+        )
+        },
       logingoogle: function(){
       //userComent = JSON.parse(localStorage.getItem('coment')) || []  
       var provider = new firebase.auth.GoogleAuthProvider();
@@ -66,9 +96,10 @@ export default {
           router.push({ path: '/helloworld' });
           
           },
-        error  => {alert("ログインに失敗しました")})
+        error  => {alert("Login failure")})
         
       },
+      /*
       loginfacebook () {
         var provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -88,7 +119,7 @@ export default {
   alert("error")
   // ...
 });
-      }
+      }*/
     }    
 }
 
