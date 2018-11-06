@@ -287,7 +287,7 @@ export default {
 </script>
 
 <style scoped="scoped">
-@media (min-width:700px) {
+@media (min-width:1080px) {
 
 #config {
   margin:0;
@@ -419,7 +419,7 @@ h1{
 
 }
 
-@media (max-width: 699px){
+@media (max-width: 1079px){
   #config {
   margin:0;
   font-size: 15px;

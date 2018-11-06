@@ -292,7 +292,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-@media (min-width: 700px){
+@media (min-width: 1080px){
 template {
   width: 100%;
   height:100vh;
@@ -402,7 +402,7 @@ a {
 
 }
 
-@media (max-width: 699px){
+@media (max-width: 1079px){
   template {
   width: 100%;
   margin:0;

@@ -36,10 +36,17 @@
         <div id="majorInf"></div>
       </div>
       </div>
-      <div id="rader">
+            <div id="rader">
+              <div class="shika" id="shika">
+        <div class="shika1" id="shika1" @click="changeGraph"></div>
+        <div class="shika2" id="shika2"></div>
+        <div class="shika3" id="shika3"></div>
+        <div class="shika4" id="shika4"></div>
+        <div class="shika5" id="shika5" @click="changeGraph"></div>
+        </div>
+
       <members-chart :chartData="chartData" :height="300"></members-chart>
     </div>
-    <button @click="changeGraph">ChangeData</button>
     </div>
   </div>
   </div>
@@ -193,7 +200,11 @@ export default {
     }
   },
   changeGraph() {
+
     if (this.graphcount == 0){
+      document.getElementById("shika3").style.backgroundColor = '#00A29A'
+      document.getElementById("shika2").style.backgroundColor = '#696969'
+      document.getElementById("shika4").style.backgroundColor = '#696969'
      this.graphcount = 1
     this.chartData = {
       labels: ['Illustrater', 'Photoshop', 'XD', '3Dtools', 'Cad'],
@@ -212,6 +223,9 @@ export default {
         ]
     }
     } else if(this.graphcount == 2){
+      document.getElementById("shika2").style.backgroundColor = '#00A29A'
+            document.getElementById("shika4").style.backgroundColor = '#696969'
+      document.getElementById("shika3").style.backgroundColor = '#696969'
       this.graphcount = 0
       this.chartData = {
       labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
@@ -230,6 +244,9 @@ export default {
         ]
     }
     }else if(this.graphcount == 1){
+      document.getElementById("shika4").style.backgroundColor = '#00A29A'
+            document.getElementById("shika2").style.backgroundColor = '#696969'
+      document.getElementById("shika3").style.backgroundColor = '#696969'
       this.graphcount = 2
       this.chartData = {
       labels: ['HTML', 'CSS', 'JavaScript', 'iOS/Android', 'Unity'],
@@ -393,6 +410,61 @@ color:#696969;
 font-size: 25px;
 }
 
+.shika {
+  width: 200px;
+  margin: 30px auto;
+  display: flex;
+}
+
+
+.shika1 {
+   margin: 0 10px;
+  width: 0;
+height: 0;
+border-top: 10px solid transparent;
+border-right: 20px solid #00A29A;
+border-bottom: 10px solid transparent;
+}
+
+.shika1:hover{
+  opacity: 0.5;
+}
+
+.shika2 {
+  margin: 3px 10px;
+width: 15px;
+height: 15px;
+border-radius: 50%;
+background: #00A29A;
+}
+.shika3 {
+  margin: 3px 10px;
+width: 15px;
+height: 15px;
+border-radius: 50%;
+background: #696969;
+}
+.shika4 {
+  margin: 3px 10px;
+width: 15px;
+height: 15px;
+border-radius: 50%;
+background: #696969;
+}
+.shika5 {
+  margin: 0 10px;
+width: 0;
+height: 0;
+border-left: 20px solid #00A29A;
+border-top: 10px solid transparent;
+border-bottom: 10px solid transparent;}
+
+.shika5:hover{
+  opacity: 0.5;
+}
+
+
+
 h1,
 h2 {
   margin-top: 20px;
@@ -475,7 +547,7 @@ a {
 }
 
 #rader {
-  margin:20px auto;
+  margin:10px auto;
   width:80vw;
 }
 
@@ -535,6 +607,56 @@ font-size: 25px;
   display: flex;
   flex-direction: column-reverse;
 }
+
+.shika {
+  width: 200px;
+  margin: 20px auto;
+  display: flex;
+}
+
+
+.shika1 {
+   margin: 0 10px;
+  width: 0;
+height: 0;
+border-top: 10px solid transparent;
+border-right: 20px solid #00A29A;
+border-bottom: 10px solid transparent;
+}
+
+.shika2 {
+  margin: 3px 10px;
+width: 15px;
+height: 15px;
+border-radius: 50%;
+background: #00A29A;
+opacity: 0.8;
+}
+.shika3 {
+  margin: 3px 10px;
+width: 15px;
+height: 15px;
+border-radius: 50%;
+background: #696969;
+opacity: 0.8;
+}
+.shika4 {
+  margin: 3px 10px;
+width: 15px;
+height: 15px;
+border-radius: 50%;
+background: #696969;
+opacity: 0.8;
+}
+.shika5 {
+  margin: 0 10px;
+width: 0;
+height: 0;
+border-left: 20px solid #00A29A;
+border-top: 10px solid transparent;
+border-bottom: 10px solid transparent;}
+
+
 
 h1,
 h2 {

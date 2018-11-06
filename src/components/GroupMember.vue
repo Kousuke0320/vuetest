@@ -40,7 +40,7 @@
       <div id="rader3">
       <members-chart :chartData="chartData" :height="300"></members-chart>
     </div>
-    <button @click="changeGraph">ChangeData</button>
+    <!--<button @click="changeGraph">ChangeData</button>-->
     </div>
   </div>
     

@@ -60,6 +60,7 @@
         <textarea id="comconf2"  v-model="coment" placeholder="Comment here"></textarea><br>
         </div>
         <button id="pagesubmit" @click="addData">Make Group</button><br>
+        
     </div>
   </div>
 </template>
@@ -74,6 +75,7 @@ var management;
 var design;
 var communication;
 var system;
+var userA;
 
 export default {
   name: 'page2',
@@ -101,6 +103,7 @@ export default {
     membersChart
   },
   created () {
+    
     this.userName = JSON.parse(localStorage.getItem('userName')) || []
     this.userNum[0] = this.userName
    //this.fillData()
@@ -109,7 +112,9 @@ export default {
   },
   mounted: function() {
     //localStorage.setItem('memberName',JSON.stringify(this.user))
+    
     document.getElementById("member").style.display ="none";
+
     },
   methods: {
     addData: function() {
@@ -341,7 +346,7 @@ export default {
 
 <style>
 
-@media (min-width: 700px){
+@media (min-width: 1080px){
 
 #group {
   font-size: 15px;
@@ -504,7 +509,7 @@ border : solid 1px #f5f5f5;
 
 }
 
-@media (max-width: 699px){
+@media (max-width: 1079px){
 #group {
   font-size: 15px;
 }

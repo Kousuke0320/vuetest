@@ -3,12 +3,14 @@
     <div id="loginPic">
     <img src="../assets/pentagon_icon.png">
     </div>
+    
     <section @click="logingoogle">
       <p>Login</p>
     </section>
-    <section @click="logingoogle2">
-      <p>Login2</p>
-    </section>
+    <!--<section @click="logingoogle2">
+      <p>tintin</p>
+    </section>-->
+    
     <!--<section @click="loginfacebook">
       <p>Login</p>
     </section>-->
@@ -23,12 +25,14 @@ var userComent;
 var token;
 var userName;
 var photoURL;
+
 export default {
   name: 'LoginVew',
   data () {
     return {
         userName: '',
-        photoURL: ''
+        photoURL: '',
+        hantei: 0
     }
     },
     watch: {
@@ -45,8 +49,31 @@ export default {
       }
     },
     mounted: function() {
-      this.userName = JSON.parse(localStorage.getItem('userName')) || [];
-      this.photoURL = JSON.parse(localStorage.getItem('photoURL')) || [];
+      /*if(this.hantei = 1){
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+        this.userName = user.displayName
+        localStorage.setItem('userName',JSON.stringify(user.displayName));
+        localStorage.setItem('count',1);
+        localStorage.setItem('count2',1);
+        firebase.database().ref('/users/userPrf/' + user.displayName).update({
+            photo:user.photoURL,
+        })
+        location.reload();
+          router.push({ path: '/helloworld' });
+          //alert("tintin4")
+    // サインインしていない状態
+    // サインイン画面に遷移する等
+    // 例:
+  } else {
+    this.logingoogle2()
+    // サインイン済み
+    //alert("tintin2")
+
+  }
+});
+}
+      */
     },
     methods: {
       logingoogle2: function() {
@@ -54,20 +81,9 @@ export default {
         firebase.auth().signInWithRedirect(provider);
         firebase.auth().getRedirectResult().then(
         result => {
-          alert("tintin1")
+          //alert("tintin1")
         user = result.user;
-        alert("tintin2")
-        
-        firebase.database().ref('/users/userPrf/' + user.displayName).update({
-            photo:user.photoURL,
-          })
-
-          localStorage.setItem('userName',JSON.stringify(user.displayName));
-        localStorage.setItem('count',1);
-        localStorage.setItem('count2',1);
-        location.reload();
-          router.push({ path: '/helloworld' });
-          alert("tintin4")
+        this.hantei = 1;
           //setTimeout(router.push({ path: '/helloworld' }), 10000)
       },
        error  => {alert("Login failure")}
@@ -79,7 +95,6 @@ export default {
       
       firebase.auth().signInWithPopup(provider).then(
         result => {
-          
           user = result.user;
           this.userName = user.displayName;
           this.photoURL = user.photoURL;

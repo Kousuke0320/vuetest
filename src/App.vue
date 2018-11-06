@@ -168,7 +168,7 @@ export default {
 }
 }*/
 
-@media (min-width: 700px){
+@media (min-width: 1080px){
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -227,7 +227,6 @@ export default {
   0% {width: 0px;}
   100% {width: 300px;}
 }
-
 
 /* チェックボックスを非表示 */
 .check {
@@ -476,7 +475,7 @@ font-size: 18px;
   
 }
 
-@media (max-width: 699px){
+@media (max-width: 1079px){
   #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -559,7 +558,7 @@ font-size: 18px;
 .close-menu {
     position: fixed;
     top: 0;
-    right: 300px;
+    right: 250px;
     width: 100%;
     height: 100%;
     visibility: hidden;
@@ -584,7 +583,7 @@ margin-top:60px;
 }
 
 #GroupTantai {
-  width: 60%;
+  width: 150px;
   height: auto;
   background: rgb(85,85,85);
   color:#fff;
@@ -611,7 +610,7 @@ margin-top:60px;
 }
 
 #homebutton img {
-  max-width:80%;
+  max-width:30px;
 }
 
 
@@ -645,7 +644,7 @@ flex: 1;
 }
 
 #logoutbutton img {
-max-width:80%;
+max-width:30px;
 }
 
 
@@ -692,7 +691,7 @@ font-size: 18px;
 }
 
 #confbutton img {
-  max-width:80%;
+  max-width:30px;
 }
 
 
@@ -727,7 +726,7 @@ font-size: 18px;
 }
 
 #plus img {
-  max-width:80%;
+  max-width:30px;
 }
 
 
