@@ -16,6 +16,7 @@
         <div id="userComment22">
         {{ coment }}
         </div>
+        <div id="deleatButton" @click="removeGroup"></div>
         </div>
       
     </div>
@@ -23,13 +24,24 @@
   </div>
   <div id="chart2">
     <div id="rader2">
+      <div class="shika" id="shika0">
+        <div class="shika1" id="shika1" @click="test1"></div>
+        <div class="shika2" id="shika2"></div>
+        <div class="shika3" id="shika3"></div>
+        <div class="shika4" id="shika4"></div>
+        <div class="shika6" id="shika6"></div>
+        <div class="shika5" id="shika5"></div>
+        </div>
       <members-chart :chartData="chartData" :height="300"></members-chart>
     </div>
     <div id="line2">
       <h2>Member</h2>
         <div id="memberHyouzin" v-for="(item,index) in userName" @click="memberProfile(index)">
           {{item}}</div><br>
+          <div id="memberHyou" v-for="(item) in list">
+          {{item}}</div><br>
     </div>
+    
   </div>
   </div>
 </div>
@@ -42,19 +54,19 @@ var username = []
 var SkillsCount = []
 var motivation;
 var management;
-      var design;
-      var communication;
-      var system;
-      var illustrater;
-      var photoshop;
-      var XD;
-      var Dtools;
-      var cad;
-      var html;
-      var css;
-      var js;
-      var sm;
-      var unity;
+var design;
+var communication;
+var system;
+var illustrater;
+var photoshop;
+var XD;
+var Dtools;
+var cad;
+var html;
+var css;
+var js;
+var sm;
+var unity;
 var coment;
 var time;
 var AA;
@@ -74,7 +86,9 @@ export default {
       hantei:0,
       reader:'',
       time: '',
-      coment: ''
+      coment: '',
+      list:[],
+      userMe: '',
      }
     },
     components: {
@@ -168,14 +182,40 @@ export default {
           } 
         }
       }
+       this.userMe = localStorage.getItem("userName")
+
+      firebase.database().ref('/users/userGroup/' + this.userMe).on('value', snapshot => { // eslint-disable-line
+          if (snapshot) {
+            const rootList2 = snapshot.val();
+            let list2 = [];
+            Object.keys(rootList2).forEach((val, key) => {
+              rootList2[val].id = val;
+              list2.push(rootList2[val]);
+            })
+            this.list = list2; 
+            /*
+            Object.keys(this.list).forEach(function(key){
+              if(this.list[key].Group = this.GroupName){
+                alert("tinko")
+                //firebase.database().ref('/users/userGroup/' + this.userName + this.list[].id).remove();   
+             }
+            })*/
+          }
+        })
       
               this.fillData()
   },
   mounted: function() {
     this.fillData()
     setTimeout(this.countHantei2, 1000);
+    
   },
   methods: {
+    removeGroup () {
+      //firebase.database().ref('/users/group/' + this.groupName).remove();
+      //firebase.database().ref('/users/groupskills/' + this.groupName).remove();
+            console.log(this.list[0].Group)
+    },
     countHantei2() {
       this.hantei = localStorage.getItem('count2')
       if(this.hantei == 1){
@@ -188,6 +228,12 @@ export default {
       memberProfile(index) {
           localStorage.setItem('groupMemberName',JSON.stringify(this.userName[index]))
           router.push({ path: '/groupmember' })
+      },
+      test1() {
+        this.chartData["labels"] = ['Motivation', 'design', 'Management', 'Communication', 'System']
+        console.log(this.chartData["labels"])
+        console.log("manman")
+
       },
       fillData() {
     this.chartData = {
@@ -383,6 +429,13 @@ display: flex;
     opacity: 0.5;
 }
 
+#memberHyou{
+  width:50%;
+    height:auto;
+    margin:5px auto;
+    background: #f2f2f2
+}
+
 h1,
 h2 {
   margin-top: 20px;
@@ -398,6 +451,12 @@ li {
 }
 a {
   color: #42b983;
+}
+
+#deleatButton {
+  width:30px;
+  height: 30px;
+  background: #696969;
 }
 
 }
@@ -500,6 +559,13 @@ li {
 a {
   color: #42b983;
 }
+
+#deleatButton {
+  width:30px;
+  height: 30px;
+  background: #696969;
+}
+
 
 }
 </style>

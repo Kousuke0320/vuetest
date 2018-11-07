@@ -38,14 +38,14 @@
       </div>
             <div id="rader">
               <div class="shika" id="shika">
-        <div class="shika1" id="shika1" @click="changeGraph"></div>
+        <div class="shika1" id="shika1" @click="test1"></div>
         <div class="shika2" id="shika2"></div>
         <div class="shika3" id="shika3"></div>
         <div class="shika4" id="shika4"></div>
         <div class="shika5" id="shika5" @click="changeGraph"></div>
         </div>
 
-      <members-chart :chartData="chartData" :height="300"></members-chart>
+      <members-chart :chartData="chartData"  :height="300"></members-chart>
     </div>
     </div>
   </div>
@@ -87,7 +87,7 @@ export default {
       css: 0,
       js: 0,
       sm: 0,
-      unity: 0
+      unity: 0,
      }
     },
       created: function() {
@@ -122,6 +122,7 @@ export default {
     setTimeout(this.countHantei, 5000)
     
   },
+  
   methods:{
     countHantei() {
       this.hantei = localStorage.getItem('count')
@@ -181,6 +182,11 @@ export default {
         this.sm = sm
         this.unity = unity
     },
+    test1() {
+        this.chartData["labels"] = ['Motivation', 'design', 'Management', 'Communication', 'System']
+        console.log(this.chartData["labels"])
+        console.log("manman")
+      },
    fillData() {
     this.chartData = {
       labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
@@ -193,7 +199,6 @@ export default {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
-                    
                     data: [this.motivation,this.design,this.management,this.communication,this.system]
             }
         ]
@@ -451,6 +456,8 @@ height: 15px;
 border-radius: 50%;
 background: #696969;
 }
+
+
 .shika5 {
   margin: 0 10px;
 width: 0;

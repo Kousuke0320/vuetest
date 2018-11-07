@@ -38,6 +38,14 @@
       </div>
       </div>
       <div id="rader3">
+        <div class="shika" id="shika0">
+        <div class="shika1" id="shika1" @click="changeGraph"></div>
+        <div class="shika2" id="shika2"></div>
+        <div class="shika3" id="shika3"></div>
+        <div class="shika4" id="shika4"></div>
+        <div class="shika6" id="shika6"></div>
+        <div class="shika5" id="shika5" @click="changeGraph"></div>
+        </div>
       <members-chart :chartData="chartData" :height="300"></members-chart>
     </div>
     <!--<button @click="changeGraph">ChangeData</button>-->
@@ -223,6 +231,11 @@ export default {
   changeGraph() {
     if (this.graphcount == 0){
      this.graphcount = 1
+     document.getElementById("shika3").style.backgroundColor = '#00A29A'
+      document.getElementById("shika2").style.backgroundColor = '#696969'
+      document.getElementById("shika4").style.backgroundColor = '#696969'
+      document.getElementById("shika6").style.backgroundColor = '#696969'
+
     this.chartData = {
       labels: ['Illustrater', 'Photoshop', 'XD', '3Dtools', 'Cad'],
             datasets: [
@@ -239,8 +252,13 @@ export default {
             }
         ]
     }
-    } else if(this.graphcount == 2){
-      this.graphcount = 3
+    } else if(this.graphcount == 1){
+      this.graphcount = 2
+      document.getElementById("shika3").style.backgroundColor = '#696969'
+      document.getElementById("shika2").style.backgroundColor = '#696969'
+      document.getElementById("shika4").style.backgroundColor = '#00A29A'
+      document.getElementById("shika6").style.backgroundColor = '#696969'
+
       this.chartData = {
       labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
             datasets: [
@@ -257,8 +275,14 @@ export default {
             }
         ]
     }
-    }else if(this.graphcount == 1){
-      this.graphcount = 2
+    }else if(this.graphcount == 2){
+      this.graphcount = 3
+      document.getElementById("shika3").style.backgroundColor = '#696969'
+      document.getElementById("shika2").style.backgroundColor = '#696969'
+      document.getElementById("shika4").style.backgroundColor = '#696969'
+      document.getElementById("shika6").style.backgroundColor = '#00A29A'
+
+    
       this.chartData = {
       labels: ['HTML', 'CSS', 'JavaScript', 'iOS/Android', 'Unity'],
             datasets: [
@@ -277,6 +301,13 @@ export default {
     }
     }else if(this.graphcount == 3){
       this.graphcount = 0
+      document.getElementById("shika3").style.backgroundColor = '#696969'
+      document.getElementById("shika2").style.backgroundColor = '#00A29A'
+      document.getElementById("shika4").style.backgroundColor = '#696969'
+      document.getElementById("shika6").style.backgroundColor = '#00A29A'
+
+      
+
 this.chartData = {
       labels: [SkillsCount[0], SkillsCount[1], SkillsCount[2], SkillsCount[3], SkillsCount[4]],
             datasets: [
@@ -401,6 +432,19 @@ li {
 }
 a {
   color: #42b983;
+}
+.shika6 {
+   margin: 3px 10px;
+width: 15px;
+height: 15px;
+border-radius: 50%;
+background: #696969;
+}
+
+#shika0{
+  width: 240px;
+  margin: 30px auto;
+  display: flex;
 }
 
 }

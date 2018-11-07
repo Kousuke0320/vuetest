@@ -115,8 +115,10 @@ export default {
             this.list = list;
           }
         })
+        
       },
       memberKakunin (index) {
+        localStorage.setItem('Index', index);
         var GroupName = this.list[index].Group
         localStorage.setItem('groupName',JSON.stringify(GroupName))
       router.push({ path: '/margin' })
