@@ -185,7 +185,6 @@ export default {
     test1() {
         this.chartData["labels"] = ['Motivation', 'design', 'Management', 'Communication', 'System']
         console.log(this.chartData["labels"])
-        console.log("manman")
       },
    fillData() {
     this.chartData = {

@@ -16,7 +16,8 @@
         <div id="userComment22">
         {{ coment }}
         </div>
-        <div id="deleatButton" @click="removeGroup"></div>
+        <!--
+        <div id="deleatButton" @click="removeGroup"></div>-->
         </div>
       
     </div>

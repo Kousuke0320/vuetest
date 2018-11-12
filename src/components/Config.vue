@@ -4,6 +4,10 @@
       <div id="inf1">
         <h1>User Profile</h1>
         <div class="InfBox">
+          <p>User Name</p>
+          <input type="text" class="inputText" v-model="user"/><br>
+        </div>
+        <div class="InfBox">
           <p>Gender</p>
         <select name="genderSel" v-model="gender">
         <option value="Man">Man</option>
@@ -160,6 +164,7 @@ export default {
   name: 'Config',
   data () {
     return {
+      user:'',
       userName: '',
       photoURL: '',
       tintin: [],

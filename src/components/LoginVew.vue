@@ -3,17 +3,9 @@
     <div id="loginPic">
     <img src="../assets/pentagon_icon.png">
     </div>
-    
-    <section @click="logingoogle">
+    <section @click="logingoogle2">
       <p>Login</p>
     </section>
-    <!--<section @click="logingoogle2">
-      <p>tintin</p>
-    </section>-->
-    
-    <!--<section @click="loginfacebook">
-      <p>Login</p>
-    </section>-->
   </div>
 </template>
 
@@ -42,54 +34,63 @@ export default {
       },
       photoURL: {
         handler2: function() {
+          
           //localStorage.setItem('photoURL',JSON.stringify(this.photoURL));
         }
       },
       deep: true 
       }
     },
-    mounted: function() {
-      /*if(this.hantei = 1){
+    beforeCreate () {
+      this.hantei = 0;
       firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-        this.userName = user.displayName
+       if(user){  
+         this.userName = user.displayName
         localStorage.setItem('userName',JSON.stringify(user.displayName));
         localStorage.setItem('count',1);
         localStorage.setItem('count2',1);
         firebase.database().ref('/users/userPrf/' + user.displayName).update({
             photo:user.photoURL,
         })
-        location.reload();
+             
           router.push({ path: '/helloworld' });
-          //alert("tintin4")
-    // サインインしていない状態
-    // サインイン画面に遷移する等
-    // 例:
-  } else {
-    this.logingoogle2()
-    // サインイン済み
-    //alert("tintin2")
-
-  }
-});
-}
-      */
+          location.reload();
+          }
+      })
     },
+    created (){
+      
+    },
+    mounted: function() {
+      
+},
+      
+    
     methods: {
       logingoogle2: function() {
-        var provider = new firebase.auth.GoogleAuthProvider();
+        var promise = Promise.resolve();
+        promise
+        .then(this.logingoogle21())
+        
+        
+        },
+        logingoogle21: function() {
+          var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithRedirect(provider);
         firebase.auth().getRedirectResult().then(
         result => {
           //alert("tintin1")
         user = result.user;
-        this.hantei = 1;
-          //setTimeout(router.push({ path: '/helloworld' }), 10000)
+        
+        //location.reload();
+          //router.push({ path: '/helloworld' });
+        //setTimeout(router.push({ path: '/helloworld' }), 10000)
       },
        error  => {alert("Login failure")}
         )
         },
-      logingoogle: function(){
+       
+      /*logingoogle: function(){
       //userComent = JSON.parse(localStorage.getItem('coment')) || []  
       var provider = new firebase.auth.GoogleAuthProvider();
       
@@ -113,7 +114,7 @@ export default {
           },
         error  => {alert("Login failure")})
         
-      },
+      },*/
       /*
       loginfacebook () {
         var provider = new firebase.auth.FacebookAuthProvider();

@@ -146,8 +146,8 @@ export default {
       logout() {
         firebase.auth().signOut().then(function() {
           localStorage.setItem('userName'," ")
-          location.reload()
           router.push({ path: '/' })
+          location.reload()
           setTimeout(this.check, 250)
           
   // Sign-out successful.
@@ -585,7 +585,7 @@ margin-top:60px;
 }
 
 #GroupTantai {
-  width: 150px;
+  max-width: 150px;
   height: auto;
   background: rgb(85,85,85);
   color:#fff;
