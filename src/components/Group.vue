@@ -209,7 +209,13 @@ export default {
   mounted: function() {
     this.fillData()
     setTimeout(this.countHantei2, 1000);
-    
+    console.log(this.A[0][0])
+    console.log(this.A[1][0])
+    console.log(this.A[2][0])
+    console.log(this.A[3][0])
+    console.log(this.A[4][0])
+    console.log(this.A[5][0])
+    console.log(this.A[6][0])
   },
   methods: {
     removeGroup () {

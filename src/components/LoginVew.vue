@@ -1,11 +1,14 @@
 <template>
-  <div id="">
+  <div id="loginview">
+    <div id="loginLoading" v-show="loading">Loading...</div>
+    <div id="loginLadingTrue" v-show="!loading">
     <div id="loginPic">
     <img src="../assets/pentagon_icon.png">
     </div>
     <section @click="logingoogle2">
       <p>Login</p>
     </section>
+    </div>
   </div>
 </template>
 
@@ -24,7 +27,8 @@ export default {
     return {
         userName: '',
         photoURL: '',
-        hantei: 0
+        hantei: 0,
+        loading: true
     }
     },
     watch: {
@@ -43,8 +47,10 @@ export default {
     },
     beforeCreate () {
       this.hantei = 0;
+      
       firebase.auth().onAuthStateChanged((user) => {
        if(user){  
+         this.loading = true;
          this.userName = user.displayName
         localStorage.setItem('userName',JSON.stringify(user.displayName));
         localStorage.setItem('count',1);
@@ -55,6 +61,8 @@ export default {
              
           router.push({ path: '/helloworld' });
           location.reload();
+          }else {
+            this.loading = false;
           }
       })
     },
@@ -62,10 +70,15 @@ export default {
       
     },
     mounted: function() {
+      firebase.auth().onAuthStateChanged((user) => {
+       if(user){  
+         this.loading = true;
+          }else {
+            this.loading = false;
+          }
+      })
       
 },
-      
-    
     methods: {
       logingoogle2: function() {
         var promise = Promise.resolve();
@@ -149,6 +162,7 @@ div {
   align-items: center;
   flex-direction: column;
 }
+
 img {
   width: 700px;
 }
@@ -166,6 +180,10 @@ p {
   margin: 0 auto;
   font-size: 20px;
   padding: 10px auto;
+}
+
+#loginLoading{
+  margin: 100px auto;
 }
 }
 
@@ -195,6 +213,11 @@ p {
   font-size: 20px;
   padding: 10px auto;
 }
+
+#loginLoading{
+  margin: 80px auto;
+}
+
 
 }
 
