@@ -50,15 +50,14 @@ export default {
       
       firebase.auth().onAuthStateChanged((user) => {
        if(user){  
-         this.loading = true;
-         this.userName = user.displayName
-        localStorage.setItem('userName',JSON.stringify(user.displayName));
+        this.userName = user.displayName;
+          this.photoURL = user.photoURL;
+            firebase.database().ref('/users/userPrf/' + this.userName).update({
+            photo:this.photoURL,
+          })
+        localStorage.setItem('userName',JSON.stringify(this.userName));
         localStorage.setItem('count',1);
         localStorage.setItem('count2',1);
-        firebase.database().ref('/users/userPrf/' + user.displayName).update({
-            photo:user.photoURL,
-        })
-             
           router.push({ path: '/helloworld' });
           location.reload();
           }else {

@@ -216,6 +216,7 @@ export default {
     console.log(this.A[4][0])
     console.log(this.A[5][0])
     console.log(this.A[6][0])
+    //this.fillData()
   },
   methods: {
     removeGroup () {

@@ -33,25 +33,25 @@
           {{ skillscount }}
           {{ skillscount2 }}
           <div class="skillsParent2">
-          <div class="skillsChild" @click="skillsPlusA">#Motivatino</div>
-          <div class="skillsChild" @click="skillsPlusB">#Design</div>
-          <div class="skillsChild" @click="skillsPlusC">#Management</div>
-          <div class="skillsChild" @click="skillsPlusD">#Communication</div>
-          <div class="skillsChild" @click="skillsPlusE">#System</div>
+          <div class="skillsChild" id="skillA" @click="skillsPlusA">#Motivatino</div>
+          <div class="skillsChild" id="skillB" @click="skillsPlusB">#Design</div>
+          <div class="skillsChild" id="skillC" @click="skillsPlusC">#Management</div>
+          <div class="skillsChild" id="skillD" @click="skillsPlusD">#Communication</div>
+          <div class="skillsChild" id="skillE" @click="skillsPlusE">#System</div>
           </div>
            <div class="skillsParent2">
-          <div class="skillsChild" @click="skillsPlusF">#Illustrater</div>
-          <div class="skillsChild" @click="skillsPlusG">#Photoshop</div>
-          <div class="skillsChild" @click="skillsPlusH">#XD</div>
-          <div class="skillsChild" @click="skillsPlusI">#3Dtools</div>
-          <div class="skillsChild" @click="skillsPlusJ">#Cad</div>
+          <div class="skillsChild" id="skillF" @click="skillsPlusF">#Illustrater</div>
+          <div class="skillsChild" id="skillG" @click="skillsPlusG">#Photoshop</div>
+          <div class="skillsChild" id="skillH" @click="skillsPlusH">#XD</div>
+          <div class="skillsChild" id="skillI" @click="skillsPlusI">#3Dtools</div>
+          <div class="skillsChild" id="skillJ" @click="skillsPlusJ">#Cad</div>
           </div>
            <div class="skillsParent2">
-          <div class="skillsChild" @click="skillsPlusK" >#HTML5</div>
-          <div class="skillsChild" @click="skillsPlusL">#CSS3</div>
-          <div class="skillsChild" @click="skillsPlusM">#JavaScript</div>
-          <div class="skillsChild" @click="skillsPlusN">#iOS/Android</div>
-          <div class="skillsChild" @click="skillsPlusO">#Unity</div>
+          <div class="skillsChild" id="skillK" @click="skillsPlusK" >#HTML5</div>
+          <div class="skillsChild" id="skillL"  @click="skillsPlusL">#CSS3</div>
+          <div class="skillsChild" id="skillM" @click="skillsPlusM">#JavaScript</div>
+          <div class="skillsChild" id="skillN" @click="skillsPlusN">#iOS/Android</div>
+          <div class="skillsChild" id="skillO" @click="skillsPlusO">#Unity</div>
           </div>
           </div>  
           </div>
@@ -96,7 +96,22 @@ export default {
         time: '',
         skillscount: [],
         skillscount2: 0,
-        skills1: ''
+        skills1: '',
+        skillA: false,
+        skillB: false,
+        skillC: false,
+        skillD: false,
+        skillE: false,
+        skillF: false,
+        skillG: false,
+        skillH: false,
+        skillI: false,
+        skillJ: false,
+        skillK: false,
+        skillL: false,
+        skillM: false,
+        skillN: false,
+        skillO: false,
     }
   },
   components: {
@@ -160,135 +175,164 @@ export default {
       }   
     },
     skillsPlusA: function() {
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillA == false){
         this.skillscount[this.skillscount2] = "motivation"
         this.skillscount2 ++
+        document.getElementById("skillA").style.backgroundColor = "#70A09E"
+        this.skillA = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusB: function() {
       
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillB == false){
         this.skillscount[this.skillscount2] = "design"
       this.skillscount2 ++
+      document.getElementById("skillB").style.backgroundColor = "#70A09E"
+      this.skillB = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusC: function() {
       
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillC == false){
         this.skillscount[this.skillscount2] = "management"
       this.skillscount2 ++
+      document.getElementById("skillC").style.backgroundColor = "#70A09E"
+      this.skillC = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusD: function() {
-            if(this.skillscount2 < 5){
+            if(this.skillscount2 < 5 && this.skillD == false){
         this.skillscount[this.skillscount2] = "communication"
       this.skillscount2 ++
-
+      document.getElementById("skillD").style.backgroundColor = "#70A09E"
+      this.skillD = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusE: function() {
       
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillE == false){
         this.skillscount[this.skillscount2] = "system"
       this.skillscount2 ++
+      document.getElementById("skillE").style.backgroundColor = "#70A09E"
+      this.skillE = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusF: function() {
       
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillF == false){
         this.skillscount[this.skillscount2] = "illustrater"
       this.skillscount2 ++
+      document.getElementById("skillF").style.backgroundColor = "#70A09E"
+      this.skillF = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusG: function() {
       
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillG == false){
         this.skillscount[this.skillscount2] = "photoshop"
       this.skillscount2 ++
+      document.getElementById("skillG").style.backgroundColor = "#70A09E"
+      this.skillG = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusH: function() {
       
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillH == false){
         this.skillscount[this.skillscount2] = "XD"
       this.skillscount2 ++
+      document.getElementById("skillH").style.backgroundColor = "#70A09E"
+      this.skillH = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusI: function() {
       
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillI == false){
         this.skillscount[this.skillscount2] = "Dtools"
       this.skillscount2 ++
+      document.getElementById("skillI").style.backgroundColor = "#70A09E"
+      this.skillI = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusJ: function() {
       
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillJ == false){
         this.skillscount[this.skillscount2] = "cad"
       this.skillscount2 ++
+      document.getElementById("skillJ").style.backgroundColor = "#70A09E"
+      this.skillJ = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusK: function() {
      
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillK == false){
         this.skillscount[this.skillscount2] = "html"
       this.skillscount2 ++
+      document.getElementById("skillK").style.backgroundColor = "#70A09E"
+      this.skillK = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusL: function() {
       
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillL == false){
        this.skillscount[this.skillscount2] = "css"
       this.skillscount2 ++
+      document.getElementById("skillL").style.backgroundColor = "#70A09E"
+      this.skillL = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusM: function() {
       
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillM== false){
         this.skillscount[this.skillscount2] = "js"
       this.skillscount2 ++
+      document.getElementById("skillM").style.backgroundColor = "#70A09E"
+      this.skillM = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusN: function() {
       
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillN == false){
        this.skillscount[this.skillscount2] = "sm"
       this.skillscount2 ++
+      document.getElementById("skillN").style.backgroundColor = "#70A09E"
+      this.skillN = true
       }else{
         alert("Only 5 methods")
       }
     },
     skillsPlusO: function() {
      
-      if(this.skillscount2 < 5){
+      if(this.skillscount2 < 5 && this.skillO == false){
         this.skillscount[this.skillscount2] = "unity"
       this.skillscount2 ++
+      document.getElementById("skillO").style.backgroundColor = "#70A09E"
+      this.skill0 = true
       }else{
         alert("Only 5 methods")
       }

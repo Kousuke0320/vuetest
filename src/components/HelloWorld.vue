@@ -88,10 +88,19 @@ export default {
       js: 0,
       sm: 0,
       unity: 0,
+      photoURL: '',
      }
     },
       created: function() {
         this.userName = JSON.parse(localStorage.getItem('userName')) || []
+        firebase.auth().onAuthStateChanged((user) => {
+       if(user){  
+            this.photoURL = user.photoURL;
+            firebase.database().ref('/users/userPrf/' + this.userName).update({
+            photo:this.photoURL,
+          })
+       }
+      })
         this.dataSet()
         this.fillData()
         
