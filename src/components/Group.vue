@@ -1,4 +1,10 @@
 <template>
+<div>
+  <div id="groupLoading" v-show="!loading">
+    <p>
+    Loading...
+    </p>
+    </div>
 <div id="group">
   <div id="groupingroup">
   <div id="userPrf2">
@@ -46,6 +52,7 @@
   </div>
   </div>
 </div>
+</div>
 </template>
 <script>
 import membersChart from './membersChart.vue'
@@ -90,6 +97,7 @@ export default {
       coment: '',
       list:[],
       userMe: '',
+      loading: false
      }
     },
     components: {
@@ -208,7 +216,9 @@ export default {
   },
   mounted: function() {
     this.fillData()
+    
     setTimeout(this.countHantei2, 1000);
+    //setTimeout(this.loading = true, 1050);
     console.log(this.A[0][0])
     console.log(this.A[1][0])
     console.log(this.A[2][0])
@@ -217,12 +227,21 @@ export default {
     console.log(this.A[5][0])
     console.log(this.A[6][0])
     //this.fillData()
+    //this.loading = true;
+    this.hantei = localStorage.getItem('count2')
+      if(this.hantei == 3){
+        this.loading = true;
+      }
+    
   },
   methods: {
     removeGroup () {
       //firebase.database().ref('/users/group/' + this.groupName).remove();
       //firebase.database().ref('/users/groupskills/' + this.groupName).remove();
             console.log(this.list[0].Group)
+    },
+    countHantei (){
+      this.loading = true;
     },
     countHantei2() {
       this.hantei = localStorage.getItem('count2')
@@ -231,6 +250,9 @@ export default {
       //alert(this.hantei)
     }else if(this.hantei == 2){
       router.push({ path: '/margin4' })
+      
+    }else{
+      //this.loading = true;
     }
     },
       memberProfile(index) {
@@ -467,6 +489,22 @@ a {
   background: #696969;
 }
 
+#groupLoading {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  opacity: 0.9;
+  z-index: 999;
+}
+
+#groupLoading p{
+  opacity: 1;
+  color: #000000;
+}
+
 }
 
 @media (max-width: 1079px){
@@ -572,6 +610,22 @@ a {
   width:30px;
   height: 30px;
   background: #696969;
+}
+
+#groupLoading {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  opacity: 0.9;
+  z-index: 999;
+}
+
+#groupLoading p{
+  opacity: 1;
+  color: #000000;
 }
 
 

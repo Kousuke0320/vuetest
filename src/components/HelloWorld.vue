@@ -1,5 +1,8 @@
 <template>
 <div id="hello">
+  <div id="helloLoading" v-show="!loading">
+    <p>loading...</p>
+  </div>
   <div id="userPrf">
     <div id="userPic">
       <div class="userPicSub">
@@ -89,6 +92,7 @@ export default {
       sm: 0,
       unity: 0,
       photoURL: '',
+      loading:false
      }
     },
       created: function() {
@@ -127,7 +131,11 @@ export default {
     //this.fillData()
     this.dataSet()
     this.fillData()
-
+    this.hantei = localStorage.getItem('count')
+      if(this.hantei == 1){
+    }else{
+      this.loading = true
+    }
     setTimeout(this.countHantei, 5000)
     
   },
@@ -478,6 +486,23 @@ border-bottom: 10px solid transparent;}
   opacity: 0.5;
 }
 
+#helloLoading {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  opacity: 0.9;
+  z-index: 999;
+}
+
+#helloLoading p{
+  opacity: 1;
+  color: #000000;
+}
+
+
 
 
 h1,
@@ -671,6 +696,21 @@ border-left: 20px solid #00A29A;
 border-top: 10px solid transparent;
 border-bottom: 10px solid transparent;}
 
+#helloLoading {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  opacity: 0.9;
+  z-index: 999;
+}
+
+#helloLoading p{
+  opacity: 1;
+  color: #000000;
+}
 
 
 h1,
