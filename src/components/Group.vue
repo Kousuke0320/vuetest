@@ -28,6 +28,15 @@
     </div>
   </div>
   <div id="chart2">
+    <div id="memberBoxBox">
+    <h2>Member</h2>
+    <div id="memberBox">
+        <div id="memberHyouzin" v-for="(item,index) in photoURL" @click="memberProfile(index)">
+          <img id="memberimg" v-bind:src="item">
+          </div>
+          </div>
+          </div>
+    <div id="chartTop">
     <div id="rader2">
       <div class="shika" id="shika0">
         <div class="shika1" id="shika1" @click="changeGraph"></div>
@@ -35,18 +44,31 @@
         <div class="shika3" id="shika3"></div>
         <div class="shika4" id="shika4"></div>
         <div class="shika6" id="shika6"></div>
-        <div class="shika5" id="shika5"></div>
+        <div class="shika5" id="shika5" @click="changeGraph"></div>
         </div>
+        <div class="chart1">
       <members-chart :chartData="chartData" :height="300"></members-chart>
     </div>
+    </div>
     <div id="line2">
+      <!--
       <h2>Member</h2>
         <div id="memberHyouzin" v-for="(item,index) in userName" @click="memberProfile(index)">
           {{item}}</div><br>
-          <div id="memberHyou" v-for="(item) in list">
-          {{item}}</div><br>
+          -->
+          <div class="shika" id="shika0">
+        <div class="shika1" id="shika1q" ></div>
+        <div class="shika2" id="shika2q"></div>
+        <div class="shika3" id="shika3q"></div>
+        <div class="shika4" id="shika4q"></div>
+        <div class="shika6" id="shika6q"></div>
+        <div class="shika5" id="shika5q"></div>
+        </div>
+        <div class="chart1">
+          <members-chart :chartData="chartData1" :height="300"></members-chart>
     </div>
-    
+    </div>
+    </div>
   </div>
   </div>
 </div>
@@ -81,6 +103,7 @@ var CC;
 var DD;
 var EE;
 var count;
+var photoURL;
 
 export default {
   name: 'Group',
@@ -89,6 +112,7 @@ export default {
       groupName: '',
       userName:[],
       chartData: {},
+      chartData1: {},
       A:[],
       hantei:0,
       reader:'',
@@ -100,7 +124,11 @@ export default {
       ave: [],
       aveSet: [],
       sum: 0,
-      length: 0
+      length: 0,
+      top:[],
+      topSet: [],
+      count: 0,
+      photoURL: []
      }
     },
     components: {
@@ -136,11 +164,18 @@ export default {
       this.coment = coment
       this.time = time
       this.length = count
-
+      
       this.reader = username[0]
       var i = 0;
       var j = 0;
-      
+      var k = 0;
+      for(k = 0; k < this.length; k++){
+        firebase.database().ref('/users/userPrf/' + username[k]).on('value', function(snapshot) {
+          photoURL = snapshot.val().photo
+        })
+        this.photoURL[k] = photoURL
+        console.log(this.photoURL)
+      }
       for(i = 0; i < 10; i++){
           this.userName[i] = username[i]
         firebase.database().ref('/users/userData/' + username[i]).on('value', function(snapshot) {
@@ -196,9 +231,11 @@ export default {
           } 
         }
       }
+
+      
              this.userMe = localStorage.getItem("userName")
 
-      firebase.database().ref('/users/userGroup/' + this.userMe).on('value', snapshot => { // eslint-disable-line
+      /*firebase.database().ref('/users/userGroup/' + this.userMe).on('value', snapshot => { // eslint-disable-line
           if (snapshot) {
             const rootList2 = snapshot.val();
             let list2 = [];
@@ -207,23 +244,27 @@ export default {
               list2.push(rootList2[val]);
             })
             this.list = list2; 
-            /*
+            
             Object.keys(this.list).forEach(function(key){
               if(this.list[key].Group = this.GroupName){
                 alert("tinko")
                 //firebase.database().ref('/users/userGroup/' + this.userName + this.list[].id).remove();   
              }
-            })*/
+            })
           }
-        })
-      
+        })*/
+      this.avetageGraph()
+      this.topGraph()
+      this.changeGraph()
+      //this.ccc()
       this.fillData()
-    this.avetageGraph()
-  },
+      },
   mounted: function() {
-    
-    this.fillData()
     this.avetageGraph()
+    this.topGraph()
+    this.changeGraph()
+    //this.ccc()
+    this.fillData()
     setTimeout(this.countHantei2, 1000);
     //setTimeout(this.loading = true, 1050);
     console.log(this.A[0][0])
@@ -242,6 +283,27 @@ export default {
     
   },
   methods: {
+    topGraph() {
+      var q = 0;
+      var w = 0;
+      var e = 0;
+      for(q = 0; q < 5; q++){
+        for(w = 0; w < this.length; w++){
+            this.topSet[w] = this.A[w][q]
+            e = parseInt(this.topSet[w])
+            if(w == 0){
+              this.top[q] = e
+            }else{
+              if(this.top[q] < e){
+                this.top[q] = e
+              }
+            }
+            if(w == this.length - 1){
+              console.log("thistop" + this.top[q])
+            }
+          }
+      }
+    },
     avetageGraph() {
       var ii = 0;
       var jj = 0;
@@ -274,25 +336,7 @@ export default {
       }
       //console.log(this.ave)
     },
-    changeGraph (){
-   
-     this.chartData = {
-      labels: [SkillsCount[0],SkillsCount[1],SkillsCount[2],SkillsCount[3],SkillsCount[4]],
-            datasets: [
-            {
-                  //label: false,
-                  backgroundColor: "rgba(0, 162, 154,0.4)",
-                    borderColor: "rgba(0, 162, 154,0.8)",
-                    pointBackgroundColor: "rgba(0, 162, 154,0.8)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
-                    
-                    data: [this.ave[0],this.ave[1],this.ave[2],this.ave[3],this.ave[4]]
-            }
-        ]
-    }
-    },
+    
     removeGroup () {
       //firebase.database().ref('/users/group/' + this.groupName).remove();
       //firebase.database().ref('/users/groupskills/' + this.groupName).remove();
@@ -324,7 +368,7 @@ export default {
 
       },
       fillData() {
-    this.chartData = {
+    this.chartData1 = {
       labels: [SkillsCount[0],SkillsCount[1],SkillsCount[2],SkillsCount[3],SkillsCount[4]],
             datasets: [
             {
@@ -419,7 +463,45 @@ export default {
             }
           ]
         }
-      }
+      },
+     
+      changeGraph (){
+      if(this.count == 0){
+        this.count = 1
+     this.chartData = {
+      labels: [SkillsCount[0],SkillsCount[1],SkillsCount[2],SkillsCount[3],SkillsCount[4]],
+            datasets: [
+            {
+                  //label: false,
+                  backgroundColor: "rgba(0, 162, 154,0.4)",
+                    borderColor: "rgba(0, 162, 154,0.8)",
+                    pointBackgroundColor: "rgba(0, 162, 154,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
+                    data: [this.ave[0],this.ave[1],this.ave[2],this.ave[3],this.ave[4]]
+            }
+        ]
+    }
+      }else if(this.count == 1){
+        this.count = 0
+        this.chartData = {
+      labels: [SkillsCount[0],SkillsCount[1],SkillsCount[2],SkillsCount[3],SkillsCount[4]],
+            datasets: [
+            {
+                  //label: false,
+                  backgroundColor: "rgba(0, 162, 154,0.4)",
+                    borderColor: "rgba(0, 162, 154,0.8)",
+                    pointBackgroundColor: "rgba(0, 162, 154,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
+                    data: [this.top[0],this.top[1],this.top[2],this.top[3],this.top[4]]
+            }
+        ]
+    }
+  }   
+    },
   }
 }
 </script>
@@ -494,8 +576,12 @@ display: flex;
 
 #chart2 {
   flex:10;
-  display: flex;
-  margin-top: 40vh;
+  
+}
+
+#chartTop{
+ /*margin-top: 40vh;*/
+ display: flex;
 }
 
 #rader2 {
@@ -507,21 +593,36 @@ display: flex;
 }
 
 #memberHyouzin{
-    width:50%;
-    height:auto;
-    margin:5px auto;
-    background: #f2f2f2
+   display:flex;
+   margin: 10px auto;
 }
 
 #memberHyouzin:hover{
     opacity: 0.5;
 }
 
+#memberBox {
+ display:flex;
+ width: 60%;
+ 
+ margin: 10px auto;
+}
+
+#memberBoxBox {
+  height: 30%;
+}
+#memberBoxBox h2{
+  margin-top: 50px;
+}
+
 #memberHyou{
-  width:50%;
-    height:auto;
-    margin:5px auto;
-    background: #f2f2f2
+ 
+}
+
+#memberimg {
+   width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 h1,
@@ -560,6 +661,11 @@ a {
 
 #groupLoading img{
   margin: 200px auto;
+}
+
+.chart1 {
+  margin: 0 auto;
+  width: 70%;
 }
 
 }
@@ -645,6 +751,9 @@ a {
     opacity: 0.5;
 }
 
+#memberimg {
+
+}
 
 h1,
 h2 {
