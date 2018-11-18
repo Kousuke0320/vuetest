@@ -1,7 +1,7 @@
 <template>
 <div id="hello">
   <div id="helloLoading" v-show="!loading">
-    <p>loading...</p>
+    <img src="../assets/loading1.gif" >
   </div>
   <div id="userPrf">
     <div id="userPic">
@@ -497,13 +497,9 @@ border-bottom: 10px solid transparent;}
   z-index: 999;
 }
 
-#helloLoading p{
-  opacity: 1;
-  color: #000000;
+#helloLoading img{
+  margin: 200px auto;
 }
-
-
-
 
 h1,
 h2 {
@@ -707,9 +703,8 @@ border-bottom: 10px solid transparent;}
   z-index: 999;
 }
 
-#helloLoading p{
-  opacity: 1;
-  color: #000000;
+#helloLoading img{
+  margin: 100px auto;
 }
 
 

@@ -1,9 +1,7 @@
 <template>
 <div>
   <div id="groupLoading" v-show="!loading">
-    <p>
-    Loading...
-    </p>
+    <img src="../assets/loading1.gif" >
     </div>
 <div id="group">
   <div id="groupingroup">
@@ -32,7 +30,7 @@
   <div id="chart2">
     <div id="rader2">
       <div class="shika" id="shika0">
-        <div class="shika1" id="shika1" @click="test1"></div>
+        <div class="shika1" id="shika1" @click="changeGraph"></div>
         <div class="shika2" id="shika2"></div>
         <div class="shika3" id="shika3"></div>
         <div class="shika4" id="shika4"></div>
@@ -82,6 +80,7 @@ var BB;
 var CC;
 var DD;
 var EE;
+var count;
 
 export default {
   name: 'Group',
@@ -97,7 +96,11 @@ export default {
       coment: '',
       list:[],
       userMe: '',
-      loading: false
+      loading: false,
+      ave: [],
+      aveSet: [],
+      sum: 0,
+      length: 0
      }
     },
     components: {
@@ -127,10 +130,12 @@ export default {
         username[8] = snapshot.val().user9
         coment = snapshot.val().coment
         time = snapshot.val().time
+        count = snapshot.val().count
       })
       
       this.coment = coment
       this.time = time
+      this.length = count
 
       this.reader = username[0]
       var i = 0;
@@ -191,7 +196,7 @@ export default {
           } 
         }
       }
-       this.userMe = localStorage.getItem("userName")
+             this.userMe = localStorage.getItem("userName")
 
       firebase.database().ref('/users/userGroup/' + this.userMe).on('value', snapshot => { // eslint-disable-line
           if (snapshot) {
@@ -212,11 +217,13 @@ export default {
           }
         })
       
-              this.fillData()
+      this.fillData()
+    this.avetageGraph()
   },
   mounted: function() {
-    this.fillData()
     
+    this.fillData()
+    this.avetageGraph()
     setTimeout(this.countHantei2, 1000);
     //setTimeout(this.loading = true, 1050);
     console.log(this.A[0][0])
@@ -235,6 +242,57 @@ export default {
     
   },
   methods: {
+    avetageGraph() {
+      var ii = 0;
+      var jj = 0;
+      var k = 0;
+     
+      for(ii = 0; ii < 5; ii++){
+        for(jj = 0; jj < 10; jj++){
+          if(this.A[jj][ii] == null){
+            this.aveSet[jj] = 0
+            k = parseInt(this.aveSet[jj])
+            //console.log("aveve" + k)
+          this.sum = this.sum + k
+          //console.log("Sum is " + this.sum)
+          k = 0;
+          }else{
+            this.aveSet[jj] = this.A[jj][ii]
+            k = parseInt(this.aveSet[jj])
+          //console.log("aveve" + k)
+          this.sum = this.sum + k
+          //console.log("Sum is " + this.sum)
+          k = 0;
+          }
+          if(jj == 9){
+            //console.log("sum is " + this.sum)
+            this.ave[ii] = this.sum / this.length
+            //console.log("アベレージは" + this.ave[ii])
+            this.sum = 0; 
+          }
+        }
+      }
+      //console.log(this.ave)
+    },
+    changeGraph (){
+   
+     this.chartData = {
+      labels: [SkillsCount[0],SkillsCount[1],SkillsCount[2],SkillsCount[3],SkillsCount[4]],
+            datasets: [
+            {
+                  //label: false,
+                  backgroundColor: "rgba(0, 162, 154,0.4)",
+                    borderColor: "rgba(0, 162, 154,0.8)",
+                    pointBackgroundColor: "rgba(0, 162, 154,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
+                    
+                    data: [this.ave[0],this.ave[1],this.ave[2],this.ave[3],this.ave[4]]
+            }
+        ]
+    }
+    },
     removeGroup () {
       //firebase.database().ref('/users/group/' + this.groupName).remove();
       //firebase.database().ref('/users/groupskills/' + this.groupName).remove();
@@ -500,9 +558,8 @@ a {
   z-index: 999;
 }
 
-#groupLoading p{
-  opacity: 1;
-  color: #000000;
+#groupLoading img{
+  margin: 200px auto;
 }
 
 }
@@ -623,9 +680,8 @@ a {
   z-index: 999;
 }
 
-#groupLoading p{
-  opacity: 1;
-  color: #000000;
+#groupLoading img{
+  margin: 100px auto;
 }
 
 

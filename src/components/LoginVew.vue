@@ -1,6 +1,8 @@
 <template>
   <div id="loginview">
-    <div id="loginLoading" v-show="loading">Loading...</div>
+    <div id="loginLoading" v-show="loading">
+      <img src="../assets/loading1.gif" >
+    </div>
     <div id="loginLadingTrue" v-show="!loading">
     <div id="loginPic">
     <img src="../assets/pentagon_icon.png">
@@ -184,6 +186,13 @@ p {
 #loginLoading{
   margin: 100px auto;
 }
+
+#loginLoading img{
+  margin: 100px auto;
+    width: 50px;
+  height:50px;
+}
+
 }
 
 @media (max-width: 699px){
@@ -216,6 +225,12 @@ p {
 #loginLoading{
   margin: 80px auto;
 }
+#loginLoading img{
+  margin: 100px auto;
+  width: 50px;
+  height:50px;
+}
+
 
 
 }

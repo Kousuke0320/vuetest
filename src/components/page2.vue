@@ -160,7 +160,8 @@ export default {
                   user8: this.userNum[7] || '',
                   user9: this.userNum[8] || '',
                   coment: this.coment,
-                  time: this.time
+                  time: this.time,
+                  count: this.count
       })
 
         firebase.database().ref("/users/groupskills/" + this.groupName).update({
