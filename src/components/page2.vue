@@ -10,8 +10,11 @@
       <input id="textinput2" type="search" v-model="user" placeholder="Taro Yamada"/>
       <input id="textinput3" type="submit" value="reserach"  @click="research"/><br>
       <p>{{ userNum }}</p>
+      <div id="nothing" v-show="!loading">
+        <p>User not found</p>
+        </div>
       <div id="member">
-        <div id="memPrf">
+        <div id="memPrf" >
         <div id="aaaa">
           <img src="" id="pic"/>
         </div>
@@ -76,6 +79,8 @@ var design;
 var communication;
 var system;
 var userA;
+var photoURL;
+var coment;
 
 export default {
   name: 'page2',
@@ -85,8 +90,11 @@ export default {
         groupName: '',
         user:'',
         userNum: [],
+        loading:true,
         count:1,
         chartData: {},
+        photoURL:"",
+        coment:"",
         mot:[],
         man:[],
         des:[],
@@ -130,6 +138,15 @@ export default {
     
     document.getElementById("member").style.display ="none";
 
+    },
+     watch: {
+    user: function () {
+      this.loading = true;
+      document.getElementById("member").style.display ="none";
+      photoURL = ""
+      coment = ""
+      this.photoURL = ""
+    }
     },
   methods: {
     addData: function() {
@@ -340,39 +357,36 @@ export default {
     },
     research: function() {
       var getUsersPrf = firebase.database().ref('/users/userPrf/' + this.user)
-      document.getElementById("resultName").innerText = this.user
       localStorage.setItem('memberName',JSON.stringify(this.user))
       getUsersPrf.on('value', function(snapshot) {
-      document.getElementById('pic').src = snapshot.val().photo 
-      document.getElementById("memberCom").innerText = snapshot.val().coment
+        photoURL = snapshot.val().photo
+        coment = snapshot.val().coment
       })
-
+      this.photoURL = photoURL;
+      this.coment = coment
+      
+      if(this.photoURL == null || this.photoURL == ""){
+        this.loading = false;
+        var y1 = document.getElementById("member");
+        y1.style.display ="none";
+      }else{
+        document.getElementById("resultName").innerText = this.user
+         document.getElementById('pic').src = photoURL
+      document.getElementById("memberCom").innerText = coment
       var y1 = document.getElementById("member");
-
       y1.style.display ="block";
 
-      //document.getElementById("rederChart").innerHTML = 'aaa'
-      var skillGet = firebase.database().ref('/users/userData/' + this.user)
-      
-      skillGet.on('value', function(snapshot) {
-        motivation = snapshot.val().motivation
-        management= snapshot.val().management
-        design = snapshot.val().design
-        communication = snapshot.val().communication
-        system = snapshot.val().system
-      })
-
-      this.man[this.count] = management
-      this.mot[this.count] = motivation
-      this.des[this.count] = design
-      this.com[this.count] = communication
-      this.sys[this.count] = system
-
+      }
+        
       //this.fillData()
       },
         add: function () {
 
     var useuse = JSON.parse(localStorage.getItem('memberName'))
+    photoURL = ""
+    coment = ""
+    this.photoURL = ""
+
     if(this.count < 10){
     this.userNum[this.count] = useuse
     this.count = this.count + 1

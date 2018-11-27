@@ -84,5 +84,8 @@ export default new Router({
       name: 'GroupMember',
       component: GroupMember
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })

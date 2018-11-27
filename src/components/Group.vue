@@ -276,12 +276,13 @@ export default {
     console.log(this.A[6][0])
     //this.fillData()
     //this.loading = true;
-    this.hantei = localStorage.getItem('count2')
+    /*this.hantei = localStorage.getItem('count2')
       if(this.hantei == 3){
         this.loading = true;
-      }
+      }*/
     
   },
+  
   methods: {
     topGraph() {
       var q = 0;
@@ -354,7 +355,8 @@ export default {
       router.push({ path: '/margin4' })
       
     }else{
-      //this.loading = true;
+      this.loading = true;
+      localStorage.setItem('count2',1);
     }
     },
       memberProfile(index) {
@@ -628,7 +630,7 @@ display: flex;
 h1,
 h2 {
   margin-top: 20px;
-  font-weight: normal;
+  font-weight: bold;
 }
 ul {
   list-style-type: none;
@@ -655,7 +657,6 @@ a {
   width: 100vw;
   height: 100vh;
   background: #ffffff;
-  opacity: 0.9;
   z-index: 999;
 }
 
@@ -741,10 +742,9 @@ a {
 }
 
 #memberHyouzin{
-    width:50%;
-    height:auto;
-    margin:5px auto;
-    background: #f2f2f2
+    width:90%;
+    display:flex;
+    margin:0 auto;
 }
 
 #memberHyouzin:hover{
@@ -755,10 +755,34 @@ a {
 
 }
 
+#memberBox {
+ display:flex; 
+ margin: 10px auto;
+}
+
+
+#memberBoxBox {
+  
+}
+#memberBoxBox h2{
+  margin-top: 50px;
+}
+
+#memberHyou{
+ 
+}
+
+#memberimg {
+   width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
 h1,
 h2 {
   margin-top: 20px;
-  font-weight: normal;
+  font-weight: bold;
 }
 ul {
   list-style-type: none;
@@ -785,7 +809,6 @@ a {
   width: 100%;
   height: 100%;
   background: #ffffff;
-  opacity: 0.9;
   z-index: 999;
 }
 

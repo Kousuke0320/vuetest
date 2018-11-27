@@ -189,8 +189,8 @@ p {
 
 #loginLoading img{
   margin: 100px auto;
-    width: 50px;
-  height:50px;
+    width: 30px;
+  height:30px;
 }
 
 }
@@ -223,12 +223,11 @@ p {
 }
 
 #loginLoading{
-  margin: 80px auto;
+  margin: 0 auto;
 }
 #loginLoading img{
   margin: 100px auto;
-  width: 50px;
-  height:50px;
+  
 }
 
 

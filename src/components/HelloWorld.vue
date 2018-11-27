@@ -493,7 +493,6 @@ border-bottom: 10px solid transparent;}
   width: 100vw;
   height: 100vh;
   background: #ffffff;
-  opacity: 0.9;
   z-index: 999;
 }
 
@@ -699,7 +698,6 @@ border-bottom: 10px solid transparent;}
   width: 100vw;
   height: 100vh;
   background: #ffffff;
-  opacity: 0.9;
   z-index: 999;
 }
 
