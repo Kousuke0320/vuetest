@@ -67,6 +67,19 @@
       <!--</router-link>-->
       </div>
           </div>
+
+           <div id="testzikken" @click="test()">
+      <!--<router-link to="/config">-->
+      <div id="testbutton">
+      <img src="./assets/test.png">
+      </div>
+      <div id="testbutton2">
+        <div id="testbutton3">
+        Test
+        </div>
+      <!--</router-link>-->
+      </div>
+          </div>
         
   </div>
       </nav>
@@ -102,6 +115,10 @@ export default {
       localStorage.setItem('groupName',JSON.stringify(''))
     },
   methods: {
+    test() {
+        router.push({ path: '/test' })
+      setTimeout(this.check, 250)
+    },
       // データベースの変更を購読、最新状態をlistにコピーする
       listen () {
         firebase.database().ref('/users/userGroup/' + this.userName).on('value', snapshot => { // eslint-disable-line
@@ -139,7 +156,7 @@ export default {
       //this.check();
       },
       check3 () {
-        router.push({ path: '/page2' })
+        router.push({ path: '/selectGroup' })
         setTimeout(this.check, 250) 
         
       },
@@ -473,6 +490,44 @@ font-size: 18px;
   margin-left: 10px;
 }
 
+#testzikken:hover {
+  opacity: 0.5;
+}
+
+#testzikken {
+width:60%;
+  margin: 10px auto;
+  display: flex;
+}
+
+
+#testbutton {
+flex: 1;
+}
+
+#testbutton img {
+max-width:80%;
+}
+
+
+#testbutton2 {
+ flex: 3;
+ display: -webkit-flex;
+ display: flex;
+ -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+ align-items: center; /* 縦方向中央揃え */
+ -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
+ justify-content: left; /* 横方向中央揃え */
+ border-bottom:solid 1px rgb(100,100,100); 
+}
+
+#testbutton3 {
+font-size: 18px;
+  color:rgb(75,75,75);
+  text-align: left;
+  margin-left: 10px;
+}
+
 
   
 }
@@ -667,6 +722,42 @@ font-size: 18px;
   text-align: left;
   margin-left: 10px;
 }
+
+#testzikken {
+width:60%;
+  margin: 10px auto;
+  display: flex;
+}
+
+
+#testbutton {
+flex: 1;
+}
+
+#testbutton img {
+max-width:30px;
+}
+
+
+#testbutton2 {
+ flex: 3;
+ display: -webkit-flex;
+ display: flex;
+ -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+ align-items: center; /* 縦方向中央揃え */
+ -webkit-justify-content: left; /* 横方向中央揃え（Safari用） */
+ justify-content: left; /* 横方向中央揃え */
+ border-bottom:solid 1px rgb(100,100,100); 
+}
+
+#testbutton3 {
+font-size: 18px;
+  color:rgb(75,75,75);
+  text-align: left;
+  margin-left: 10px;
+}
+
+
 
 #gotoConfig {
   width:60%;

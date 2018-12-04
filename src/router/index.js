@@ -13,6 +13,9 @@ import margin3 from '@/components/margin3'
 import margin4 from '@/components/margin4'
 import GroupMember from '@/components/GroupMember'
 import hello from '@/components/hello'
+import selectGroup from '@/components/selectGroup'
+import auto from '@/components/auto'
+import test from '@/components/test'
 
 
 Vue.use(Router)
@@ -83,6 +86,21 @@ export default new Router({
       path: '/groupmember',
       name: 'GroupMember',
       component: GroupMember
+    },
+    {
+      path: '/selectGroup',
+      name: 'selectGroup',
+      component: selectGroup
+    },
+    {
+      path: '/auto',
+      name: 'auto',
+      component: auto
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: test
     }
   ],
   scrollBehavior (to, from, savedPosition) {

@@ -1,13 +1,17 @@
 <template>
   <div id="config">
       <div id="setting">
-      <div id="inf1">
-        <h1>User Profile</h1>
+        <div class="infff">
+          <h1>User Occupation</h1>
         <div class="InfBox">
-          <p>User Name</p>
-          <input type="text" class="inputText" v-model="user"/><br>
+          <p>Add Occupation</p>
+          <input type="text" class="inputText" v-model="userOccupation"/><br>
         </div>
+        <button id="occButton" @click="addOcc">Set datas</button>
+        </div>
+      <div id="inf1">
         <div class="InfBox">
+          <h1>User Profile</h1>
           <p>Gender</p>
         <select name="genderSel" v-model="gender">
         <option value="Man">Man</option>
@@ -189,6 +193,7 @@ export default {
       language:'',
       occupation:'',
       major:'',
+      userOccupation:''
      }
     },
     mounted: function() {
@@ -255,6 +260,17 @@ export default {
                 //router.push({ path: '/helloworld' })
         
         },*/
+        
+        addOcc() {
+          
+          if(this.userOccupation == ""){
+          }else{
+             firebase.database().ref('/users/occupation/' + this.userOccupation).push({
+               User:this.userName
+                      })
+                      alert("success")
+          }
+        },
         addData: function() {
           firebase.database().ref('/users/userPrf/' + this.userName).update({
             gender:this.gender,
@@ -291,7 +307,7 @@ export default {
 }
 </script>
 
-<style scoped="scoped">
+<style >
 @media (min-width:1080px) {
 
 #config {
@@ -314,6 +330,10 @@ margin-top: 40px;
 width: 80%;
 margin: 0 auto;
 background: #f5f5f5;
+}
+
+#inf1 h1{
+  
 }
 
 #picA img {
@@ -381,6 +401,18 @@ button {
   font-size: 15px;
   border-color: #00A29A;
 }
+
+#occButton{
+  background-color: #00A29A;
+  width: 50vw;
+  height: 40px;
+  color: aliceblue;
+  border-radius: 5px;
+  font-size: 15px;
+  border-color: #00A29A;
+  margin: 20px auto;
+}
+
 
 .inputText {
   border:none;
@@ -512,6 +544,17 @@ button {
   border-radius: 5px;
   font-size: 15px;
   border-color: #00A29A;
+}
+
+#occButton{
+  background-color: #00A29A;
+  width: 50vw;
+  height: 40px;
+  color: aliceblue;
+  border-radius: 5px;
+  font-size: 15px;
+  border-color: #00A29A;
+  margin: 20px auto;
 }
 
 .inputText {
