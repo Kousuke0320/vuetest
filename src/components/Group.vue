@@ -38,36 +38,40 @@
           </div>
     <div id="chartTop">
     <div id="rader2">
-      <div class="shika" id="shika0">
-        <div class="shika1" id="shika1" @click="changeGraph"></div>
-        <div class="shika2" id="shika2"></div>
-        <div class="shika3" id="shika3"></div>
-        <div class="shika4" id="shika4"></div>
-        <div class="shika6" id="shika6"></div>
-        <div class="shika5" id="shika5" @click="changeGraph"></div>
+      <div class="shika" id="shikaa0">
+        <div class="shika1" id="shikaa1" @click="changeGraph"></div>
+        <div class="shika2" id="shikaa2"></div>
+        <div class="shika3" id="shikaa3"></div>
+        <div class="shika4" id="shikaa4"></div>
+        <div class="shika5" id="shikaa5" @click="changeGraph"></div>
         </div>
         <div class="chart1">
-      <members-chart :chartData="chartData" :height="300"></members-chart>
+          
+            <members-chart id="chartGraphHyouzi1" v-show="graphHyouzi" :chartData="chartData" :height="300"></members-chart>
+           <members-chart id="chartGraphHyouzi2" :chartData="chartData1" :height="300"></members-chart>
+       
+     
     </div>
     </div>
     <div id="line2">
+      <test-comp></test-comp>
       <!--
       <h2>Member</h2>
         <div id="memberHyouzin" v-for="(item,index) in userName" @click="memberProfile(index)">
           {{item}}</div><br>
           -->
-          <div class="shika" id="shika0">
+       <!-- <div class="shika" id="shika0">
         <div class="shika1" id="shika1q" ></div>
         <div class="shika2" id="shika2q"></div>
         <div class="shika3" id="shika3q"></div>
         <div class="shika4" id="shika4q"></div>
-        <div class="shika6" id="shika6q"></div>
         <div class="shika5" id="shika5q"></div>
         </div>
         <div class="chart1">
           <members-chart :chartData="chartData1" :height="300"></members-chart>
-    </div>
-    </div>
+    
+    </div>-->
+        </div>
     </div>
   </div>
   </div>
@@ -76,7 +80,10 @@
 </template>
 <script>
 import membersChart from './membersChart.vue'
+//import TestComp from './testComp.vue'
 import router from '../router'
+import testComp from './TestComp.vue'
+
 var tintintin
 var username = []
 var SkillsCount = []
@@ -128,11 +135,14 @@ export default {
       top:[],
       topSet: [],
       count: 0,
-      photoURL: []
+      photoURL: [],
+      graphHyouzi: true,
+      height:300
      }
     },
     components: {
-    membersChart
+    membersChart,
+    testComp
   },
   created: function(){
       //this.fillData()
@@ -231,6 +241,7 @@ export default {
           } 
         }
       }
+      this.height = 0
 
       
              this.userMe = localStorage.getItem("userName")
@@ -255,16 +266,21 @@ export default {
         })*/
       this.avetageGraph()
       this.topGraph()
-      this.changeGraph()
-      //this.ccc()
       this.fillData()
+      this.fillData2()
+      
+      //this.ccc()
+      
       },
   mounted: function() {
+    this.height = 300
     this.avetageGraph()
     this.topGraph()
-    this.changeGraph()
-    //this.ccc()
     this.fillData()
+    //this.ccc()
+    this.fillData2()
+    this.height = 50
+    
     setTimeout(this.countHantei2, 1000);
     //setTimeout(this.loading = true, 1050);
     console.log(this.A[0][0])
@@ -356,6 +372,7 @@ export default {
       
     }else{
       this.loading = true;
+      this.height = 0
       localStorage.setItem('count2',1);
     }
     },
@@ -368,6 +385,23 @@ export default {
         console.log(this.chartData["labels"])
         console.log("manman")
 
+      },
+      fillData2(){
+        this.chartData = {
+      labels: [SkillsCount[0],SkillsCount[1],SkillsCount[2],SkillsCount[3],SkillsCount[4]],
+            datasets: [
+            {
+                  //label: false,
+                  backgroundColor: "rgba(0, 162, 154,0.4)",
+                    borderColor: "rgba(0, 162, 154,0.8)",
+                    pointBackgroundColor: "rgba(0, 162, 154,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
+                    data: [this.ave[0],this.ave[1],this.ave[2],this.ave[3],this.ave[4]]
+            }
+        ]
+    }
       },
       fillData() {
     this.chartData1 = {
@@ -468,8 +502,15 @@ export default {
       },
      
       changeGraph (){
-      if(this.count == 0){
-        this.count = 1
+      if(this.count == 2){
+        this.count = 0
+        this.height = 0
+        this.graphHyouzi = true;
+        document.getElementById("chartGraphHyouzi1").style.zIndex = '100'
+        document.getElementById("shikaa4").style.backgroundColor = '#696969'
+        document.getElementById("shikaa2").style.backgroundColor = '#00A29A'
+        document.getElementById("shikaa3").style.backgroundColor = '#696969'
+
      this.chartData = {
       labels: [SkillsCount[0],SkillsCount[1],SkillsCount[2],SkillsCount[3],SkillsCount[4]],
             datasets: [
@@ -485,8 +526,16 @@ export default {
             }
         ]
     }
-      }else if(this.count == 1){
-        this.count = 0
+      }else if(this.count == 0){
+        this.count = 1
+        this.graphHyouzi = true;
+        this.height = 0
+        document.getElementById("chartGraphHyouzi1").style.zIndex = '100'
+        document.getElementById("shikaa4").style.backgroundColor = '#696969'
+        document.getElementById("shikaa2").style.backgroundColor = '#696969'
+        document.getElementById("shikaa3").style.backgroundColor = '#00A29A'
+
+        
         this.chartData = {
       labels: [SkillsCount[0],SkillsCount[1],SkillsCount[2],SkillsCount[3],SkillsCount[4]],
             datasets: [
@@ -502,7 +551,130 @@ export default {
             }
         ]
     }
-  }   
+  } 
+  else if(this.count == 1){
+    
+        this.count = 2
+        this.height = 300
+        this.graphHyouzi = false;
+
+        document.getElementById("chartGraphHyouzi1").style.zIndex = '0'
+        document.getElementById("shikaa4").style.backgroundColor = '#00A29A'
+        document.getElementById("shikaa4").style.backgroundColor = '#00A29A'
+        document.getElementById("shikaa2").style.backgroundColor = '#696969'
+        document.getElementById("shikaa3").style.backgroundColor = '#696969'
+ this.chartData = {
+      labels: [SkillsCount[0],SkillsCount[1],SkillsCount[2],SkillsCount[3],SkillsCount[4]],
+            datasets: [
+            {
+                  //label: false,
+                  backgroundColor: "rgba(0, 162, 154,0.4)",
+                    borderColor: "rgba(0, 162, 154,0.8)",
+                    pointBackgroundColor: "rgba(0, 162, 154,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
+                    data: [0,0,0,0,0]
+            }
+        ]
+    }
+this.chartData1 = {
+      labels: [SkillsCount[0],SkillsCount[1],SkillsCount[2],SkillsCount[3],SkillsCount[4]],
+            datasets: [
+            {
+                  //label: false,
+                  backgroundColor: "rgba(100,108,168,0.1)",
+                    borderColor: "rgba(100,108,168,0.8)",
+                    pointBackgroundColor: "rgba(100,108,168,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(100,108,168,0.8)",
+                    data: [this.A[0][0] || 0, this.A[0][1] || 0, this.A[0][2] || 0, this.A[0][3] || 0, this.A[0][4] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(224,118,145,0.1)",
+                    borderColor: "rgba(224,118,145,0.8)",
+                    pointBackgroundColor: "rgba(224,118,145,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(224,118,145,0.8)",
+                    data: [this.A[1][0] || 0, this.A[1][1] || 0, this.A[1][2] || 0, this.A[1][3] || 0, this.A[1][4] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(206, 206, 4,0.1)",
+                    borderColor: "rgba(206, 206, 4,0.8)",
+                    pointBackgroundColor: "rgba(206, 206, 4,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(206, 206, 4,0.8)",
+                    data: [this.A[2][0] || 0, this.A[2][1] || 0, this.A[2][2] || 0, this.A[2][3] || 0, this.A[2][4] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(34, 201, 34,0.1)",
+                    borderColor: "rgba(34, 201, 34,0.8)",
+                    pointBackgroundColor: "rgba(34, 201, 34,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(34, 201, 34,0.8)",
+                    data: [this.A[3][0] || 0, this.A[3][1] || 0, this.A[3][2] || 0, this.A[3][3] || 0, this.A[3][4] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(43, 43, 239,0.1)",
+                    borderColor: "rgba(43, 43, 239,0.8)",
+                    pointBackgroundColor: "rgba(43, 43, 239,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(43, 43, 239,0.8)",
+                    data: [this.A[4][0] || 0, this.A[4][1] || 0, this.A[4][2] || 0, this.A[4][3] || 0, this.A[4][4] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(119, 119, 239,0.1)",
+                    borderColor: "rgba(119, 119, 239,0.6)",
+                    pointBackgroundColor: "rgba(119, 119, 239,0.6)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(119, 119, 239,0.6)",
+                    data: [this.A[5][0] || 0, this.A[5][1] || 0, this.A[5][2] || 0, this.A[5][3] || 0, this.A[5][4] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(142, 97, 255,0.1)",
+                    borderColor: "rgba(142, 97, 255,0.8)",
+                    pointBackgroundColor: "rgba(142, 97, 255,0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(142, 97, 255,0.8)",
+                    data: [this.A[6][0] || 0, this.A[6][1] || 0, this.A[6][2] || 0, this.A[6][3] || 0, this.A[6][4] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(97, 255, 173, 0.2)",
+                    borderColor: "rgba(97, 255, 173, 0.8)",
+                    pointBackgroundColor: "rgba(97, 255, 173, 0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(97, 255, 173, 0.8)",
+                    data: [this.A[7][0] || 0, this.A[7][1] || 0, this.A[7][2] || 0, this.A[7][3] || 0, this.A[7][4] || 0]
+            },
+            {
+              //label: false,
+                  backgroundColor: "rgba(189, 255, 97, 0.1)",
+                    borderColor: "rgba(189, 255, 97, 0.8)",
+                    pointBackgroundColor: "rgba(189, 255, 97, 0.8)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(189, 255, 97, 0.8)",
+                    data: [this.A[8][0] || 0, this.A[8][1] || 0, this.A[8][2] || 0, this.A[8][3] || 0, this.A[8][4] || 0]
+            }
+          ]
+}
+
+  }     
     },
   }
 }
@@ -611,10 +783,11 @@ display: flex;
 }
 
 #memberBoxBox {
-  height: 30%;
+  height: 30vh;
 }
 #memberBoxBox h2{
   margin-top: 50px;
+  font-weight: bold;
 }
 
 #memberHyou{
@@ -627,6 +800,7 @@ display: flex;
     border-radius: 50%;
 }
 
+#group
 h1,
 h2 {
   margin-top: 20px;
@@ -666,9 +840,26 @@ a {
 
 .chart1 {
   margin: 0 auto;
-  width: 70%;
+  width:80%;
+  position:relative;
 }
 
+#chartGraphHyouzi1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    z-index:100;
+
+}
+
+#chartGraphHyouzi2{
+  position: absolute;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    z-index:5;
+}
 }
 
 @media (max-width: 1079px){
@@ -733,12 +924,20 @@ a {
   margin-top: 20px;
 }
 
+#chartTop{
+ /*margin-top: 40vh;*/
+ display: flex;
+ flex-direction: column-reverse;
+}
+
+
 #rader2 {
   margin:20px auto;
   width:80vw;
 }
 
 #line2 {
+  
 }
 
 #memberHyouzin{
@@ -766,6 +965,7 @@ a {
 }
 #memberBoxBox h2{
   margin-top: 50px;
+   font-weight: bold;
 }
 
 #memberHyou{
@@ -778,7 +978,7 @@ a {
     border-radius: 50%;
 }
 
-
+#group
 h1,
 h2 {
   margin-top: 20px;
@@ -815,6 +1015,30 @@ a {
 #groupLoading img{
   margin: 100px auto;
 }
+
+.chart1 {
+  margin: 20px auto;
+  position:relative;
+}
+
+#chartGraphHyouzi1{
+    position: absolute;
+    top: 5%;
+    left: 0;
+    background: #ffffff;
+    z-index:100;
+    max-width:90%;
+}
+
+#chartGraphHyouzi2{
+  position: absolute;
+    top: 5%;
+    left: 0;
+    background: #ffffff;
+    z-index:5;
+    max-width:90%;
+}
+
 
 
 }

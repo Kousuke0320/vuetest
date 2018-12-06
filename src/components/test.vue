@@ -12,7 +12,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="com1"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="-1" v-model="com1"/> 
     
     </div>
     <div class="testin1">
@@ -27,7 +27,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="com2"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="-1" v-model="com2"/> 
     
     </div>
     <div class="testin1">
@@ -42,7 +42,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="com3"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="-1" v-model="com3"/> 
     
     </div>
     <div class="testin1">
@@ -57,7 +57,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="com4"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="-1" v-model="com4"/> 
     
     </div>
     <div class="testin1">
@@ -72,7 +72,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="com5"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="-1" v-model="com5"/> 
     
     </div>
  <div class="testin1">
@@ -87,7 +87,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="vis1"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis1"/> 
     
     </div>
     <div class="testin1">
@@ -102,7 +102,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="vis2"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis2"/> 
     
     </div>
     <div class="testin1">
@@ -117,7 +117,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="vis3"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis3"/> 
     
     </div>
     <div class="testin1">
@@ -132,7 +132,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="vis4"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis4"/> 
     
     </div>
     <div class="testin1">
@@ -147,7 +147,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="vis5"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis5"/> 
     
     </div>
  <div class="testin1">
@@ -162,7 +162,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="anl1"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl1"/> 
     
     </div>
     <div class="testin1">
@@ -177,7 +177,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="anl2"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl2"/> 
     
     </div>
     <div class="testin1">
@@ -192,7 +192,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="anl3"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl3"/> 
     
     </div>
     <div class="testin1">
@@ -207,7 +207,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="anl4"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl4"/> 
     
     </div>
     <div class="testin1">
@@ -222,7 +222,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="anl5"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl5"/> 
     
     </div>
  <div class="testin1">
@@ -237,7 +237,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="tec1"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec1"/> 
     
     </div>
     <div class="testin1">
@@ -252,7 +252,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="tec2"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec2"/> 
     
     </div>
     <div class="testin1">
@@ -267,7 +267,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="tec3"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec3"/> 
     
     </div>
     <div class="testin1">
@@ -282,7 +282,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="tec4"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec4"/> 
     
     </div>
     <div class="testin1">
@@ -297,7 +297,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="tec5"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec5"/> 
     
     </div>
  <div class="testin1">
@@ -312,7 +312,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="pol1"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol1"/> 
     
     </div>
     <div class="testin1">
@@ -327,7 +327,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="pol2"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol2"/> 
     
     </div>
     <div class="testin1">
@@ -342,7 +342,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="pol3"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol3"/> 
     
     </div>
     <div class="testin1">
@@ -357,7 +357,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="pol4"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol4"/> 
     
     </div>
     <div class="testin1">
@@ -372,7 +372,7 @@
              <p class="testAtaiin4">そう思わない</p>
              <p class="testAtaiin5">全くそう思わない</p>   
             </div>
-            <input type="range" class="infRange" min="0" max="100" step="1" v-model="pol5"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol5"/> 
     
     </div>
 
@@ -451,7 +451,9 @@ export default {
           this.skills11 = parseInt(this.skills11)
           console.log(this.skills11)
           this.communication = this.skills11 / 10;
+          this.communication = 10 - this.communication 
           console.log(this.communication)
+          
           /////////visualyze skills//////////////////////////////////////
 
 
@@ -470,6 +472,7 @@ export default {
           this.skills21 = parseInt(this.skills21)
           console.log(this.skills21)
           this.visualization = this.skills21 / 10;
+          this.visualization = 10 - this.visualization
           console.log(this.visualization)
           /////////analyze skills////////////////////////////
 
@@ -488,6 +491,7 @@ export default {
           this.skills31 = parseInt(this.skills31)
           console.log(this.skills31)
           this.analyze = this.skills31 / 10;
+          this.analyze = 10 - this.analyze
           console.log(this.analyze)
 
           /////////communication skills////////////////////////////
@@ -508,6 +512,7 @@ export default {
           this.skills41 = parseInt(this.skills41)
           console.log(this.skills41)
           this.technology = this.skills41 / 10;
+          this.technology = 10 - this.technology
           console.log(this.technology)
           /////////communication skills////////////////////////////
 
@@ -527,8 +532,9 @@ export default {
           this.skills51 = parseInt(this.skills51)
           console.log(this.skills51)
           this.policy = this.skills51 / 10;
+          this.policy = 10 - this.policy
           console.log(this.policy)
-
+          alert(this.communication)
           /////////communication skills////////////////////////////
       }
     
@@ -539,6 +545,13 @@ export default {
 </script>
 
 <style>
+
+@media (min-width: 1080px){
+
+#testVue p{
+  
+  
+}
 .testin1{
     width: 80%;
     margin:50px 10%;
@@ -548,6 +561,8 @@ export default {
    display:flex;
    width:70%;
     margin:0 auto;
+    font-weight: bold;
+    font-size:25px;
 }
 
 .testinin{
@@ -564,20 +579,17 @@ margin: 20px auto;
     flex: 1;
     text-align: left;
     font-size: 12px;
-
 }
 .testAtaiin2{
     flex: 1;
     text-align: center;
     font-size: 12px;
-
 }
 
 .testAtaiin3{
     flex: 1;
     text-align: center;
     font-size: 12px;
-
 }
 
 .testAtaiin4{
@@ -604,5 +616,93 @@ margin: 20px auto;
   border-color: #00A29A;
   margin: 20px auto;
 }
+
+.infRangeA {
+  width:70%;
+  border:none;
+　background:none;
+  background-color: #ffffff;
+  color:#696969;
+}
+}
+
+@media (max-width: 1079px){
+    #testVue p{
+}
+.testin1{
+    width: 98%;
+    margin:50px 1%;
+}
+
+.testin1in {
+   display:flex;
+   width:70%;
+    margin:0 auto;
+    font-weight: bold;
+    font-size:20px;
+}
+
+.testinin{
+     color:#00A29A;
+}
+
+.testAtai{
+display:flex;
+width:70%;
+margin: 20px auto;
+}
+
+.testAtaiin1{
+    flex: 1;
+    text-align: left;
+    font-size: 12px;
+}
+.testAtaiin2{
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+}
+
+.testAtaiin3{
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+}
+
+.testAtaiin4{
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+
+}
+
+.testAtaiin5{
+    flex: 1;
+    text-align: right;
+    font-size: 12px;
+
+}
+
+#testSubmit{
+  background-color: #00A29A;
+  width: 50vw;
+  height: 40px;
+  color: aliceblue;
+  border-radius: 5px;
+  font-size: 15px;
+  border-color: #00A29A;
+  margin: 20px auto;
+}
+
+.infRangeA {
+  width:70%;
+  border:none;
+　background:none;
+  background-color: #ffffff;
+  color:#696969;
+}
+
+}
+
 
 </style>

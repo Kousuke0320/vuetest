@@ -1,11 +1,9 @@
 <template>
-<div id="testcomp">
+<div id="test-comp">
   <h2>Chat Room</h2>
     <!-- リスト -->
     <div id="resultMessage">
-      <ul>
-        <li v-for="item in list">{{item.name}} / {{item.message}}</li><br>
-      </ul>
+        <div id="resultMessage2" v-for="item in messagelist">{{item.name}} / {{item.message}}</div>
     </div>
     <div id="box">
     <!-- メッセージの入力欄 -->
@@ -24,24 +22,29 @@
 
 <script>
   export default {
-    name: 'app',
+    name: 'testComp',
     data () {
       return {
-        list: [],     // 最新状態はここにコピーされる
+        messagelist: [],     // 最新状態はここにコピーされる
         name: '',     // 名前
-        message: '',  // 送信メッセージ
+        message: '',
+        groupName:''
+          // 送信メッセージ
       }
     },
     created () {
       this.listen();
+      
     },
     mounted: function() {
       this.name = JSON.parse(localStorage.getItem('userName')) || []
+      this.groupName = JSON.parse(localStorage.getItem('groupName')) || []
+      this.listen();
     },
     methods: {
       // データベースの変更を購読、最新状態をlistにコピーする
       listen () {
-        firebase.database().ref('myBoard/').on('value', snapshot => { // eslint-disable-line
+        firebase.database().ref('/myBoard/' + this.groupName).on('value', snapshot => { // eslint-disable-line
           if (snapshot) {
             const rootList = snapshot.val();
             let list = [];
@@ -49,7 +52,7 @@
               rootList[val].id = val;
               list.push(rootList[val]);
             })
-            this.list = list;
+            this.messagelist = list;
           }
         })
       },
@@ -57,27 +60,38 @@
         // 空欄の場合は実行しない
         if (!this.name || !this.message) return
         // 送信
-        firebase.database().ref('myBoard/').push({
+        console.log(this.messagelist)
+        firebase.database().ref('/myBoard/' + this.groupName).push({
           name: this.name,
           message: this.message
         })
         // 送信後inputを空にする
         this.message = ''
+        this.listen()
+      
       }
     }
   }
 </script>
 
 <style>
-#resultMessage li {
-  list-style: none;
+#test-comp{
+  width: 90%;
+  margin: 0 auto;
+}
+
+#test-comp h2{
+  font-weight: bold;
+}
+
+#resultMessage {
+  height:35vh;
+  text-align: left;
+  overflow: scroll;
+  background: aliceblue;
 }
 
 #box {
-  position: absolute;
-  width: 50%;
-  height:20%;
-  top:75%;
-  left:25%;
+  margin:0 auto;
 }
 </style>

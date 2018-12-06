@@ -312,7 +312,7 @@ export default {
 
 #config {
   margin:0;
-  
+  font-weight: bold;
 }
 
 #term {
@@ -368,7 +368,7 @@ background: #f5f5f5;
   font-size:15px;
 }
 
-p {
+#config p {
   margin:5px;
   font-size:25px;
   font-weight: bold;
@@ -448,7 +448,7 @@ select {
 }
 
 
-h1{
+#config h1{
   color:#00A29A;
   padding-top:30px;
   font-weight: bold;
@@ -512,7 +512,7 @@ background: #f5f5f5;
   font-size:15px;
 }
 
-p {
+#config p {
   margin:5px;
   font-size:20px;
   font-weight: bold;
@@ -591,7 +591,7 @@ select {
 }
 
 
-h1{
+#config h1{
   color:#00A29A;
   padding-top:30px;
   font-weight: bold;
