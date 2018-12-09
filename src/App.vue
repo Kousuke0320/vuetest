@@ -235,7 +235,7 @@ export default {
     transform: none;
     opacity: 1;
     animation-name: animation-haniwaman;
-  animation-duration: 0.1s;
+  animation-duration: 0.05s;
   animation-timing-function: linear;
   animation-delay: 0s;
   animation-iteration-count: 1;

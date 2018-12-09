@@ -428,7 +428,11 @@ export default {
         analyze:0,
         technology:0,
         policy:0,
+        userName:''
     }
+  },
+  created: function(){
+      this.userName = JSON.parse(localStorage.getItem('userName')) || []
   },
   mounted: function() {
       
@@ -534,8 +538,17 @@ export default {
           this.policy = this.skills51 / 10;
           this.policy = 10 - this.policy
           console.log(this.policy)
-          alert(this.communication)
+         
           /////////communication skills////////////////////////////
+          firebase.database().ref('/users/userData/' + this.userName).update({
+            communication:this.communication,
+            visualization:this.visualization,
+            analyze:this.analyze,
+            technology:this.technology,
+            policy:this.policy
+          })
+          alert("success")
+
       }
     
   },

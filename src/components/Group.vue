@@ -111,6 +111,10 @@ var DD;
 var EE;
 var count;
 var photoURL;
+var visualization
+var analyze
+var technology
+var policy
 
 export default {
   name: 'Group',
@@ -189,11 +193,17 @@ export default {
       for(i = 0; i < 10; i++){
           this.userName[i] = username[i]
         firebase.database().ref('/users/userData/' + username[i]).on('value', function(snapshot) {
-        motivation = snapshot.val().motivation
+        /*motivation = snapshot.val().motivation
         management= snapshot.val().management
         design = snapshot.val().design
         communication = snapshot.val().communication
-        system = snapshot.val().system
+        system = snapshot.val().system*/
+        visualization = snapshot.val().visualization
+        analyze = snapshot.val().analyze
+        technology = snapshot.val().technology
+        policy = snapshot.val().policy
+        communication = snapshot.val().communication
+
         illustrater = snapshot.val().illustrater
         photoshop = snapshot.val().photoshop
         XD = snapshot.val().XD
@@ -208,16 +218,16 @@ export default {
         this.A[i] = []
         for(j = 0; j < 5; j++){
           
-          if(SkillsCount[j] == "motivation"){
-            this.A[i][j] = motivation
-          }else if(SkillsCount[j] == "management"){
-            this.A[i][j] = management
-          }else if(SkillsCount[j] == "design"){
-            this.A[i][j] = design
-          }else if(SkillsCount[j] == "communication"){
+          if(SkillsCount[j] == "communication"){
             this.A[i][j] = communication
-          }else if(SkillsCount[j] == "system"){
-            this.A[i][j] = system
+          }else if(SkillsCount[j] == "visualization"){
+            this.A[i][j] = visualization
+          }else if(SkillsCount[j] == "analyze"){
+            this.A[i][j] = analyze
+          }else if(SkillsCount[j] == "technology"){
+            this.A[i][j] = technology
+          }else if(SkillsCount[j] == "policy"){
+            this.A[i][j] = policy
           }else if(SkillsCount[j] == "illustrater"){
             this.A[i][j] = illustrater
           }else if(SkillsCount[j] == "photoshop"){

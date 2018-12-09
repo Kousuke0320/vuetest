@@ -74,6 +74,10 @@ export default {
     return {
       userName: '',
       chartData: {},
+      visualization:0,
+      analyze:0,
+      technology:0,
+      policy:0,
       motivation: '',
       management:  '',
       design:'',
@@ -164,14 +168,23 @@ export default {
       var js
       var sm
       var unity
+      var visualization
+      var analyze
+      var technology
+      var policy
 
 
       firebase.database().ref('/users/userData/' + this.userName).on('value', function(snapshot) {
-        motivation = snapshot.val().motivation
+        visualization = snapshot.val().visualization
+        analyze = snapshot.val().analyze
+        technology = snapshot.val().technology
+        policy = snapshot.val().policy
+        communication = snapshot.val().communication
+        /*motivation = snapshot.val().motivation
         management= snapshot.val().management
         design = snapshot.val().design
         communication = snapshot.val().communication
-        system = snapshot.val().system
+        system = snapshot.val().system*/
         illustrater = snapshot.val().illustrater
         photoshop = snapshot.val().photoshop
         XD = snapshot.val().XD
@@ -183,11 +196,18 @@ export default {
         sm = snapshot.val().sm
         unity = snapshot.val().unity
         })
+        /*
         this.motivation = motivation
         this.management = management
         this.design = design
         this.communication = communication
         this.system = system
+        */
+       this.visualization = visualization
+       this.analyze = analyze
+       this.technology = technology
+       this.policy = policy
+        this.communication = communication
         this.illustrater = illustrater
         this.photoshop = photoshop
         this.XD = XD
@@ -205,7 +225,7 @@ export default {
       },
    fillData() {
     this.chartData = {
-      labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
+      labels: ['Communication', 'Visualization', 'analyze', 'technology', 'Policy'],
             datasets: [
             {
                   //label: false,
@@ -215,7 +235,7 @@ export default {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
-                    data: [this.motivation,this.design,this.management,this.communication,this.system]
+                    data: [this.communication,this.visualization,this.analyze,this.technology,this.policy]
             }
         ]
     }
@@ -249,7 +269,7 @@ export default {
       document.getElementById("shika3").style.backgroundColor = '#696969'
       this.graphcount = 0
       this.chartData = {
-      labels: ['Motivation', 'design', 'Management', 'Communication', 'System'],
+      labels: ['Communication', 'Visualization', 'analyze', 'technology', 'Policy'],
             datasets: [
             {
                   //label: false,
@@ -259,8 +279,7 @@ export default {
                     pointBorderColor: "#fff",
                     pointHoverBackgroundColor: "#fff",
                     pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
-                    
-                    data: [this.motivation,this.management,this.design,this.communication,this.system]
+                    data: [this.communication,this.visualization,this.analyze,this.technology,this.policy]
             }
         ]
     }

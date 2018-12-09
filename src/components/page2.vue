@@ -33,14 +33,13 @@
         <div class="makegroupbox">
         <p class="page2P">5 Skills</p>
         <div class="skillsParent">
-          {{ skillscount }}
-          {{ skillscount2 }}
+          
           <div class="skillsParent2">
-          <div class="skillsChild" id="skillA" @click="skillsPlusA">#Motivatino</div>
-          <div class="skillsChild" id="skillB" @click="skillsPlusB">#Design</div>
-          <div class="skillsChild" id="skillC" @click="skillsPlusC">#Management</div>
-          <div class="skillsChild" id="skillD" @click="skillsPlusD">#Communication</div>
-          <div class="skillsChild" id="skillE" @click="skillsPlusE">#System</div>
+          <div class="skillsChild" id="skillA" @click="skillsPlusA">#Communication</div>
+          <div class="skillsChild" id="skillB" @click="skillsPlusB">#Visualyze</div>
+          <div class="skillsChild" id="skillC" @click="skillsPlusC">#analyze</div>
+          <div class="skillsChild" id="skillD" @click="skillsPlusD">#Technology</div>
+          <div class="skillsChild" id="skillE" @click="skillsPlusE">#Policy</div>
           </div>
            <div class="skillsParent2">
           <div class="skillsChild" id="skillF" @click="skillsPlusF">#Illustrater</div>
@@ -100,6 +99,7 @@ export default {
         des:[],
         com:[],
         sys:[],
+        memberComent:'',
         coment:'',
         time: '',
         skillscount: [],
@@ -194,7 +194,7 @@ export default {
     },
     skillsPlusA: function() {
       if(this.skillscount2 < 5 && this.skillA == false){
-        this.skillscount[this.skillscount2] = "motivation"
+        this.skillscount[this.skillscount2] = "communication"
         this.skillscount2 ++
         document.getElementById("skillA").style.backgroundColor = "#70A09E"
         this.skillA = true
@@ -205,7 +205,7 @@ export default {
     skillsPlusB: function() {
       
       if(this.skillscount2 < 5 && this.skillB == false){
-        this.skillscount[this.skillscount2] = "design"
+        this.skillscount[this.skillscount2] = "visualization"
       this.skillscount2 ++
       document.getElementById("skillB").style.backgroundColor = "#70A09E"
       this.skillB = true
@@ -216,7 +216,7 @@ export default {
     skillsPlusC: function() {
       
       if(this.skillscount2 < 5 && this.skillC == false){
-        this.skillscount[this.skillscount2] = "management"
+        this.skillscount[this.skillscount2] = "analyze"
       this.skillscount2 ++
       document.getElementById("skillC").style.backgroundColor = "#70A09E"
       this.skillC = true
@@ -226,7 +226,7 @@ export default {
     },
     skillsPlusD: function() {
             if(this.skillscount2 < 5 && this.skillD == false){
-        this.skillscount[this.skillscount2] = "communication"
+        this.skillscount[this.skillscount2] = "technology"
       this.skillscount2 ++
       document.getElementById("skillD").style.backgroundColor = "#70A09E"
       this.skillD = true
@@ -237,7 +237,7 @@ export default {
     skillsPlusE: function() {
       
       if(this.skillscount2 < 5 && this.skillE == false){
-        this.skillscount[this.skillscount2] = "system"
+        this.skillscount[this.skillscount2] = "policy"
       this.skillscount2 ++
       document.getElementById("skillE").style.backgroundColor = "#70A09E"
       this.skillE = true
@@ -363,7 +363,7 @@ export default {
         coment = snapshot.val().coment
       })
       this.photoURL = photoURL;
-      this.coment = coment
+      this.memberComent = coment
       
       if(this.photoURL == null || this.photoURL == ""){
         this.loading = false;
@@ -444,6 +444,7 @@ export default {
 #textinput3 {
 background-color: #ffffff;
 color:#696969;
+width:100px;
 }
 
 #textinput4 {
