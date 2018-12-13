@@ -47,29 +47,29 @@
       <div id="inf2">
         <h1>User Skills</h1>
         <div class="InfBox">
-              <p>Motivation</p>
-              <input type="range" class="infRange" name="mot" min="0" max="10" step="1" v-model="motivation"/>
-              {{ motivation }}
-              </div>
-              <div class="InfBox">
-              <p>Design</p>
-              <input type="range" class="infRange" name="des" min="0" max="10" step="1" v-model="design"/>
-              {{ design }}
-              </div>
-              <div class="InfBox">
-              <p>Management</p>
-              <input type="range" class="infRange" name="man" min="0" max="10" step="1" v-model="management"/>
-              {{ management }}
-              </div>
-              <div class="InfBox">
               <p>Communication</p>
-              <input type="range" class="infRange" name="com" min="0" max="10" step="1" v-model="communication"/>
+              <input type="range" class="infRange" name="mot" min="0" max="10" step="1" v-model="communication"/>
               {{ communication }}
               </div>
               <div class="InfBox">
-              <p>System</p>
-              <input type="range" class="infRangefin" name="sys" min="0" max="10" step="1" v-model="system"/>
-              {{ system }}<br>
+              <p>Visualization</p>
+              <input type="range" class="infRange" name="des" min="0" max="10" step="1" v-model="visualization"/>
+              {{ visualization }}
+              </div>
+              <div class="InfBox">
+              <p>Analyze</p>
+              <input type="range" class="infRange" name="man" min="0" max="10" step="1" v-model="analyze"/>
+              {{ analyze }}
+              </div>
+              <div class="InfBox">
+              <p>Technology</p>
+              <input type="range" class="infRange" name="com" min="0" max="10" step="1" v-model="technology"/>
+              {{ technology }}
+              </div>
+              <div class="InfBox">
+              <p>Policy</p>
+              <input type="range" class="infRangefin" name="sys" min="0" max="10" step="1" v-model="policy"/>
+              {{ policy }}<br>
               </div>
       </div>
       <div class="infff">
@@ -143,11 +143,18 @@ var acsData = dataBase.ref('/users/userData/' + this.userName)
             
 var manman
 var comment
+/*
 var motivation;
 var management;
 var design;
 var communication;
 var system;
+*/
+var visualization
+var analyze
+var technology
+var policy
+var communication
 var illustrater;
 var photoshop;
 var XD;
@@ -173,11 +180,13 @@ export default {
       photoURL: '',
       tintin: [],
       prfCom: '',
+      /*
       motivation: 0,
       design: 0,
       management: 0,
       communication: 0,
       system: 0,
+      */
       illustrater: 0,
       photoshop: 0,
       XD: 0,
@@ -193,7 +202,12 @@ export default {
       language:'',
       occupation:'',
       major:'',
-      userOccupation:''
+      userOccupation:'',
+      visualization:0,
+      analyze:0,
+      technology:0,
+      policy:0,
+      communication: 0,
      }
     },
     mounted: function() {
@@ -216,11 +230,18 @@ export default {
       this.occupation = occupation
       this.major = major
       firebase.database().ref('/users/userData/' + this.userName).on('value', function(snapshot) {
+        /*
         motivation = snapshot.val().motivation
         management= snapshot.val().management
         design = snapshot.val().design
         communication = snapshot.val().communication
         system = snapshot.val().system
+        */
+       visualization = snapshot.val().visualization
+        analyze = snapshot.val().analyze
+        technology = snapshot.val().technology
+        policy = snapshot.val().policy
+        communication = snapshot.val().communication
         illustrater = snapshot.val().illustrater
         photoshop = snapshot.val().photoshop
         XD = snapshot.val().XD
@@ -232,11 +253,18 @@ export default {
         sm = snapshot.val().sm
         unity = snapshot.val().unity
         })
+        /*
         this.motivation = motivation
         this.management = management
         this.design = design
         this.communication = communication
         this.system = system
+        */
+       this.visualization = visualization
+       this.analyze = analyze
+       this.technology = technology
+       this.policy = policy
+        this.communication = communication
         this.illustrater = illustrater
         this.photoshop = photoshop
         this.XD = XD
@@ -281,11 +309,18 @@ export default {
             coment:this.prfCom
           })
           firebase.database().ref('/users/userData/' + this.userName).update({
+                /*
                 motivation: this.motivation,
                 design: this.design,
                 management: this.management,
                 communication:this.communication,
                 system: this.system,
+                */
+               communication:this.communication,
+               visualization:this.visualization,
+              analyze:this.analyze,
+              technology:this.technology,
+              policy:this.policy,
                 illustrater: this.illustrater,
                 photoshop: this.photoshop,
                 XD: this.XD,

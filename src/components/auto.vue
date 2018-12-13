@@ -2,20 +2,24 @@
   <div id="auto">
     <div id="autogroupName">
         <div class="makegroupbox">
+          <p class="page2P">Occupation</p>
             <input type="text" v-model="userOccupation" />
-            <button @click="occupationResearch" />
+            <button @click="occupationResearch">reserach</button>
+            <div id="occupationMemberHyouzin" v-show="memberLoading"> 
+            <div id="occupationmemberHyouzin2" v-for="(item,index) in memberList">
+            <p>{{ item.User }}</p>
+            </div>
+            </div>
             </div>
         <div class="makegroupbox">
         <p class="page2P">5 Skills</p>
         <div class="skillsParent">
-          {{ skillscount }}
-          {{ skillscount2 }}
           <div class="skillsParent2">
-          <div class="skillsChild" id="autoskillA" @click="skillsPlusA">#Motivatino</div>
-          <div class="skillsChild" id="autoskillB" @click="skillsPlusB">#Design</div>
-          <div class="skillsChild" id="autoskillC" @click="skillsPlusC">#Management</div>
-          <div class="skillsChild" id="autoskillD" @click="skillsPlusD">#Communication</div>
-          <div class="skillsChild" id="autoskillE" @click="skillsPlusE">#System</div>
+          <div class="skillsChild" id="autoskillA" @click="skillsPlusA">#Communication</div>
+          <div class="skillsChild" id="autoskillB" @click="skillsPlusB">#Visualyze</div>
+          <div class="skillsChild" id="autoskillC" @click="skillsPlusC">#Analyze</div>
+          <div class="skillsChild" id="autoskillD" @click="skillsPlusD">#Technology</div>
+          <div class="skillsChild" id="autoskillE" @click="skillsPlusE">#Policy</div>
           </div>
            <div class="skillsParent2">
           <div class="skillsChild" id="autoskillF" @click="skillsPlusF">#Illustrater</div>
@@ -92,7 +96,9 @@ export default {
         skillM: false,
         skillN: false,
         skillO: false,
-        userOccupation:""
+        userOccupation:"",
+        memberList:[],
+        memberLoading:false
     }
   },
   components: {
@@ -113,17 +119,23 @@ export default {
 
     },
      watch: {
-    user: function () {
-      this.loading = true;
-      document.getElementById("member").style.display ="none";
-      photoURL = ""
-      coment = ""
-      this.photoURL = ""
-    }
     },
   methods: {
       occupationResearch(){
-
+        this.memberLoading = true;
+        alert("tintin")
+        firebase.database().ref('/users/occupation/' + this.userOccupation).on('value', snapshot => { // eslint-disable-line
+          if (snapshot) {
+            const rootList = snapshot.val();
+            let list = [];
+            Object.keys(rootList).forEach((val, key) => {
+              rootList[val].id = val;
+              list.push(rootList[val]);
+            })
+            this.memberList = list;
+          }
+        })
+        
       },
     addData: function() {
       if(this.groupName === ''){
@@ -172,7 +184,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillA == false){
         this.skillscount[this.skillscount2] = "motivation"
         this.skillscount2 ++
-        document.getElementById("skillA").style.backgroundColor = "#70A09E"
+        document.getElementById("autoskillA").style.backgroundColor = "#70A09E"
         this.skillA = true
       }else{
         alert("Only 5 methods")
@@ -183,7 +195,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillB == false){
         this.skillscount[this.skillscount2] = "design"
       this.skillscount2 ++
-      document.getElementById("skillB").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillB").style.backgroundColor = "#70A09E"
       this.skillB = true
       }else{
         alert("Only 5 methods")
@@ -194,7 +206,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillC == false){
         this.skillscount[this.skillscount2] = "management"
       this.skillscount2 ++
-      document.getElementById("skillC").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillC").style.backgroundColor = "#70A09E"
       this.skillC = true
       }else{
         alert("Only 5 methods")
@@ -204,7 +216,7 @@ export default {
             if(this.skillscount2 < 5 && this.skillD == false){
         this.skillscount[this.skillscount2] = "communication"
       this.skillscount2 ++
-      document.getElementById("skillD").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillD").style.backgroundColor = "#70A09E"
       this.skillD = true
       }else{
         alert("Only 5 methods")
@@ -215,7 +227,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillE == false){
         this.skillscount[this.skillscount2] = "system"
       this.skillscount2 ++
-      document.getElementById("skillE").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillE").style.backgroundColor = "#70A09E"
       this.skillE = true
       }else{
         alert("Only 5 methods")
@@ -226,7 +238,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillF == false){
         this.skillscount[this.skillscount2] = "illustrater"
       this.skillscount2 ++
-      document.getElementById("skillF").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillF").style.backgroundColor = "#70A09E"
       this.skillF = true
       }else{
         alert("Only 5 methods")
@@ -237,7 +249,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillG == false){
         this.skillscount[this.skillscount2] = "photoshop"
       this.skillscount2 ++
-      document.getElementById("skillG").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillG").style.backgroundColor = "#70A09E"
       this.skillG = true
       }else{
         alert("Only 5 methods")
@@ -248,7 +260,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillH == false){
         this.skillscount[this.skillscount2] = "XD"
       this.skillscount2 ++
-      document.getElementById("skillH").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillH").style.backgroundColor = "#70A09E"
       this.skillH = true
       }else{
         alert("Only 5 methods")
@@ -259,7 +271,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillI == false){
         this.skillscount[this.skillscount2] = "Dtools"
       this.skillscount2 ++
-      document.getElementById("skillI").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillI").style.backgroundColor = "#70A09E"
       this.skillI = true
       }else{
         alert("Only 5 methods")
@@ -270,7 +282,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillJ == false){
         this.skillscount[this.skillscount2] = "cad"
       this.skillscount2 ++
-      document.getElementById("skillJ").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillJ").style.backgroundColor = "#70A09E"
       this.skillJ = true
       }else{
         alert("Only 5 methods")
@@ -281,7 +293,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillK == false){
         this.skillscount[this.skillscount2] = "html"
       this.skillscount2 ++
-      document.getElementById("skillK").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillK").style.backgroundColor = "#70A09E"
       this.skillK = true
       }else{
         alert("Only 5 methods")
@@ -292,7 +304,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillL == false){
        this.skillscount[this.skillscount2] = "css"
       this.skillscount2 ++
-      document.getElementById("skillL").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillL").style.backgroundColor = "#70A09E"
       this.skillL = true
       }else{
         alert("Only 5 methods")
@@ -303,7 +315,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillM== false){
         this.skillscount[this.skillscount2] = "js"
       this.skillscount2 ++
-      document.getElementById("skillM").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillM").style.backgroundColor = "#70A09E"
       this.skillM = true
       }else{
         alert("Only 5 methods")
@@ -314,7 +326,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillN == false){
        this.skillscount[this.skillscount2] = "sm"
       this.skillscount2 ++
-      document.getElementById("skillN").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillN").style.backgroundColor = "#70A09E"
       this.skillN = true
       }else{
         alert("Only 5 methods")
@@ -325,7 +337,7 @@ export default {
       if(this.skillscount2 < 5 && this.skillO == false){
         this.skillscount[this.skillscount2] = "unity"
       this.skillscount2 ++
-      document.getElementById("skillO").style.backgroundColor = "#70A09E"
+      document.getElementById("autoskillO").style.backgroundColor = "#70A09E"
       this.skill0 = true
       }else{
         alert("Only 5 methods")

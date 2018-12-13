@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+
 var config = {
   apiKey: "AIzaSyDO78gpdB_aYBAmQ_fyx5EgaHqIfII0oKc",
   authDomain: "skillweb-dddfe.firebaseapp.com",

@@ -47,8 +47,8 @@
         </div>
         <div class="chart1">
           
-            <members-chart id="chartGraphHyouzi1" v-show="graphHyouzi" :chartData="chartData" :height="300"></members-chart>
-           <members-chart id="chartGraphHyouzi2" :chartData="chartData1" :height="300"></members-chart>
+            <members-chart id="chartGraphHyouzi1"  :chartData="chartData" :height="300"></members-chart>
+           <members-chart id="chartGraphHyouzi2" v-show="!graphHyouzi" :chartData="chartData1" :height="300"></members-chart>
        
      
     </div>
@@ -140,7 +140,7 @@ export default {
       topSet: [],
       count: 0,
       photoURL: [],
-      graphHyouzi: true,
+      graphHyouzi: false,
       height:300
      }
     },
@@ -314,6 +314,26 @@ export default {
       var q = 0;
       var w = 0;
       var e = 0;
+
+////////////////for zikkenn/////////////////////
+      for(q = 0; q < 5; q++){
+        for(w = 1; w < this.length; w++){
+            this.topSet[w] = this.A[w][q]
+            e = parseInt(this.topSet[w])
+            if(w == 1){
+              this.top[q] = e
+            }else{
+              if(this.top[q] < e){
+                this.top[q] = e
+              }
+            }
+            if(w == this.length - 1){
+              console.log("thistop" + this.top[q])
+            }
+          }
+
+      //////////////////for honnban//////////////////
+      /*
       for(q = 0; q < 5; q++){
         for(w = 0; w < this.length; w++){
             this.topSet[w] = this.A[w][q]
@@ -328,14 +348,43 @@ export default {
             if(w == this.length - 1){
               console.log("thistop" + this.top[q])
             }
-          }
+          }*/
       }
     },
     avetageGraph() {
       var ii = 0;
       var jj = 0;
       var k = 0;
-     
+/////////////////for zikkenn////////////////
+for(ii = 0; ii < 5; ii++){
+        for(jj = 1; jj < 10; jj++){
+          if(this.A[jj][ii] == null){
+            this.aveSet[jj] = 0
+            k = parseInt(this.aveSet[jj])
+            //console.log("aveve" + k)
+          this.sum = this.sum + k
+          //console.log("Sum is " + this.sum)
+          k = 0;
+          }else{
+            this.aveSet[jj] = this.A[jj][ii]
+            k = parseInt(this.aveSet[jj])
+          //console.log("aveve" + k)
+          this.sum = this.sum + k
+          //console.log("Sum is " + this.sum)
+          k = 0;
+          }
+          if(jj == 9){
+            //console.log("sum is " + this.sum)
+            this.ave[ii] = this.sum / this.length
+            //console.log("アベレージは" + this.ave[ii])
+            this.sum = 0; 
+          }
+        }
+      }
+
+
+     //////////for honnbann//////////////////
+     /*
       for(ii = 0; ii < 5; ii++){
         for(jj = 0; jj < 10; jj++){
           if(this.A[jj][ii] == null){
@@ -360,7 +409,7 @@ export default {
             this.sum = 0; 
           }
         }
-      }
+      }*/
       //console.log(this.ave)
     },
     
@@ -512,13 +561,13 @@ export default {
       },
      
       changeGraph (){
-      if(this.count == 2){
-        this.count = 0
+      if(this.count == 1){
+        this.count = 2
         this.height = 0
         this.graphHyouzi = true;
-        document.getElementById("chartGraphHyouzi1").style.zIndex = '100'
-        document.getElementById("shikaa4").style.backgroundColor = '#696969'
-        document.getElementById("shikaa2").style.backgroundColor = '#00A29A'
+        document.getElementById("chartGraphHyouzi2").style.zIndex = '0'
+        document.getElementById("shikaa4").style.backgroundColor = '#00A29A'
+        document.getElementById("shikaa2").style.backgroundColor = '#696969'
         document.getElementById("shikaa3").style.backgroundColor = '#696969'
 
      this.chartData = {
@@ -540,7 +589,7 @@ export default {
         this.count = 1
         this.graphHyouzi = true;
         this.height = 0
-        document.getElementById("chartGraphHyouzi1").style.zIndex = '100'
+        document.getElementById("chartGraphHyouzi2").style.zIndex = '0'
         document.getElementById("shikaa4").style.backgroundColor = '#696969'
         document.getElementById("shikaa2").style.backgroundColor = '#696969'
         document.getElementById("shikaa3").style.backgroundColor = '#00A29A'
@@ -562,32 +611,18 @@ export default {
         ]
     }
   } 
-  else if(this.count == 1){
+  else if(this.count == 2){
     
-        this.count = 2
+        this.count = 0
         this.height = 300
         this.graphHyouzi = false;
-
-        document.getElementById("chartGraphHyouzi1").style.zIndex = '0'
-        document.getElementById("shikaa4").style.backgroundColor = '#00A29A'
-        document.getElementById("shikaa4").style.backgroundColor = '#00A29A'
-        document.getElementById("shikaa2").style.backgroundColor = '#696969'
+        
+        document.getElementById("chartGraphHyouzi2").style.zIndex = '999'
+        
+        document.getElementById("shikaa4").style.backgroundColor = '#696969'
+        document.getElementById("shikaa2").style.backgroundColor = '#00A29A'
         document.getElementById("shikaa3").style.backgroundColor = '#696969'
- this.chartData = {
-      labels: [SkillsCount[0],SkillsCount[1],SkillsCount[2],SkillsCount[3],SkillsCount[4]],
-            datasets: [
-            {
-                  //label: false,
-                  backgroundColor: "rgba(0, 162, 154,0.4)",
-                    borderColor: "rgba(0, 162, 154,0.8)",
-                    pointBackgroundColor: "rgba(0, 162, 154,0.8)",
-                    pointBorderColor: "#fff",
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(0, 162, 154,0.8)",
-                    data: [0,0,0,0,0]
-            }
-        ]
-    }
+ 
 this.chartData1 = {
       labels: [SkillsCount[0],SkillsCount[1],SkillsCount[2],SkillsCount[3],SkillsCount[4]],
             datasets: [
@@ -859,7 +894,7 @@ a {
     top: 0;
     left: 0;
     background: #ffffff;
-    z-index:100;
+    z-index:5;
 
 }
 
@@ -868,7 +903,7 @@ a {
     top: 0;
     left: 0;
     background: #ffffff;
-    z-index:5;
+    z-index:100;
 }
 }
 
@@ -1036,7 +1071,7 @@ a {
     top: 5%;
     left: 0;
     background: #ffffff;
-    z-index:100;
+    z-index:5;
     max-width:90%;
 }
 
@@ -1045,7 +1080,7 @@ a {
     top: 5%;
     left: 0;
     background: #ffffff;
-    z-index:5;
+    z-index:100;
     max-width:90%;
 }
 

@@ -40,12 +40,14 @@
       }
     },
     created () {
-      this.listen();
-      
-    },
-    mounted: function() {
+      //this.listen();
       this.name = JSON.parse(localStorage.getItem('userName')) || []
       this.groupName = JSON.parse(localStorage.getItem('groupName')) || []
+      this.listen();
+    },
+    mounted: function() {
+      //this.listen();
+      
       this.listen();
       firebase.auth().onAuthStateChanged((user) => {
       if(user){

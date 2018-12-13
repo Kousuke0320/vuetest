@@ -6,11 +6,11 @@
         <p>人と話すことが好きだ</p>
             </div>
             <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
+             <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
              <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
             </div>
             <input type="range" class="infRangeA" min="0" max="100" step="-1" v-model="com1"/> 
     
@@ -18,91 +18,91 @@
     <div class="testin1">
         <div class="testin1in">
         <p class="testinin">Q2.</p>
+        <p>絵や図を書いて表現することが得意だ</p>
+            </div>
+            <div class="testAtai">
+            <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>     
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis2"/> 
+    
+    </div>
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q3.</p>
+        <p>最近の情報技術に関して敏感な方だ</p>
+            </div>
+            <div class="testAtai">
+       <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec1"/> 
+    
+    </div>
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q4.</p>
+        <p>アイデアを戦略的に活用することが得意だ</p>
+            </div>
+            <div class="testAtai">
+             <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>    
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol2"/> 
+    
+    </div>
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q5.</p>
         <p>他人の意見を理解できる</p>
             </div>
             <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
+             <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
              <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
             </div>
             <input type="range" class="infRangeA" min="0" max="100" step="-1" v-model="com2"/> 
     
     </div>
     <div class="testin1">
         <div class="testin1in">
-        <p class="testinin">Q3.</p>
-        <p>グループワークが得意な方だ</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="-1" v-model="com3"/> 
-    
-    </div>
-    <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q4.</p>
-        <p>自己分析ができている方だ</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="-1" v-model="com4"/> 
-    
-    </div>
-    <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q5.</p>
-        <p>komyunike-syonnhaiikannzidesuka</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="-1" v-model="com5"/> 
-    
-    </div>
- <div class="testin1">
-        <div class="testin1in">
         <p class="testinin">Q6.</p>
-        <p>人と話すことが好きだ</p>
+        <p>行動力がある方だ</p>
             </div>
             <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
+           <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
              <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>    
             </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis1"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol5"/> 
     
     </div>
     <div class="testin1">
         <div class="testin1in">
         <p class="testinin">Q7.</p>
-        <p>他人の意見を理解できる</p>
+        <p>アイデアを絵や図で表現するほうだ</p>
             </div>
             <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
+             <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
              <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
             </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis2"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis1"/> 
     
     </div>
     <div class="testin1">
@@ -111,271 +111,276 @@
         <p>グループワークが得意な方だ</p>
             </div>
             <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
+             <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
              <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
             </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis3"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="-1" v-model="com3"/> 
     
     </div>
-    <div class="testin1">
+     <div class="testin1">
         <div class="testin1in">
         <p class="testinin">Q9.</p>
-        <p>自己分析ができている方だ</p>
+        <p>情報技術に関しての知識はある方だ</p>
             </div>
             <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
+             <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
              <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
             </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis4"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec2"/> 
     
     </div>
-    <div class="testin1">
+     <div class="testin1">
         <div class="testin1in">
         <p class="testinin">Q10.</p>
-        <p>komyunike-syonnhaiikannzidesuka</p>
+        <p>アナログよりもデジタル派だ</p>
             </div>
             <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
+　           <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
              <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis5"/> 
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>               </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec5"/> 
     
     </div>
- <div class="testin1">
+    <div class="testin1">
         <div class="testin1in">
         <p class="testinin">Q11.</p>
-        <p>人と話すことが好きだ</p>
+        <p>論理的に考えることが得意だ</p>
             </div>
             <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
+            <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
              <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl1"/> 
-    
-    </div>
-    <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q12.</p>
-        <p>他人の意見を理解できる</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl2"/> 
-    
-    </div>
-    <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q13.</p>
-        <p>グループワークが得意な方だ</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
             </div>
             <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl3"/> 
     
     </div>
     <div class="testin1">
         <div class="testin1in">
+        <p class="testinin">Q12.</p>
+        <p>データをもとに問題を解決することが得意だ</p>
+            </div>
+            <div class="testAtai">
+             <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl1"/> 
+    
+    </div>
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q13.</p>
+        <p>自己分析ができている方だ</p>
+            </div>
+            <div class="testAtai">
+             <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="-1" v-model="com4"/> 
+    
+    </div>
+    <div class="testin1">
+        <div class="testin1in">
         <p class="testinin">Q14.</p>
-        <p>自己分析ができている方だ</p>
+        <p>判断力がある方だ</p>
             </div>
             <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
+           <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
              <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl4"/> 
-    
-    </div>
-    <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q15.</p>
-        <p>komyunike-syonnhaiikannzidesuka</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl5"/> 
-    
-    </div>
- <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q16.</p>
-        <p>人と話すことが好きだ</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec1"/> 
-    
-    </div>
-    <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q17.</p>
-        <p>他人の意見を理解できる</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec2"/> 
-    
-    </div>
-    <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q18.</p>
-        <p>グループワークが得意な方だ</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec3"/> 
-    
-    </div>
-    <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q19.</p>
-        <p>自己分析ができている方だ</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec4"/> 
-    
-    </div>
-    <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q20.</p>
-        <p>komyunike-syonnhaiikannzidesuka</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec5"/> 
-    
-    </div>
- <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q21.</p>
-        <p>人と話すことが好きだ</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol1"/> 
-    
-    </div>
-    <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q22.</p>
-        <p>他人の意見を理解できる</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol2"/> 
-    
-    </div>
-    <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q23.</p>
-        <p>グループワークが得意な方だ</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
-            </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol3"/> 
-    
-    </div>
-    <div class="testin1">
-        <div class="testin1in">
-        <p class="testinin">Q24.</p>
-        <p>自己分析ができている方だ</p>
-            </div>
-            <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
-             <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>    
             </div>
             <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol4"/> 
     
     </div>
     <div class="testin1">
         <div class="testin1in">
-        <p class="testinin">Q25.</p>
-        <p>komyunike-syonnhaiikannzidesuka</p>
+        <p class="testinin">Q15.</p>
+        <p>複雑なものを抽象化することが得意だ</p>
             </div>
             <div class="testAtai">
-             <p class="testAtaiin1">非常にそう思う</p>
-             <p class="testAtaiin2">そう思う</p>
+             <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
              <p class="testAtaiin3">どちらでもない</p>
-             <p class="testAtaiin4">そう思わない</p>
-             <p class="testAtaiin5">全くそう思わない</p>   
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
             </div>
-            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol5"/> 
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis4"/> 
     
     </div>
 
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q16.</p>
+        <p>プログラミングが得意だ</p>
+            </div>
+            <div class="testAtai">
+            <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec3"/> 
+    
+    </div>
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q17.</p>
+        <p>物事を理解することが早いほうだ</p>
+            </div>
+            <div class="testAtai">
+             <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>    
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol1"/> 
+    
+    </div>
+ 
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q18.</p>
+        <p>事実に基づいて客観視することができる</p>
+            </div>
+            <div class="testAtai">
+          <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl5"/> 
+    
+    </div>
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q19.</p>
+        <p>ひたすら手を動かす方だ</p>
+            </div>
+            <div class="testAtai">
+             <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis3"/> 
+    
+    </div>
+ 
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q20.</p>
+        <p>協調性がある方だ</p>
+            </div>
+            <div class="testAtai">
+             <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>      
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="-1" v-model="com5"/> 
+    
+    </div>
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q21.</p>
+        <p>システムの内部構造に興味がある</p>
+            </div>
+            <div class="testAtai">
+            <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="tec4"/> 
+    
+    </div>
+    
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q22.</p>
+        <p>デザイン行為が好きであり、得意である</p>
+            </div>
+            <div class="testAtai">
+            <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="vis5"/> 
+    
+    </div>
+ 
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q23.</p>
+        <p>物事の問題点によく気付く方だ</p>
+            </div>
+            <div class="testAtai">
+            <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>    
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl2"/> 
+    
+    </div>
+    
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q24.</p>
+        <p>相手の間違いによく気付く方だ</p>
+            </div>
+            <div class="testAtai">
+           <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="anl4"/> 
+    
+    </div>   
+    <div class="testin1">
+        <div class="testin1in">
+        <p class="testinin">Q25.</p>
+        <p>自分の意図した通りに考えを相手に伝えることができる</p>
+            </div>
+            <div class="testAtai">
+            <p class="testAtaiin1">全くそう思わない</p>
+             <p class="testAtaiin2">そう思わない</p>
+             <p class="testAtaiin3">どちらでもない</p>
+             <p class="testAtaiin4">そう思う</p>
+             <p class="testAtaiin5">非常にそう思う</p>   
+            </div>
+            <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol3"/> 
+    
+    </div>
+        
   <button id="testSubmit" @click="testSubmit">Submit</button>
 </div>
 </template>
@@ -455,9 +460,7 @@ export default {
           this.skills11 = parseInt(this.skills11)
           console.log(this.skills11)
           this.communication = this.skills11 / 10;
-          this.communication = 10 - this.communication 
-          console.log(this.communication)
-          
+                   
           /////////visualyze skills//////////////////////////////////////
 
 
@@ -476,8 +479,7 @@ export default {
           this.skills21 = parseInt(this.skills21)
           console.log(this.skills21)
           this.visualization = this.skills21 / 10;
-          this.visualization = 10 - this.visualization
-          console.log(this.visualization)
+         
           /////////analyze skills////////////////////////////
 
           this.skills3 = 0;
@@ -495,8 +497,7 @@ export default {
           this.skills31 = parseInt(this.skills31)
           console.log(this.skills31)
           this.analyze = this.skills31 / 10;
-          this.analyze = 10 - this.analyze
-          console.log(this.analyze)
+          
 
           /////////communication skills////////////////////////////
 
@@ -516,8 +517,7 @@ export default {
           this.skills41 = parseInt(this.skills41)
           console.log(this.skills41)
           this.technology = this.skills41 / 10;
-          this.technology = 10 - this.technology
-          console.log(this.technology)
+          
           /////////communication skills////////////////////////////
 
 
@@ -536,8 +536,7 @@ export default {
           this.skills51 = parseInt(this.skills51)
           console.log(this.skills51)
           this.policy = this.skills51 / 10;
-          this.policy = 10 - this.policy
-          console.log(this.policy)
+          
          
           /////////communication skills////////////////////////////
           firebase.database().ref('/users/userData/' + this.userName).update({
