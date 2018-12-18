@@ -1,17 +1,6 @@
 <template>
   <div id="auto">
-    <div id="autogroupName">
-        <div class="makegroupbox">
-          <p class="page2P">Occupation</p>
-            <input type="text" v-model="userOccupation" />
-            <button @click="occupationResearch">reserach</button>
-            <div id="occupationMemberHyouzin" v-show="memberLoading"> 
-            <div id="occupationmemberHyouzin2" v-for="(item,index) in memberList">
-            <p>{{ item.User }}</p>
-            </div>
-            </div>
-            </div>
-        <div class="makegroupbox">
+     <div class="makegroupbox">
         <p class="page2P">5 Skills</p>
         <div class="skillsParent">
           <div class="skillsParent2">
@@ -37,8 +26,53 @@
           </div>
           </div>  
           </div>
+       
+    <div id="autogroupName">
+        <div class="makegroupbox">
+          <p class="page2P">Occupation</p>
+            <input type="text" v-model="userOccupation" />
+            
+            <div id="occupationMemberHyouzin" v-show="memberLoading">
+              <div id="occupationyokonarabi1"> 
+            <div id="occupationmemberHyouzin2" v-for="(item, index) in memberList">
+            <p id="occupationmemberHyouzin3">
+              {{ item.User }}
+              </p>
+          <div id="occupationmemberHyouzin4">
+            <div id="ocpmem1">
+              <p>  
+              {{ item.skill1　}}
+              </p>
+            </div>
+            <div id="ocpmem2">
+               <p>
+              {{ item.skill2　}}
+              </p>
+            </div>
+            <div id="ocpmem3" >
+              <p>
+              {{ item.skill3　}}
+              </p>
+            </div>
+            <div id="ocpmem4">
+              <p>
+              {{ item.skill4　}}
+              </p>
+            </div>
+            <div id="ocpmem5">
+              <p>
+              {{ item.skill5　}}
+              </p>
+            </div>
+          
+           </div>
+          </div>
+            </div>
+            </div>
+            <button @click="occupationResearch">reserach</button>
+            </div>
         
-        <button id="autopagesubmit" @click="addData">Make Group</button><br>
+        <button id="autopagesubmit" >sort</button><br>
         
     </div>
   </div>
@@ -49,13 +83,26 @@ import membersChart from './membersChart.vue'
 
 var tintin;
 var i;
-var motivation;
-var management;
-var design;
-var communication;
-var system;
 var userA;
 var photoURL;
+var coment;
+var skillsCount = []
+var communication;
+var visualization
+var analyze
+var technology
+var policy
+
+var illustrater;
+var photoshop;
+var XD;
+var Dtools;
+var cad;
+var html;
+var css;
+var js;
+var sm;
+var unity;
 var coment;
 
 export default {
@@ -80,6 +127,11 @@ export default {
         time: '',
         skillscount: [],
         skillscount2: 0,
+        skillcount31: [],
+        skillcount32: [],
+        skillcount33: [],
+        skillcount34: [],
+        skillcount35: [],
         skills1: '',
         skillA: false,
         skillB: false,
@@ -98,7 +150,9 @@ export default {
         skillO: false,
         userOccupation:"",
         memberList:[],
-        memberLoading:false
+        memberLoading:false,
+        memberSkills:[],
+        
     }
   },
   components: {
@@ -123,7 +177,7 @@ export default {
   methods: {
       occupationResearch(){
         this.memberLoading = true;
-        alert("tintin")
+       
         firebase.database().ref('/users/occupation/' + this.userOccupation).on('value', snapshot => { // eslint-disable-line
           if (snapshot) {
             const rootList = snapshot.val();
@@ -135,54 +189,91 @@ export default {
             this.memberList = list;
           }
         })
+
+        var length = this.memberList.length
+        
+        var i = 0;
+        for(i = 0; i < length; i++){
+
+          firebase.database().ref('/users/userData/' + this.memberList[i].User)
+          .on('value', function(snapshot) {
+        /*motivation = snapshot.val().motivation
+        management= snapshot.val().management
+        design = snapshot.val().design
+        communication = snapshot.val().communication
+        system = snapshot.val().system*/
+        visualization = snapshot.val().visualization
+        analyze = snapshot.val().analyze
+        technology = snapshot.val().technology
+        policy = snapshot.val().policy
+        communication = snapshot.val().communication
+
+        illustrater = snapshot.val().illustrater
+        photoshop = snapshot.val().photoshop
+        XD = snapshot.val().XD
+        Dtools = snapshot.val().Dtools
+        cad = snapshot.val().cad
+        html = snapshot.val().html
+        css = snapshot.val().css
+        js = snapshot.val().js
+        sm = snapshot.val().sm
+        unity = snapshot.val().unity
+        })
+
+        this.memberSkills[i] = []
+        var j = 0;
+        for(j = 0; j < 5; j++){
+          if(this.skillscount[j] == "communication"){
+            this.memberSkills[i][j] = communication
+          }else if(this.skillscount[j] == "visualization"){
+            this.memberSkills[i][j] = visualization
+          }else if(this.skillscount[j] == "analyze"){
+            this.memberSkills[i][j] = analyze
+          }else if(this.skillscount[j] == "technology"){
+            this.memberSkills[i][j] = technology
+          }else if(this.skillscount[j] == "policy"){
+            this.memberSkills[i][j] = policy
+          }else if(this.skillscount[j] == "illustrater"){
+            this.memberSkills[i][j] = illustrater
+          }else if(this.skillscount[j] == "photoshop"){
+            this.memberSkills[i][j] = photoshop
+          }else if(this.skillscount[j] == "XD"){
+            this.memberSkills[i][j] = XD
+          }else if(this.skillscount[j] == "Dtools"){
+            this.memberSkills[i][j] = Dtools
+          }else if(this.skillscount[j] == "cad"){
+            this.memberSkills[i][j] = cad
+          }else if(this.skillscount[j] == "html"){
+            this.memberSkills[i][j] = html
+          }else if(this.skillscount[j] == "css"){
+            this.memberSkills[i][j] = css
+          }else if(this.skillscount[j] == "js"){
+            this.memberSkills[i][j] = js
+          }else if(this.skillscount[j] == "sm"){
+            this.memberSkills[i][j] = sm
+          }else if(this.skillscount[j] == "unity"){
+            this.memberSkills[i][j] = unity
+          }
+          //alert(this.skillscount[i])
+        }
+        
+        this.skillcount31[i] = this.memberSkills[i][0]
+        this.skillcount32[i] = this.memberSkills[i][1]
+        this.skillcount33[i] = this.memberSkills[i][2]
+        this.skillcount34[i] = this.memberSkills[i][3]
+        this.skillcount35[i] = this.memberSkills[i][4]
+        this.memberList[i].skill1 = this.skillcount31[i]
+        this.memberList[i].skill2 = this.skillcount32[i]
+        this.memberList[i].skill3 = this.skillcount33[i]
+        this.memberList[i].skill4 = this.skillcount34[i]
+        this.memberList[i].skill5 = this.skillcount35[i]
+        
+        }
         
       },
-    addData: function() {
-      if(this.groupName === ''){
-        alert("Nothing Group Name!!")
-      }else {
-
-        var hiduke=new Date(); 
-　      var year = hiduke.getFullYear();
-　      var month = hiduke.getMonth()+1;
-　      var day = hiduke.getDate();
-　      this.time = year + "/" + month + "/" + day;
-  
-        var x;
-        for(x = 0; x < this.userNum.length; x++){
-          firebase.database().ref('/users/userGroup/' + this.userNum[x]).push({
-      Group:this.groupName
-    })
-    }
-        firebase.database().ref("/users/group/" + this.groupName).update({
-                  user1: this.userNum[0] || '',
-                  user2: this.userNum[1] || '',
-                  user3: this.userNum[2] || '',
-                  user4: this.userNum[3] || '',
-                  user5: this.userNum[4] || '',
-                  user6: this.userNum[5] || '',
-                  user7: this.userNum[6] || '',
-                  user8: this.userNum[7] || '',
-                  user9: this.userNum[8] || '',
-                  coment: this.coment,
-                  time: this.time,
-                  count: this.count
-      })
-
-        firebase.database().ref("/users/groupskills/" + this.groupName).update({
-                         skills1: this.skillscount[0],
-                         skills2: this.skillscount[1],
-                         skills3: this.skillscount[2],
-                         skills4: this.skillscount[3],
-                         skills5: this.skillscount[4],
-                         })
-
-      alert('Make Group')  
-      }   
-    },
     skillsPlusA: function() {
       if(this.skillscount2 < 5 && this.skillA == false){
-        this.skillscount[this.skillscount2] = "motivation"
+        this.skillscount[this.skillscount2] = "communication"
         this.skillscount2 ++
         document.getElementById("autoskillA").style.backgroundColor = "#70A09E"
         this.skillA = true
@@ -193,7 +284,7 @@ export default {
     skillsPlusB: function() {
       
       if(this.skillscount2 < 5 && this.skillB == false){
-        this.skillscount[this.skillscount2] = "design"
+        this.skillscount[this.skillscount2] = "visualization"
       this.skillscount2 ++
       document.getElementById("autoskillB").style.backgroundColor = "#70A09E"
       this.skillB = true
@@ -204,7 +295,7 @@ export default {
     skillsPlusC: function() {
       
       if(this.skillscount2 < 5 && this.skillC == false){
-        this.skillscount[this.skillscount2] = "management"
+        this.skillscount[this.skillscount2] = "analyze"
       this.skillscount2 ++
       document.getElementById("autoskillC").style.backgroundColor = "#70A09E"
       this.skillC = true
@@ -214,7 +305,7 @@ export default {
     },
     skillsPlusD: function() {
             if(this.skillscount2 < 5 && this.skillD == false){
-        this.skillscount[this.skillscount2] = "communication"
+        this.skillscount[this.skillscount2] = "technology"
       this.skillscount2 ++
       document.getElementById("autoskillD").style.backgroundColor = "#70A09E"
       this.skillD = true
@@ -225,7 +316,7 @@ export default {
     skillsPlusE: function() {
       
       if(this.skillscount2 < 5 && this.skillE == false){
-        this.skillscount[this.skillscount2] = "system"
+        this.skillscount[this.skillscount2] = "policy"
       this.skillscount2 ++
       document.getElementById("autoskillE").style.backgroundColor = "#70A09E"
       this.skillE = true
@@ -368,7 +459,7 @@ export default {
         
       //this.fillData()
       },
-        add: function () {
+   /*     add: function () {
 
     var useuse = JSON.parse(localStorage.getItem('memberName'))
     photoURL = ""
@@ -385,7 +476,7 @@ export default {
       document.getElementById("member").style.display ="none";
     this.user = ""
     }
-    }
+    }*/
   }
 }
 
@@ -552,6 +643,39 @@ border : solid 1px #f5f5f5;
 
 .skillsChild:hover {
   opacity: 0.8;
+}
+
+#occupationmemberHyouzin2{
+  display:flex;
+}
+
+#occupationmemberHyouzin3{
+  flex:1;
+}
+
+#occupationmemberHyouzin4{
+  flex:2;
+  display:flex;
+}
+
+#ocpmem1{
+  flex:1;
+}
+
+#ocpmem2{
+  flex:1;
+}
+
+#ocpmem3{
+  flex:1;
+}
+
+#ocpmem4{
+  flex:1;
+}
+
+#ocpmem5{
+  flex:1;
 }
 
 }
