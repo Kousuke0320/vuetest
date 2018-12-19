@@ -539,6 +539,7 @@ export default {
           
          
           /////////communication skills////////////////////////////
+          
           firebase.database().ref('/users/userData/' + this.userName).update({
             communication:this.communication,
             visualization:this.visualization,
@@ -546,6 +547,7 @@ export default {
             technology:this.technology,
             policy:this.policy
           })
+          
           alert("success")
 
       }

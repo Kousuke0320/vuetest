@@ -456,7 +456,7 @@ button {
   color:#696969;
 }
 
-select {
+ #config select {
   height: 30px;
   width:80%;
   border:none;
@@ -599,7 +599,7 @@ button {
   color:#696969;
 }
 
-select {
+ #config select {
   height: 30px;
   width:80%;
   border:none;

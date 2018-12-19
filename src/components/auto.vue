@@ -30,10 +30,20 @@
     <div id="autogroupName">
         <div class="makegroupbox">
           <p class="page2P">Occupation</p>
-            <input type="text" v-model="userOccupation" />
-            
+          <div>
+            <input type="text" class="inputText" v-model="userOccupation" />
+          </div>
+          <div>
+            <button id="researchoccupation" @click="occupationResearch">reserach</button>
+            </div>
             <div id="occupationMemberHyouzin" v-show="memberLoading">
-              <div id="occupationyokonarabi1"> 
+              <div id="occupationyokonarabi1" >
+                <div id="skillscount0">
+                  <p>Name</p></div>
+                <div id="occupationyokonarabi2" v-for="(item, index) in skillscount">
+                <p id="skillscount1">{{ item }}</p>
+                </div>
+                </div> 
             <div id="occupationmemberHyouzin2" v-for="(item, index) in memberList">
             <p id="occupationmemberHyouzin3">
               {{ item.User }}
@@ -64,15 +74,20 @@
               {{ item.skill5　}}
               </p>
             </div>
-          
            </div>
           </div>
             </div>
             </div>
-            <button @click="occupationResearch">reserach</button>
-            </div>
-        
-        <button id="autopagesubmit" >sort</button><br>
+        <div class="makegroupbox">
+        <p class="page2P">Number of people in group</p>
+        <select name="genderSel" v-model="numberofpeople">
+        <option value="2">2</option>
+        <option value="3">3</option>
+         <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        </div>
+        <button id="autopagesubmit" @click="autopagesubmit">sort</button><br>
         
     </div>
   </div>
@@ -106,7 +121,7 @@ var unity;
 var coment;
 
 export default {
-  name: 'page2',
+  name: 'auto',
   data () {
     return {
       userName: '',
@@ -152,6 +167,11 @@ export default {
         memberList:[],
         memberLoading:false,
         memberSkills:[],
+        numberofpeople:0,
+        fullOfSkills: [],
+        memberFullOfSkills:[],
+        key:[],
+        valueList:[],
         
     }
   },
@@ -270,6 +290,47 @@ export default {
         
         }
         
+      },
+      autopagesubmit: function(){
+        let val = 0;
+        for(val = 0; val < this.memberList.length; val++){
+        
+        this.fullOfSkills[val] = this.memberList[val].skill1 + this.memberList[val].skill2
+         +this.memberList[val].skill3 + this.memberList[val].skill4
+         +this.memberList[val].skill5 
+        }
+        console.log(this.fullOfSkills[0])
+        let val2 = 0;
+        let val3 = 0;
+        let val4 = 0;
+        let count = 0;
+        let count2 =0;
+        let key = 0;
+        //this.valueList = this.memberList;
+        
+        for(val2 = 0; val2 < this.memberList.length; val2++){
+          //val4 = parseInt(this.fullOfSkills[val2])
+          val4 = this.fullOfSkills[val2]
+          if(val2 == 0){
+            this.memberFullOfSkills[count] = val4
+            //this.memberFullOfSkillsName[count] = this.memberList.User[count]
+          }else{
+            if(val4 > this.memberFullOfSkills[count]){
+              this.memberFullOfSkills[count] = val4
+              key = val2
+            }else{
+              this.valueList[count2] = val4
+              count2++
+            }
+            if(val2 == this.memberList.length-1){
+              this.key[count] = key
+              count++
+              console.log("最大値は" + this.memberFullOfSkills[0])
+              console.log("valuelistは" + this.valueList)
+            }
+          }
+        }
+             
       },
     skillsPlusA: function() {
       if(this.skillscount2 < 5 && this.skillA == false){
@@ -486,7 +547,7 @@ export default {
 
 @media (min-width: 1080px){
 
-#group {
+#auto {
   font-size: 15px;
 }
 
@@ -645,6 +706,11 @@ border : solid 1px #f5f5f5;
   opacity: 0.8;
 }
 
+#occupationmemberHyouzin{
+  margin-top:30px;
+}
+
+
 #occupationmemberHyouzin2{
   display:flex;
 }
@@ -657,6 +723,26 @@ border : solid 1px #f5f5f5;
   flex:2;
   display:flex;
 }
+
+#occupationyokonarabi1{
+  display:flex;
+}
+
+#skillscount0{
+flex:5;
+}
+
+#occupationyokonarabi2{
+  flex:2;
+  display: flex;
+}
+
+#skillscount1{
+flex:1;
+text-align:center;
+}
+
+
 
 #ocpmem1{
   flex:1;
@@ -676,6 +762,31 @@ border : solid 1px #f5f5f5;
 
 #ocpmem5{
   flex:1;
+}
+
+#researchoccupation{
+  margin:10px auto;
+    background-color: #00A29A;
+    color: aliceblue;
+    border-radius: 5px;
+    font-size: 15px;
+    width: 20%;
+  height: 30px;
+}
+
+#auto input{
+  height: 30px;
+  width:50%;
+  font-size:15px;
+}
+
+#auto select {
+  height: 30px;
+  width:50%;
+  border:none;
+  background-color: #ffffff;
+  color:#696969;
+  font-size:15px;
 }
 
 }
