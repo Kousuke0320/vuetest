@@ -299,14 +299,13 @@ export default {
          +this.memberList[val].skill3 + this.memberList[val].skill4
          +this.memberList[val].skill5 
         }
-        console.log(this.fullOfSkills[0])
+        console.log(this.fullOfSkills)
         let val2 = 0;
         let val3 = 0;
         let val4 = 0;
         let count = 0;
         let count2 =0;
         let key = 0;
-        //this.valueList = this.memberList;
         
         for(val2 = 0; val2 < this.memberList.length; val2++){
           //val4 = parseInt(this.fullOfSkills[val2])
@@ -316,8 +315,10 @@ export default {
             //this.memberFullOfSkillsName[count] = this.memberList.User[count]
           }else{
             if(val4 > this.memberFullOfSkills[count]){
+              this.valueList[count2] = this.memberFullOfSkills[count]
               this.memberFullOfSkills[count] = val4
               key = val2
+              count2++
             }else{
               this.valueList[count2] = val4
               count2++
@@ -327,6 +328,7 @@ export default {
               count++
               console.log("最大値は" + this.memberFullOfSkills[0])
               console.log("valuelistは" + this.valueList)
+              console.log("valuelengthは" + this.valueList.length)
             }
           }
         }
