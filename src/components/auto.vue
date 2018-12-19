@@ -306,7 +306,9 @@ export default {
         let count = 0;
         let count2 =0;
         let key = 0;
-        
+        //this.valueList = this.fullOfSkills
+        for(count = 0; count < this.memberList.length; count++){
+        if(count == 0){
         for(val2 = 0; val2 < this.memberList.length; val2++){
           //val4 = parseInt(this.fullOfSkills[val2])
           val4 = this.fullOfSkills[val2]
@@ -325,12 +327,43 @@ export default {
             }
             if(val2 == this.memberList.length-1){
               this.key[count] = key
-              count++
+              //count++
+              count2 = 0;
               console.log("最大値は" + this.memberFullOfSkills[0])
-              console.log("valuelistは" + this.valueList)
-              console.log("valuelengthは" + this.valueList.length)
+              //console.log("valuelistは" + this.valueList)
+              //console.log("valuelengthは" + this.valueList.length)
             }
           }
+        }
+        }else{
+            for(val2 = 0; val2 < this.memberList.length; val2++){
+          //val4 = parseInt(this.fullOfSkills[val2])
+          val4 = this.valueList[val2]
+          if(val2 == 0){
+            this.memberFullOfSkills[count] = val4
+            //this.memberFullOfSkillsName[count] = this.memberList.User[count]
+          }else{
+            if(val4 > this.memberFullOfSkills[count]){
+              this.valueList[count2] = this.memberFullOfSkills[count]
+              this.memberFullOfSkills[count] = val4
+              key = val2
+              count2++
+            }else{
+              this.valueList[count2] = val4
+              count2++
+            }
+            if(val2 == this.memberList.length-1){
+              this.key[count] = key
+              //count++
+              this.valueList[count2] = 0
+              count2 = 0;
+              console.log("最大値は" + this.memberFullOfSkills[count])
+              //console.log("valuelistは" + this.valueList)
+              //console.log("valuelengthは" + this.valueList.length)
+            }
+          }
+        }      
+        }
         }
              
       },
