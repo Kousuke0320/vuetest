@@ -172,6 +172,9 @@ export default {
         memberFullOfSkills:[],
         key:[],
         valueList:[],
+        sortMember1:[],
+        team:[],
+        teamConsole:[]
         
     }
   },
@@ -303,6 +306,7 @@ export default {
         let val2 = 0;
         let val3 = 0;
         let val4 = 0;
+        let val5 = 0;
         let count = 0;
         let count2 =0;
         let key = 0;
@@ -329,7 +333,15 @@ export default {
               this.key[count] = key
               //count++
               count2 = 0;
+              
+             for(val5 = 0; val5 < this.memberList.length; val5++){
+                if(this.memberFullOfSkills[0] == this.fullOfSkills[val5]){
+                  this.sortMember1[0] = this.memberList[val5].User
+                }
+              }
               console.log("最大値は" + this.memberFullOfSkills[0])
+              
+               //console.log("最大値は" + this.memberFullOfSkills[count])
               //console.log("valuelistは" + this.valueList)
               //console.log("valuelengthは" + this.valueList.length)
             }
@@ -341,31 +353,208 @@ export default {
           val4 = this.valueList[val2]
           if(val2 == 0){
             this.memberFullOfSkills[count] = val4
-            //this.memberFullOfSkillsName[count] = this.memberList.User[count]
+            //this.memberFullOfSkillsName[count] = this.memberList[val2].User
           }else{
             if(val4 > this.memberFullOfSkills[count]){
               this.valueList[count2] = this.memberFullOfSkills[count]
               this.memberFullOfSkills[count] = val4
-              key = val2
+              //key = val2
               count2++
             }else{
               this.valueList[count2] = val4
               count2++
             }
             if(val2 == this.memberList.length-1){
-              this.key[count] = key
+             // this.key[count] = key
               //count++
               this.valueList[count2] = 0
               count2 = 0;
-              console.log("最大値は" + this.memberFullOfSkills[count])
+              
+              for(val5 = 0; val5 < this.memberList.length; val5++){
+                if(this.memberFullOfSkills[count] == this.fullOfSkills[val5]){
+                  this.sortMember1[count] = this.memberList[val5].User
+                }
+              }
+              console.log("最大値は"+ this.memberFullOfSkills[count])
+              
+              //console.log("最大値は" + this.memberFullOfSkills[count])
               //console.log("valuelistは" + this.valueList)
               //console.log("valuelengthは" + this.valueList.length)
+              
             }
           }
         }      
         }
         }
-             
+
+          console.log(this.sortMember1[0])
+          console.log(this.sortMember1[1])
+          console.log(this.sortMember1[2])
+          console.log(this.sortMember1[3])
+          console.log(this.sortMember1[4])
+          console.log(this.sortMember1[5])
+          console.log(this.sortMember1[6])
+          console.log(this.sortMember1[7])
+          console.log(this.sortMember1[8])
+          
+          ///////条件分岐はまだ////////////////////////////////
+          let numberTeam = 0
+          numberTeam =  this.sortMember1.length
+          let val8 = 0
+          val8 = numberTeam - 1
+          let numberTeam2 = 0
+          numberTeam2 = numberTeam / this.numberofpeople
+          let numberTeam3 = 0
+          numberTeam3 = numberTeam % this.numberofpeople
+
+          let val7 = 0;
+          let val9 = 0;
+          let val10 = 0;
+          
+          for(val7 = 0;val7 < numberTeam2; val7++){
+            let count3 = 0;
+            let count4 = 0;
+            this.team[val7] = []
+            this.team[val7][val9] = this.sortMember1[val10]
+            count3 = this.memberFullOfSkills[val10]
+            val10++
+            val9++
+            this.team[val7][val9] = this.sortMember1[val8]
+            count4 = this.memberFullOfSkills[val8]
+            val8--
+            val9 = 0;
+            this.teamConsole[val7] = count3 + count4
+          }
+          console.log("/////////////")
+          console.log(this.teamConsole[0])
+          console.log(this.team[0][0])
+          console.log(this.team[0][1])
+          console.log("/////////////")
+          console.log(this.teamConsole[1])
+          console.log(this.team[1][0])
+          console.log(this.team[1][1])
+          console.log("/////////////")
+          console.log(this.teamConsole[2])
+          console.log(this.team[2][0])
+          console.log(this.team[2][1])
+
+          let count5 = 0;
+          let count6 = 0;
+          let count7 = 0
+          count7 = 2 * numberTeam2
+          //let count8 = 0;
+          let count9 = 0;
+          let nokoriMemberNum = 0
+          nokoriMemberNum = numberTeam - count7
+          let nokoriMemberNum2 = []
+          let nokoriMemberNum3 = []
+          //3のときはnumberTeamは3
+          //numberTeamはメンアーの総数
+          //count7は2 * 3をしている
+          //numberteam2はチーム数
+          //nokorinumbernumは残りの人数
+          console.log("残りメンバー数" + nokoriMemberNum)
+          ////////////現在のチームの合計のそーと//////////////////////////////
+
+
+          for(count5 = 0; count5 < nokoriMemberNum; count5++){
+            let count9 = 0;
+            if(count5 == 0){
+              for(count6 = 0; count6 < nokoriMemberNum; count6++){
+                ////合計のそーと
+                if(count6 == 0){
+                  nokoriMemberNum2[count5]=this.teamConsole[0]  
+                }else{
+                  if(nokoriMemberNum2[count5] < this.teamConsole[count6]){
+                    nokoriMemberNum3[count9] = nokoriMemberNum2[count5]
+                    
+                    count9++
+                    // console.log("配列" + nokoriMemberNum3)
+                  nokoriMemberNum2[count5] = this.teamConsole[count6]
+                  }else{
+                     nokoriMemberNum3[count9] = this.teamConsole[count6]
+                     console.log(nokoriMemberNum3[count9])
+                     count9++
+                  }
+                  if(count6 == nokoriMemberNum - 1){
+                      console.log("チームの最大値はa"+ nokoriMemberNum2[count5])
+                    console.log("配列" + nokoriMemberNum3)
+                    
+                  }
+
+                } 
+              }
+            }else{
+              for(count6 = 0; count6 < nokoriMemberNum; count6++){
+                ////合計のそーと
+                if(count6 == 0){
+                  nokoriMemberNum2[count5] = nokoriMemberNum3[0]  
+                }else{
+                  if(nokoriMemberNum2[count5] < nokoriMemberNum3[count6]){
+                    nokoriMemberNum3[count9] = nokoriMemberNum2[count5]
+                    count9++
+                  nokoriMemberNum2[count5] = nokoriMemberNum3[count6]
+                  }else{
+                     nokoriMemberNum3[count9] = nokoriMemberNum2[count6]
+                     count9++
+                  }
+                  if(count6 == nokoriMemberNum - 1){
+                    console.log("残りメンバーの最大値は"+ nokoriMemberNum2[count5])
+                    console.log("配列" + nokoriMemberNum3)
+                    nokoriMemberNum3[count9] = 0
+                    count9 = 0
+                  }
+                } 
+              }
+            }
+            
+          }
+          ////////////////////////////////////////////////////////////
+          //nokoriMemberNum2にチームが特典の多い順に集まっている
+          //残りのメンバーの得点の低い順からチームに配属する
+          //this.teamconsole チームの得点（ソート無し）
+          //this.team[teamのアドレス][メンバー]
+          //this.sortMember1[メンバーアドレス]に残りメンバーが入っている
+          //nokoriMemberNumは残ってる
+          //count7は2*チーム数
+
+
+//3人のソートです
+          let teamSort = 0;
+          let teamSort2 = 0;
+          let teamKey = 0;
+          let teamKey2 = this.sortMember1.length - 1
+          for(teamSort = 0;teamSort < nokoriMemberNum2.length; teamSort++){
+            for(teamSort2 = 0;teamSort2 < nokoriMemberNum2.length; teamSort2++){
+              if(this.teamConsole[teamSort] == nokoriMemberNum2[teamSort2]){
+                teamKey = teamSort2
+                this.team[teamKey][2] = this.sortMember1[teamKey2 - numberTeam2]
+                this.teamConsole[teamSort] =  this.teamConsole[teamSort] + this.memberFullOfSkills[teamKey2 - numberTeam2]
+                console.log(this.team[teamKey][2])
+                teamKey++
+              console.log(teamKey2 - numberTeam2)
+              teamKey2--
+              
+              }
+            }
+          }
+
+
+          //////////////出力用////////////////////////////////////
+
+          let teamHyouzi = 0;
+          let teamHyouzi2 = 0;
+          //forzemi
+          for(teamHyouzi = 0; teamHyouzi < numberTeam2; teamHyouzi++){
+            for(teamHyouzi2 = 0;teamHyouzi2 < numberTeam2; teamHyouzi2++){
+              console.log("TeamNumber" + " " + teamHyouzi)
+              console.log("メンバー" + teamHyouzi2 + ":" + this.team[teamHyouzi][teamHyouzi2])
+            }
+            console.log("合計は" + this.teamConsole[teamHyouzi])
+            //console.log
+          }
+          //////////////////////////////////////////////////////
+
       },
     skillsPlusA: function() {
       if(this.skillscount2 < 5 && this.skillA == false){
