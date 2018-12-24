@@ -87,8 +87,26 @@
           <option value="5">5</option>
         </select>
         </div>
-        <button id="autopagesubmit" @click="autopagesubmit">sort</button><br>
-        
+        <div class="makegroupbox" v-show="settingHasu">
+          <p class="page2P">Console</p>
+          </div>
+         <div id="sortConsole" class="makegroupbox" v-show="sortConsole">
+         <p class="page2P">Console</p>
+          <div id="sortConsole1">
+            <p id="sortConsole11">Team Number</p>
+            <p id="sortConsole12">Team Score</p>
+            <p id="sortConsole13">Team Member</p>
+            </div>
+          <div id="sortConsole2" v-for="(itemss) in consoleMember">
+            <p id="sortConsole21">{{ itemss.number }}</p>
+            <p id="sortConsole23">{{ itemss.console }}</p>
+            <p id="sortConsole22">{{ itemss.userName }}</p>
+            
+            </div>
+            
+        </div>
+        <button id="autopagesubmit" @click="autopagesubmit">sort by all skills</button><br>
+       
     </div>
   </div>
 </template>
@@ -174,7 +192,11 @@ export default {
         valueList:[],
         sortMember1:[],
         team:[],
-        teamConsole:[]
+        teamConsole:[],
+        sortConsole:false,
+        teamStructure:[],
+        consoleMember:[],
+        settingHasu:false,
         
     }
   },
@@ -294,6 +316,7 @@ export default {
         }
         
       },
+      
       autopagesubmit: function(){
         let val = 0;
         for(val = 0; val < this.memberList.length; val++){
@@ -376,7 +399,7 @@ export default {
                 }
               }
               console.log("最大値は"+ this.memberFullOfSkills[count])
-              
+              console.log("配列" + this.valueList)
               //console.log("最大値は" + this.memberFullOfSkills[count])
               //console.log("valuelistは" + this.valueList)
               //console.log("valuelengthは" + this.valueList.length)
@@ -448,6 +471,7 @@ export default {
           nokoriMemberNum = numberTeam - count7
           let nokoriMemberNum2 = []
           let nokoriMemberNum3 = []
+          let valval = 0
           //3のときはnumberTeamは3
           //numberTeamはメンアーの総数
           //count7は2 * 3をしている
@@ -458,28 +482,29 @@ export default {
 
 
           for(count5 = 0; count5 < nokoriMemberNum; count5++){
-            let count9 = 0;
+             
             if(count5 == 0){
               for(count6 = 0; count6 < nokoriMemberNum; count6++){
                 ////合計のそーと
                 if(count6 == 0){
-                  nokoriMemberNum2[count5]=this.teamConsole[0]  
+                  nokoriMemberNum2[count5]=this.teamConsole[count6]  
                 }else{
                   if(nokoriMemberNum2[count5] < this.teamConsole[count6]){
                     nokoriMemberNum3[count9] = nokoriMemberNum2[count5]
-                    
+                    nokoriMemberNum2[count5] = this.teamConsole[count6]
                     count9++
                     // console.log("配列" + nokoriMemberNum3)
-                  nokoriMemberNum2[count5] = this.teamConsole[count6]
+                  
                   }else{
                      nokoriMemberNum3[count9] = this.teamConsole[count6]
-                     console.log(nokoriMemberNum3[count9])
+                     //console.log(nokoriMemberNum3[count9])
                      count9++
+                     
                   }
                   if(count6 == nokoriMemberNum - 1){
                       console.log("チームの最大値はa"+ nokoriMemberNum2[count5])
                     console.log("配列" + nokoriMemberNum3)
-                    
+                    count9 = 0
                   }
 
                 } 
@@ -487,26 +512,30 @@ export default {
             }else{
               for(count6 = 0; count6 < nokoriMemberNum; count6++){
                 ////合計のそーと
+                valval = nokoriMemberNum3[count6]
                 if(count6 == 0){
                   nokoriMemberNum2[count5] = nokoriMemberNum3[0]  
                 }else{
-                  if(nokoriMemberNum2[count5] < nokoriMemberNum3[count6]){
+                  if(nokoriMemberNum2[count5] < valval){
                     nokoriMemberNum3[count9] = nokoriMemberNum2[count5]
+                    nokoriMemberNum2[count5] = valval
                     count9++
-                  nokoriMemberNum2[count5] = nokoriMemberNum3[count6]
                   }else{
-                     nokoriMemberNum3[count9] = nokoriMemberNum2[count6]
+                     nokoriMemberNum3[count9] = valval
                      count9++
                   }
                   if(count6 == nokoriMemberNum - 1){
                     console.log("残りメンバーの最大値は"+ nokoriMemberNum2[count5])
                     console.log("配列" + nokoriMemberNum3)
+                    console.log("count9" + count9)
                     nokoriMemberNum3[count9] = 0
                     count9 = 0
                   }
                 } 
               }
             }
+
+
             
           }
           ////////////////////////////////////////////////////////////
@@ -554,6 +583,51 @@ export default {
             //console.log
           }
           //////////////////////////////////////////////////////
+
+          ////////チーム生成結果画面表示////////////////////
+
+
+          let stuructureNum = 0;
+          let stuructureNum2 = 0;
+          let stuructureNum3 = 0;
+          let stuructureNum4 = 0;
+          //this.team[チームナンバー][メンバー]
+          //numberTeam2はチーム数でありメンバー数ではない
+          //this.sortMember1.length メンバーの数
+
+          this.consoleMember = this.memberList
+          //for(stuructureNum = 0; stuructureNum < this.sortMember1.length; stuructureNum++){
+            for(stuructureNum2 = 0; stuructureNum2 < numberTeam2; stuructureNum2++){
+              for(stuructureNum3 = 0; stuructureNum3 < numberTeam2; stuructureNum3++){
+                  if(stuructureNum3 == 0){
+                    this.consoleMember[stuructureNum].number = stuructureNum2 + 1;
+                    this.consoleMember[stuructureNum].console = this.teamConsole[stuructureNum4];
+                    stuructureNum4++
+                  }else{
+                    this.consoleMember[stuructureNum].number = "";
+                    this.consoleMember[stuructureNum].console = "";
+                  }
+                  this.consoleMember[stuructureNum].userName = this.team[stuructureNum2][stuructureNum3]
+                  console.log(this.consoleMember[stuructureNum])
+                  //console.log(this.teamConsole)
+                  stuructureNum++;
+            }
+          }
+
+
+          this.sortConsole = true;
+          
+          //}
+/*
+          for(stuructureNum = 0; stuructureNum< numberTeam2; stuructureNum++){
+            this.MemberHyouzi[stuructureNum].Number = stuructureNum;
+            for(stuructureNum2 = 0;stuructureNum2 < numberTeam2; stuructureNum2++){
+              
+              this.MemberHyouzi[stuructureNum].Name = this.team[stuructureNum][stuructureNum2]
+            }
+          }
+     */     
+          
 
       },
     skillsPlusA: function() {
@@ -1012,6 +1086,43 @@ text-align:center;
   color:#696969;
   font-size:15px;
 }
+
+#sortConsole{
+
+}
+
+#sortConsole1{
+  display: flex;
+  color:#00A29A;
+}
+
+#sortConsole11{
+  flex: 1;
+}
+#sortConsole12{
+  flex: 1;
+}
+#sortConsole13{
+  flex: 1;
+}
+
+#sortConsole2{
+  display: flex;
+  
+}
+
+#sortConsole21{
+  flex: 1;
+}
+#sortConsole22{
+  flex: 1;
+  
+}
+
+#sortConsole23{
+  flex: 1;
+}
+
 
 }
 
