@@ -88,7 +88,7 @@
         </select>
         </div>
         <div class="makegroupbox" v-show="settingHasu">
-          <p class="page2P">Console</p>
+          <p class="page2P">setting</p>
           </div>
          <div id="sortConsole" class="makegroupbox" v-show="sortConsole">
          <p class="page2P">Console</p>
@@ -105,8 +105,8 @@
             </div>
             
         </div>
-        <button id="autopagesubmit" @click="autopagesubmit">sort by all skills</button><br>
-       
+        <button id="autopagesubmit" @click="autopagesubmit" v-show="beforeSort">sort by all skills</button><br>
+       <button id="autopagesubmit2" @click="databaseSubmit" v-show="!beforeSort">Submit</button><br>
     </div>
   </div>
 </template>
@@ -197,6 +197,7 @@ export default {
         teamStructure:[],
         consoleMember:[],
         settingHasu:false,
+        beforeSort:true,
         
     }
   },
@@ -220,6 +221,32 @@ export default {
      watch: {
     },
   methods: {
+    databaseSubmit(){
+      /*
+      let datai = 0;
+      for(datai = 0; datai < this.memberList.length; datai++){
+        firebase.database().ref('/users/userGroup/' + this.memberList[datai].User).push({
+      Group:this.userOccupation
+    })
+
+    firebase.database().ref("/users/group/" + this.groupName).update({
+                  user1: this.userNum[0] || '',
+                  user2: this.userNum[1] || '',
+                  user3: this.userNum[2] || '',
+                  user4: this.userNum[3] || '',
+                  user5: this.userNum[4] || '',
+      })
+
+        firebase.database().ref("/users/groupskills/" + this.groupName).update({
+                         skills1: this.skillscount[0],
+                         skills2: this.skillscount[1],
+                         skills3: this.skillscount[2],
+                         skills4: this.skillscount[3],
+                         skills5: this.skillscount[4],
+                         })
+      }*/
+      alert('Make Group')  
+    },
       occupationResearch(){
         this.memberLoading = true;
        
@@ -316,8 +343,16 @@ export default {
         }
         
       },
-      
-      autopagesubmit: function(){
+      autopagesubmit(){
+        let hosuu = 0;
+        hosuu = this.memberList.length % this.numberofpeople;
+        if(hosuu == 0){
+          this.autopagesubmit2()
+        }else{
+          this.settingHasu = true
+        }
+      },
+      autopagesubmit2: function(){
         let val = 0;
         for(val = 0; val < this.memberList.length; val++){
         
@@ -616,6 +651,7 @@ export default {
 
 
           this.sortConsole = true;
+          this.beforeSort = false;
           
           //}
 /*
@@ -937,6 +973,19 @@ border-radius: 5px;
     width: 20vw;
   height: 40px;
 }
+
+#autopagesubmit2 {
+    margin:20px auto;
+    background-color: rgb(250,250,0);
+    color: #696969;
+    border-radius: 5px;
+    font-size: 15px;
+    width: 20vw;
+  height: 40px;
+  border-color:rgb(250,250,0);
+  font-weight: bold;
+}
+
 
 #memPrf {
 background-color: #ffffff;
