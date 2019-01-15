@@ -198,7 +198,7 @@ export default {
         consoleMember:[],
         settingHasu:false,
         beforeSort:true,
-        
+        numberTeam2:0
     }
   },
   components: {
@@ -222,12 +222,58 @@ export default {
     },
   methods: {
     databaseSubmit(){
+
+      let hensu1 = 0;
+      let hensu2 = 0;
+      let hensu3 = 0;
+      let hensu4 = 0;
+      let hensu5 = 0;
+      let hensu6 = 0;
+      
+        for(hensu2 = 0; hensu2 < this.numberTeam2; hensu2++){
+              for(hensu3 = 0; hensu3 < this.numberTeam2; hensu3++){
+                  if(hensu3 == 0){
+                    this.groupName = this.userOccupation + this.consoleMember[hensu1].number ;
+                    firebase.database().ref('/users/userGroup/' + this.team[hensu2][hensu3]).push({
+                    Group:this.groupName
+                  })
+                  
+               }else{
+                 firebase.database().ref('/users/userGroup/' + this.team[hensu2][hensu3]).push({
+                    Group:this.groupName
+                  })
+                }
+                //////////////3人用//////////////////////////
+                if(hensu3 == this.numberTeam2 - 1){
+                  hensu5 = hensu4 + 1
+                  hensu6 = hensu4 + 2
+                  firebase.database().ref("/users/group/" + this.groupName).update({
+                  user1: this.consoleMember[hensu4].userName || '',
+                  user2: this.consoleMember[hensu5].userName || '',
+                  user3: this.consoleMember[hensu6].userName || '',
+      })
+      firebase.database().ref("/users/groupskills/" + this.groupName).update({
+                         skills1: this.skillscount[0],
+                         skills2: this.skillscount[1],
+                         skills3: this.skillscount[2],
+                         skills4: this.skillscount[3],
+                         skills5: this.skillscount[4],
+                         })
+      hensu4 = hensu4 + 3
+                }
+             hensu1++;
+            }
+          }
+          
+         
       /*
       let datai = 0;
       for(datai = 0; datai < this.memberList.length; datai++){
         firebase.database().ref('/users/userGroup/' + this.memberList[datai].User).push({
       Group:this.userOccupation
     })
+
+    this.groupName = this.userOccupation + 
 
     firebase.database().ref("/users/group/" + this.groupName).update({
                   user1: this.userNum[0] || '',
@@ -244,8 +290,15 @@ export default {
                          skills4: this.skillscount[3],
                          skills5: this.skillscount[4],
                          })
-      }*/
+      }
       alert('Make Group')  
+      */
+
+alert('Make Group')  
+      
+
+
+
     },
       occupationResearch(){
         this.memberLoading = true;
@@ -460,8 +513,9 @@ export default {
           numberTeam =  this.sortMember1.length
           let val8 = 0
           val8 = numberTeam - 1
-          let numberTeam2 = 0
+          var numberTeam2 = 0
           numberTeam2 = numberTeam / this.numberofpeople
+          this.numberTeam2 = numberTeam2
           let numberTeam3 = 0
           numberTeam3 = numberTeam % this.numberofpeople
 
