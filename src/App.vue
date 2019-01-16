@@ -256,7 +256,7 @@ export default {
 .menu-btn {
     position: fixed;
     display: block;
-    top: 40px;
+    top: 25px;
     right: 40px;
     width: 40px;
     height: 40px;
