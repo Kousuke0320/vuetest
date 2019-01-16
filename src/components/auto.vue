@@ -231,7 +231,7 @@ export default {
       let hensu6 = 0;
       
         for(hensu2 = 0; hensu2 < this.numberTeam2; hensu2++){
-              for(hensu3 = 0; hensu3 < this.numberTeam2; hensu3++){
+              for(hensu3 = 0; hensu3 < this.numberofpeople; hensu3++){
                   if(hensu3 == 0){
                     this.groupName = this.userOccupation + this.consoleMember[hensu1].number ;
                     firebase.database().ref('/users/userGroup/' + this.team[hensu2][hensu3]).push({
@@ -504,9 +504,9 @@ alert('Make Group')
           console.log(this.sortMember1[3])
           console.log(this.sortMember1[4])
           console.log(this.sortMember1[5])
-          console.log(this.sortMember1[6])
-          console.log(this.sortMember1[7])
-          console.log(this.sortMember1[8])
+          //console.log(this.sortMember1[6])
+          //console.log(this.sortMember1[7])
+          //console.log(this.sortMember1[8])
           
           ///////条件分岐はまだ////////////////////////////////
           let numberTeam = 0
@@ -546,10 +546,11 @@ alert('Make Group')
           console.log(this.team[1][0])
           console.log(this.team[1][1])
           console.log("/////////////")
-          console.log(this.teamConsole[2])
+          
+          /*console.log(this.teamConsole[2])
           console.log(this.team[2][0])
           console.log(this.team[2][1])
-
+          */
           let count5 = 0;
           let count6 = 0;
           let count7 = 0
@@ -664,7 +665,7 @@ alert('Make Group')
           let teamHyouzi2 = 0;
           //forzemi
           for(teamHyouzi = 0; teamHyouzi < numberTeam2; teamHyouzi++){
-            for(teamHyouzi2 = 0;teamHyouzi2 < numberTeam2; teamHyouzi2++){
+            for(teamHyouzi2 = 0;teamHyouzi2 < this.numberofpeople; teamHyouzi2++){
               console.log("TeamNumber" + " " + teamHyouzi)
               console.log("メンバー" + teamHyouzi2 + ":" + this.team[teamHyouzi][teamHyouzi2])
             }
@@ -687,7 +688,7 @@ alert('Make Group')
           this.consoleMember = this.memberList
           //for(stuructureNum = 0; stuructureNum < this.sortMember1.length; stuructureNum++){
             for(stuructureNum2 = 0; stuructureNum2 < numberTeam2; stuructureNum2++){
-              for(stuructureNum3 = 0; stuructureNum3 < numberTeam2; stuructureNum3++){
+              for(stuructureNum3 = 0; stuructureNum3 < this.numberofpeople; stuructureNum3++){
                   if(stuructureNum3 == 0){
                     this.consoleMember[stuructureNum].number = stuructureNum2 + 1;
                     this.consoleMember[stuructureNum].console = this.teamConsole[stuructureNum4];

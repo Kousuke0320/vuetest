@@ -1,5 +1,44 @@
 <template>
 <div id="testVue">
+    <div class="makegroupbox">
+    
+    
+       <div class="InfBox">
+          <h1>User Profile</h1>
+          <p class="page2P">Gender</p>
+        <select name="genderSel" v-model="gender">
+        <option value="Man">Man</option>
+        <option value="Women">Women</option>
+        </select>
+        </div>
+        <div class="InfBox">
+          <p class="page2P">Country</p>
+        <input type="text" class="inputText" v-model="country"/><br>
+        </div>
+        
+        <div class="InfBox">
+          <p class="page2P">Language</p>
+          <input type="text" class="inputText" v-model="language"/><br>
+        </div>
+        
+        <div class="InfBox">
+          <p class="page2P">Occupation</p>
+          <input type="text" class="inputText" v-model="occupation"/><br>
+        </div>
+        
+        <div class="InfBox">
+          <p class="page2P">Major</p>
+          <input type="text" class="inputText" v-model="major"/><br>
+        </div>
+        
+        <div class="InfBox">
+          <p class="page2P">Coment</p>
+          <textarea id="comconf" v-model="prfCom"></textarea><br>
+          
+        
+        </div>
+    </div>
+    <div class="makegroupbox">
     <div class="testin1">
         <div class="testin1in">
         <p class="testinin">Q1.</p>
@@ -380,6 +419,7 @@
             <input type="range" class="infRangeA" min="0" max="100" step="1" v-model="pol3"/> 
     
     </div>
+    </div>
         
   <button id="testSubmit" @click="testSubmit">Submit</button>
 </div>
@@ -433,7 +473,13 @@ export default {
         analyze:0,
         technology:0,
         policy:0,
-        userName:''
+        userName:'',
+        gender: '',
+        country: '',
+        language: '',
+        occupation: '',
+        major: '',
+        prfCom: ''
     }
   },
   created: function(){
@@ -547,6 +593,15 @@ export default {
             technology:this.technology,
             policy:this.policy
           })
+
+          firebase.database().ref('/users/userPrf/' + this.userName).update({
+            gender:this.gender,
+            country:this.country,
+            language:this.language,
+            occupation:this.occupation,
+            major:this.major,
+            coment:this.prfCom
+          })
           
           alert("success")
 
@@ -565,6 +620,11 @@ export default {
 #testVue p{
   
   
+}
+
+#testVue h1{
+color: #00A29A;
+font-weight: bold;
 }
 .testin1{
     width: 80%;
