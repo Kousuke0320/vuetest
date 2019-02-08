@@ -10,7 +10,7 @@
       <div class="userPicSub">
       <div id="name2">Group {{ groupName }}</div>
       <div id="userpicpic2">
-      <img src="../assets/pentakun.png" id="prfPic2">
+      <img src="" id="prfPic2">
       </div>
       </div>
       <div id="userCom2">
@@ -141,7 +141,9 @@ export default {
       count: 0,
       photoURL: [],
       graphHyouzi: false,
-      height:300
+      height:300,
+      back:"",
+      groupPic:'../assets/loading1.gif'
      }
     },
     components: {
@@ -178,6 +180,7 @@ export default {
       this.coment = coment
       this.time = time
       this.length = count
+
       
       this.reader = username[0]
       var i = 0;
@@ -187,7 +190,7 @@ export default {
         firebase.database().ref('/users/userPrf/' + username[k]).on('value', function(snapshot) {
           photoURL = snapshot.val().photo
         })
-        this.photoURL[k] = photoURL
+        this.photoURL[k] = photoURL || '../assets/user.png'
         console.log(this.photoURL)
       }
       for(i = 0; i < 10; i++){
@@ -252,7 +255,7 @@ export default {
         }
       }
       this.height = 0
-
+      
       
              this.userMe = localStorage.getItem("userName")
 
@@ -291,7 +294,14 @@ export default {
     this.fillData2()
     this.height = 50
     
+    
+    this.back = JSON.parse(localStorage.getItem('groupBack')) || []
+    if(this.back == 1){
     setTimeout(this.countHantei2, 1000);
+    }else{
+      this.loading = true;
+    }
+    
     //setTimeout(this.loading = true, 1050);
     console.log(this.A[0][0])
     console.log(this.A[1][0])
@@ -316,6 +326,7 @@ export default {
       var e = 0;
 
 ////////////////for zikkenn/////////////////////
+/*
       for(q = 0; q < 5; q++){
         for(w = 1; w < this.length; w++){
             this.topSet[w] = this.A[w][q]
@@ -330,14 +341,17 @@ export default {
             if(w == this.length - 1){
               console.log("thistop" + this.top[q])
             }
-          }
+          }*/
 
       //////////////////for honnban//////////////////
-      /*
+      var q = 0;
+      var w = 0;
+      var e = 0;
+
       for(q = 0; q < 5; q++){
         for(w = 0; w < this.length; w++){
             this.topSet[w] = this.A[w][q]
-            e = parseInt(this.topSet[w])
+            e = parseFloat(this.topSet[w])
             if(w == 0){
               this.top[q] = e
             }else{
@@ -348,14 +362,15 @@ export default {
             if(w == this.length - 1){
               console.log("thistop" + this.top[q])
             }
-          }*/
+          }
+
       }
+                console.log("thistop" + this.top)
     },
     avetageGraph() {
-      var ii = 0;
-      var jj = 0;
-      var k = 0;
+      
 /////////////////for zikkenn////////////////
+/*
 for(ii = 0; ii < 5; ii++){
         for(jj = 1; jj < 10; jj++){
           if(this.A[jj][ii] == null){
@@ -382,35 +397,40 @@ for(ii = 0; ii < 5; ii++){
         }
       }
 
-
+*/
      //////////for honnbann//////////////////
-     /*
+     var ii = 0;
+      var jj = 0;
+      var k = 0;
+
       for(ii = 0; ii < 5; ii++){
-        for(jj = 0; jj < 10; jj++){
+        for(jj = 0; jj < this.length; jj++){
           if(this.A[jj][ii] == null){
             this.aveSet[jj] = 0
-            k = parseInt(this.aveSet[jj])
+            k = parseFloat(this.aveSet[jj])
             //console.log("aveve" + k)
           this.sum = this.sum + k
-          //console.log("Sum is " + this.sum)
+          console.log("Sum is " + this.sum)
           k = 0;
           }else{
             this.aveSet[jj] = this.A[jj][ii]
-            k = parseInt(this.aveSet[jj])
-          //console.log("aveve" + k)
+            k = parseFloat(this.aveSet[jj])
+          console.log("aveve" + k)
           this.sum = this.sum + k
-          //console.log("Sum is " + this.sum)
+          console.log("Sum is " + this.sum)
           k = 0;
           }
-          if(jj == 9){
+          if(jj == this.length - 1){
             //console.log("sum is " + this.sum)
+            
             this.ave[ii] = this.sum / this.length
-            //console.log("アベレージは" + this.ave[ii])
+            console.log("アベレージは" + this.ave[ii])
             this.sum = 0; 
           }
         }
-      }*/
-      //console.log(this.ave)
+      }
+      console.log(this.ave)
+       
     },
     
     removeGroup () {
@@ -843,7 +863,7 @@ display: flex;
    width: 40px;
     height: 40px;
     border-radius: 50%;
-}
+   }
 
 #group
 h1,
@@ -977,12 +997,12 @@ a {
 
 
 #rader2 {
-  margin:20px auto;
+  margin:50px auto;
   width:80vw;
 }
 
 #line2 {
-  
+  margin-top:50px;
 }
 
 #memberHyouzin{
@@ -1001,7 +1021,9 @@ a {
 
 #memberBox {
  display:flex; 
- margin: 10px auto;
+ margin: 10px 5%;
+ width:90%;
+ overflow:scroll;
 }
 
 
@@ -1021,7 +1043,7 @@ a {
    width: 40px;
     height: 40px;
     border-radius: 50%;
-}
+    }
 
 #group
 h1,

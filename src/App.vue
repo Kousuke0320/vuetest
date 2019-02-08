@@ -138,6 +138,7 @@ export default {
         localStorage.setItem('Index', index);
         var GroupName = this.list[index].Group
         localStorage.setItem('groupName',JSON.stringify(GroupName))
+        localStorage.setItem('groupBack',1)
       router.push({ path: '/margin' })
       setTimeout(this.check, 250)
       },
@@ -219,6 +220,7 @@ export default {
     right: 0;
     width: 300px;
     height: 100%;
+    overflow:scroll;
     background: #00A29A;
     -webkit-transform: perspective(500px) rotateY(-90deg);
     transform: perspective(500px) rotateY(-90deg);
@@ -564,6 +566,7 @@ font-size: 18px;
     right: 0;
     width: 250px;
     height: 100%;
+    overflow:scroll;
     background: #00A29A;
     -webkit-transform: perspective(500px) rotateY(-90deg);
     transform: perspective(500px) rotateY(-90deg);
