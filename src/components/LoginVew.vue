@@ -30,51 +30,64 @@
     </div>
     <div id="sectionLoginview">
     </div>
+    <div class="section0" >
     <div class="section1" >
       <div class="section11">
         <img src="../assets/gamenzu.png">
         </div>
         <div class="section12">
+          <div class="section121">
           <p class="loginH1">
-            1. 説明
+            1. SkillWebとは？
             </p>
-          <p>aaaaaaaaaaaaaaaaa
-            aaaaaaaaaaaaaaaaaa
-            aaaaaaaaaaaaaaaaa
+          <p class="section13">
+          SkillWebはメンバーのスキルを可視化することでグループワークを支援するWebアプリケーションです。
+          また管理者として平等にグループを自動生成することもできます。  
           </p>
+          </div>
         </div>
     </div>
-    <div class="section1">
-      <div class="section12">
+    </div>
+    <div class="section0" >
+    <div class="section1" id="sectionChartLogin0">
+      <div class="section12" id="sectionChartLogin1">
+        <div class="section121">
           <p class="loginH1">
-            1. 説明
+            2. メンバーのスキルの可視化
             </p>
-          <p>aaaaaaaaaaaaaaaaa
-            aaaaaaaaaaaaaaaaaa
-            aaaaaaaaaaaaaaaaa
-          </p>
+          <p class="section13">グループメンバーのスキルが以下のように表示されます。
+            誰がどのスキルを持っているのかを可視化することで理解できます。
+            また平均値，最大値などを測ることもできます。
+                      </p>
         </div>
-      <div class="section11">
-        <img src="../assets/gamenzu.png">
+        </div>
+      <div class="section11" id="sectionChartLogin2">
+        <img src="../assets/groupChart.png">
         </div>
         
     </div>
+    </div>
+    <div class="section0" >
     <div class="section1">
       <div class="section11">
-        <img src="../assets/gamenzu.png">
+        <img src="../assets/groupchat.png">
         </div>
         <div class="section12">
+          <div class="section121">
           <p class="loginH1">
-            1. 説明
+            3. 非同期通信のチャット
             </p>
-          <p>aaaaaaaaaaaaaaaaa
-            aaaaaaaaaaaaaaaaaa
-            aaaaaaaaaaaaaaaaa
-          </p>
+          <p class="section13">
+            グループメンバーとチャットで会話することができます。
+            メンバー間の話し合いや議事録にお使いください。
+                    </p>
+          </div>
         </div>
+    </div>
     </div>
     <div id="footer">
       <p>copyright kousuke tanaka</p>
+      <p>KangLab</p>
     </div>
 
     </div>
@@ -142,7 +155,6 @@ export default {
             this.loading = false;
           }
       })
-      
 },
     methods: {
       
@@ -221,7 +233,7 @@ export default {
 </script>
 
 <style scoped>
-@media (min-width: 700px){
+@media (min-width: 901px){
  #loginview{
   display: flex;
   justify-content: center;
@@ -230,16 +242,13 @@ export default {
 }
 
 #loginVar{
-  width:100%;
+  width:100vw;
   margin:0;
   padding: 0;
   height:80px;
   display:flex;
-}
-
-#loginVar img{
-  height: 80px;
- 
+  z-index:999;
+  background: #fff;
 }
 
 #loginVarP{
@@ -329,11 +338,15 @@ p {
   height:30px;
 }
 
+.section0 {
+  height:80vh;
+}
 .section1{
   width: 70%;
   margin:0 auto 80px auto;
   display: flex;
 }
+
 .section11{
 flex: 1;
 }
@@ -348,10 +361,20 @@ flex: 1;
   max-width: 100%;
 }
 .loginH1{
-  font-size: 35px;
+  font-size: 28px;
   font-weight: bold;
   color:#00A29A;
 }
+
+.section13{
+color:rgb(150,150,150);
+
+}
+
+.section121{
+  height:80%;
+ margin: 10% auto 10% auto;
+ }
 
 #footer{
   width:100vw;
@@ -366,16 +389,15 @@ margin-top:100px;
 
 }
 
-@media (max-width: 699px){
+@media (max-width: 900px){
 div {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
 img {
-  margin-top:65px;
-  width: 100%;
 }
 section {
   margin:20px auto;
@@ -399,6 +421,110 @@ p {
 #loginLoading img{
   margin: 100px auto;
   
+}
+
+#LoginViewloginbutton2 img{
+width:40px;
+}
+
+#LoginViewloginbutton2 img:hover{
+opacity: 0.7;
+}
+
+#LoginViewloginmessageP2{
+  font-weight: bold;
+  font-size: 15px;
+  color:#ffffff;
+}
+
+
+#loginPic {
+  margin:0 auto;
+  padding: 0 auto;
+  border: 0 auto;
+}
+
+#loginPic img {
+  height: 100vh;
+  width:100%;
+  object-fit: cover;
+  object-position: 60% 100%
+}
+
+#LoginViewloginmessage{
+position: absolute;
+top: 40%;
+}
+#LoginViewloginmessageP1{
+  font-weight: bold;
+  font-size: 30px;
+  color:#ffffff;
+}
+
+#LoginViewloginbutton{
+  position: absolute;
+top: 60%;
+}
+
+
+#loginVar{
+  width:100%;
+  margin:0;
+  padding: 0;
+  height:50px;
+}
+
+#loginVarP{
+  font-size:20px;
+  font-weight: bold;
+  color:#696969;
+  margin-top:10px;
+  margin-left:30px;
+  text-align: left;
+}
+
+
+.section11 img{
+  max-width: 80%;
+}
+
+.section12 img{
+  max-width: 80%;
+}
+
+.loginH1{
+  font-size: 20px;
+  font-weight: bold;
+  color:#00A29A;
+}
+
+.section13{
+margin-top: 10px;
+color:rgb(150,150,150);
+font-size: 15px;
+}
+
+.section0 {
+  
+  margin-top: 10vh;
+}
+.section1{
+  width: 80%;
+  margin:0 auto 80px auto;
+}
+#sectionChartLogin0{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+}
+
+
+#footer{
+  width:100vw;
+  height:50vh;
+  background: rgb(150,150,150);
+  color: #fff;
 }
 
 

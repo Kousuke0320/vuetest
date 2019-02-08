@@ -1,6 +1,10 @@
 
 <template>
 <div id="GroupMember">
+  <div id="fixed" @click="modoru">
+    <img src="../assets/modoru.png" >
+    <p>Back</p>
+  </div>
   <div id="userPrf3">
     <div id="userPic3">
       <div class="userPicSub">
@@ -57,6 +61,8 @@
 <script>
 
 import membersChart from './membersChart.vue'
+import router from '../router'
+
 
 var motivation;
 var management;
@@ -231,6 +237,10 @@ export default {
       //document.getElementById("name3").innerText = JSON.parse(localStorage.getItem('userName')) || []
   },
   methods:{
+    modoru() {
+    localStorage.setItem('groupBack',0)
+    router.push({ path: '/group' })
+    },
       fillData() {
     this.chartData = {
       labels: [SkillsCount[0], SkillsCount[1], SkillsCount[2], SkillsCount[3], SkillsCount[4]],
@@ -358,6 +368,33 @@ this.chartData = {
   width: 100%;
 }
 
+#fixed{
+  position: fixed;
+    top: 15px;
+    left: 40px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 3;
+    display: flex;
+}
+
+#fixed img{
+  width:25px;
+  height:25px;
+}
+#fixed p{
+  position:relative;
+  top:-29px;
+  left:10px;
+  font-size:25px;
+  color:rgb(70,70,70);
+}
+
+#fixed:hover{
+  opacity: 0.8;
+}
+
 #userPrf3 {
   display: flex;
 }
@@ -473,6 +510,36 @@ background: #696969;
   template {
   width: 100%;
 }
+
+#fixed{
+  position: fixed;
+    display: flex;
+    top: 20px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+#fixed img{
+  width:20px;
+  height:20px;
+}
+
+#fixed p{
+  position:relative;
+  top:-22px;
+  left:7px;
+  font-size:20px;
+  color:rgb(70,70,70);
+}
+
+#fixed:hover{
+  opacity: 0.8;
+}
+
+
 
 #userPrf3 {
 }

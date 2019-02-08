@@ -11,16 +11,14 @@
            </div>
            </div>
     </div>
-    <div id="box">
+    <div id="sousinbox">
     <!-- メッセージの入力欄 -->
-    
+        <div id="sousin1">
     <textarea id="nameInput" v-model="message"></textarea>
-
+        </div>
     <!-- ボタン類 -->
-    <div>
-      <button type="button" class="btn btn-default" @click="sendMessage">
-        submit
-      </button>
+    <div id="sousin2">
+      <img src="../assets/sousin2.png"  @click="sendMessage" />
     </div>
     </div>
   </div>
@@ -54,6 +52,8 @@
         this.photoURL = user.photoURL;
       }
       })
+      var obj = document.getElementById("resultMessage");
+obj.scrollTop = obj.scrollHeight;
     },/*
     watch: {
       messagelist: {
@@ -91,7 +91,8 @@
         // 送信後inputを空にする
         this.message = ''
         this.listen()
-      
+      var ob = document.getElementById("resultMessage");
+      ob.scrollTop = ob.scrollHeight;
       }
     }
   }
@@ -122,7 +123,7 @@
   height:35vh;
   text-align: left;
   overflow: scroll;
-  background: aliceblue;
+  background: rgb(240,240,240);
   
 }
 #resultMessage2{
@@ -130,16 +131,33 @@
   /*height:40px;*/
 
 }
-#box {
-  margin:0 auto;
-  
+#sousinbox {
+  margin:5px auto;
+  width:90%;
+  display:flex;
 }
+
+
+#sousin1{
+  flex:6;
+}
+
+#sousin2{
+flex:1;
+}
+
+
+#sousin2 img{
+  margin:10px auto auto 0;
+  width:30px;
+}
+
 
 #nameInput{
   margin:5px auto;
   background-color: #ffffff;
   color:#696969;
-  width:60%;
+  width:90%;
   height:30px;
 }
 

@@ -198,7 +198,8 @@ export default {
         consoleMember:[],
         settingHasu:false,
         beforeSort:true,
-        numberTeam2:0
+        numberTeam2:0,
+        time:''
     }
   },
   components: {
@@ -247,10 +248,24 @@ export default {
                 if(hensu3 == this.numberTeam2 - 1){
                   hensu5 = hensu4 + 1
                   hensu6 = hensu4 + 2
+                   var hiduke=new Date(); 
+            　      var year = hiduke.getFullYear();
+            　      var month = hiduke.getMonth()+1;
+            　      var day = hiduke.getDate();
+            　      this.time = year + "/" + month + "/" + day;
                   firebase.database().ref("/users/group/" + this.groupName).update({
                   user1: this.consoleMember[hensu4].userName || '',
                   user2: this.consoleMember[hensu5].userName || '',
                   user3: this.consoleMember[hensu6].userName || '',
+                  user4: '',
+                  user5: '',
+                  user6: '',
+                  user7: '',
+                  user8: '',
+                  user9: '',
+                  time: this.time,
+                  coment: "",
+                  count: this.numberofpeople,
       })
       firebase.database().ref("/users/groupskills/" + this.groupName).update({
                          skills1: this.skillscount[0],
